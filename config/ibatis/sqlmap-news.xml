@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="news">
+	<typeAlias alias="news" type="com.his.cms.model.News" />
+
+	<insert id="addNews" parameterClass="news">
+		insert into News (title,imageId,content,createTime,creator,type,lang) values (#title#,#imageId#,#content#,#createTime#,#creator#,#type#,#lang#)
+	</insert>
+	
+	<update id="updateNews" parameterClass="news">
+		update News set title=#title#,content=#content#,imageId=#imageId# where id=#id#
+	</update>
+	
+	<delete id="deleteNews" parameterClass="int">
+		delete from News where id=#id#
+	</delete>
+	
+	<select id="findNewsList" parameterClass="java.util.Map" resultClass="news">
+		select * from News
+		where lang=#lang# <isNotNull property="title" prepend="and"> title like CONCAT('%',#title#,'%')</isNotNull> 
+		<isGreaterThan property="type" compareValue="0" prepend="and">type=#type#</isGreaterThan>
+		order by id desc limit #startRow#, #pageSize#
+	</select>
+	
+	<select id="findNews" parameterClass="int" resultClass="news">
+		select * from News where id=#id#
+	</select>
+</sqlMap>

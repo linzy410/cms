@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="common">
+	<typeAlias alias="updateMap" type="com.his.cms.dto.UpdateMap" />
+	
+	<update id="update" parameterClass="updateMap">
+		update $table$ set
+		<iterate property="fields" conjunction=",">
+			<isEqual property="fields[].column" compareValue="false">
+				$fields[].name$ = #fields[].value#
+			</isEqual>
+			<isEqual property="fields[].column" compareValue="true">
+				$fields[].name$ = $fields[].value$
+			</isEqual>
+		</iterate>
+		where 
+		<iterate property="where" conjunction="and">
+			<isEqual property="where[].operator" compareValue="in">
+				$where[].name$ in ($where[].value$)
+			</isEqual>
+			<isNotEqual property="where[].operator" compareValue="in">
+				<isEqual property="where[].column" compareValue="false">
+					$where[].name$ $where[].operator$ #where[].value#
+				</isEqual>
+				<isEqual property="where[].column" compareValue="true">
+					$where[].name$ $where[].operator$ $where[].value$
+				</isEqual>
+			</isNotEqual>
+		</iterate>
+	</update>
+	
+	<delete id="delete" parameterClass="updateMap">
+		delete from $table$ 
+		where 
+		<iterate property="where" conjunction="and">
+			<isEqual property="where[].operator" compareValue="in">
+				$where[].name$ in ($where[].value$)
+			</isEqual>
+			<isNotEqual property="where[].operator" compareValue="in">
+				$where[].name$ $where[].operator$ #where[].value#
+			</isNotEqual>
+		</iterate>
+	</delete>
+	
+</sqlMap>

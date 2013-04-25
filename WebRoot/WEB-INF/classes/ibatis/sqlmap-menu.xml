@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="menu">
+	<typeAlias alias="menu" type="com.his.cms.model.Menu" />
+	<typeAlias alias="content" type="com.his.cms.model.MenuContent" />
+
+	<insert id="addMenu" parameterClass="menu">
+		insert into Menu (name,nameEn,createTime,creator,type,isShow) values (#name#,#nameEn#,#createTime#,#creator#,#type#,#isShow#)
+	</insert>
+	
+	<update id="updateMenu" parameterClass="menu">
+		update Menu set name=#name#,nameEn=#nameEn#,type=#type# where id=#id#
+	</update>
+	
+	<delete id="deleteMenu" parameterClass="int">
+		delete from Menu where id=#id#
+	</delete>
+	
+	<select id="findMenuList" parameterClass="int" resultClass="menu">
+		select * from Menu where 0=0
+		<isGreaterThan property="value" compareValue="0" prepend="and"> type=#type#</isGreaterThan>
+		order by listOrder asc
+	</select>
+	
+	<select id="findMenu" parameterClass="int" resultClass="menu">
+		select * from Menu where id=#id#
+	</select>
+	
+	<update id="updateMenuListOrder" parameterClass="java.util.ArrayList">
+		update Menu set listOrder= case id
+			<iterate>
+				when #menus[].id# then #menus[].listOrder#
+			</iterate>
+			else 0 end
+		where id in 
+			<iterate open="(" close=")" conjunction=",">
+				#menus[].id#
+			</iterate>
+	</update>
+	
+	<update id="updateMenuUrl" parameterClass="java.util.ArrayList">
+		update Menu set url= case id
+			<iterate>
+				when #menus[].id# then #menus[].url#
+			</iterate>
+			else 0 end
+		where id in 
+			<iterate open="(" close=")" conjunction=",">
+				#menus[].id#
+			</iterate>
+	</update>
+	
+	<select id="findMenuContent" parameterClass="int" resultClass="content">
+		select c.* , m.name as menuName,m.nameEn as menuNameEn from MenuContent c left join Menu m on c.menuId=m.id where menuId=#menuId#
+	</select>
+	
+	<insert id="addMenuContent" parameterClass="content">
+		insert into MenuContent (menuId,content) values (#menuId#,#content#)
+	</insert>
+</sqlMap>
