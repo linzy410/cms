@@ -43,7 +43,7 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	}
 	
 	public String remove() throws Exception {
-		menuService.remove(selectedId);
+		operTag = menuService.removeMenu(selectedId);
 		return "listAction";
 	}
 	

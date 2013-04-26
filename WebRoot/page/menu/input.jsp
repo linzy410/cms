@@ -48,7 +48,7 @@
 								<div class="control-group">
 								    <label class="control-label">英文名称</label>
 								    <div class="controls">
-									    <input type="text" class="input-xlarge" placeholder="请输入英文名称" name="name" value="${menu.nameEn}"/>
+									    <input type="text" class="input-xlarge" placeholder="请输入英文名称" name="nameEn" value="${menu.nameEn}"/>
 								    </div>
 							    </div>
 							    <label class="control-label" for="input01">菜单类别</label>

@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 
 import com.his.cms.dao.MenuDao;
+import com.his.cms.dao.NewsDao;
 import com.his.cms.dto.UpdateMap;
 import com.his.cms.model.Menu;
 import com.his.cms.model.MenuContent;
@@ -21,6 +22,7 @@ import com.his.cms.model.MenuContent;
 public class MenuService {
 	
 	private MenuDao menuDao;
+	private NewsDao newsDao;
 
 	public List<Menu> getMenuList(int type) {
 		return menuDao.findMenuList(type);
@@ -38,8 +40,13 @@ public class MenuService {
 		menuDao.updateMenu(menu);
 	}
 	
-	public void remove(int id) {
+	public String removeMenu(int id) {
+		int count = newsDao.findCountNewsByType(id);
+		if (count > 0) {
+			return "hasNews";
+		}
 		menuDao.deleteMenu(id);
+		return "succ";
 	}
 	
 	/**
@@ -75,5 +82,9 @@ public class MenuService {
 	
 	public void setMenuDao(MenuDao menuDao) {
 		this.menuDao = menuDao;
+	}
+
+	public void setNewsDao(NewsDao newsDao) {
+		this.newsDao = newsDao;
 	}
 }

@@ -165,6 +165,9 @@ a:hover {
 .navbar-fixed-bottom .container {
   width: 940px;
 }
+.span13 {
+  width: 1020px;
+}
 .span12 {
   width: 940px;
 }
@@ -3992,4 +3995,7 @@ a.thumbnail:hover {
 }
 .invisible {
   visibility: hidden;
+}
+.data-list{
+	position: relative;
 }

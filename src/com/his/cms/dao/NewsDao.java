@@ -28,6 +28,10 @@ public class NewsDao extends BaseDao {
 		return (News) super.getSqlMapClientTemplate().queryForObject("news.findNews", id);
 	}
 	
+	public int findCountNewsByType(int type) {
+		return (Integer) super.getSqlMapClientTemplate().queryForObject("news.countNews", type);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<News> findNewsList(News news, int pageNo, int pageSize) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -37,6 +41,10 @@ public class NewsDao extends BaseDao {
 		map.put("type", news.getType());
 		map.put("lang", news.getLang());
 		return super.getSqlMapClientTemplate().queryForList("news.findNewsList", map);
+	}
+
+	public int findCountNews(News news) {
+		return (Integer) super.getSqlMapClientTemplate().queryForObject("news.findCountNews", news);
 	}
 	
 	public void deleteNews(int id) {

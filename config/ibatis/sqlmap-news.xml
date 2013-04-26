@@ -10,21 +10,34 @@
 	</insert>
 	
 	<update id="updateNews" parameterClass="news">
-		update News set title=#title#,content=#content#,imageId=#imageId# where id=#id#
+		update News set title=#title#,content=#content#,imageId=#imageId#,type=#type# where id=#id#
 	</update>
 	
 	<delete id="deleteNews" parameterClass="int">
 		delete from News where id=#id#
 	</delete>
 	
+	<sql id="whereSql">
+		where n.lang=#lang# <isNotNull property="title" prepend="and"> n.title like CONCAT('%',#title#,'%')</isNotNull> 
+		<isGreaterThan property="type" compareValue="0" prepend="and">n.type=#type#</isGreaterThan>
+	</sql>
+	
 	<select id="findNewsList" parameterClass="java.util.Map" resultClass="news">
-		select * from News
-		where lang=#lang# <isNotNull property="title" prepend="and"> title like CONCAT('%',#title#,'%')</isNotNull> 
-		<isGreaterThan property="type" compareValue="0" prepend="and">type=#type#</isGreaterThan>
-		order by id desc limit #startRow#, #pageSize#
+		select n.*, m.name as menuName, m.nameEn as menuNameEn from News n left join Menu m on n.type=m.id
+		<include refid="whereSql"/>
+		order by n.id desc limit #startRow#, #pageSize#
 	</select>
+	
+	<select id="findCountNews" parameterClass="news" resultClass="int">
+		select count(*) from News n <include refid="whereSql"/>
+	</select>
+	
 	
 	<select id="findNews" parameterClass="int" resultClass="news">
 		select * from News where id=#id#
+	</select>
+	
+	<select id="findCountNewsByType" parameterClass="String" resultClass="int">
+		select count(*) from News where type=#type#
 	</select>
 </sqlMap>

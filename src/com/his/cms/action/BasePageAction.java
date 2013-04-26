@@ -3,6 +3,8 @@
  */
 package com.his.cms.action;
 
+import com.his.cms.dto.Page;
+
 
 /**
  * @author ажуэяв
@@ -16,6 +18,8 @@ public abstract class BasePageAction extends BaseAction {
 	protected int selectedId;
 	protected String message;
 	protected String operTag = "succ";
+	protected Page page;
+	
 	
 	protected abstract String getMenuTag();
 
@@ -37,5 +41,9 @@ public abstract class BasePageAction extends BaseAction {
 
 	public String getOperTag() {
 		return operTag;
+	}
+
+	public Page getPage() {
+		return page;
 	}
 }

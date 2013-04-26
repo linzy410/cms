@@ -11,10 +11,6 @@
 		
 		<script type="text/javascript">
 			$(function() {
-				showSuccMsg();
-				$(".close").click(function() {
-					$(".alert").slideUp();
-				});
 			});
 
 			function remove(id){
@@ -47,8 +43,7 @@
 							</div>
 						</div>
 			    	</div>
-			    	<div style="position: relative;">
-				    	<div class="alert alert-success hide"  style="margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>操作成功</div>
+			    	<div class="data-list">
 			    	    <table class="table table-striped table-bordered table-condensed">
 				    	    <tr>
 				    	    	<td width="60">顺序</td>
@@ -62,7 +57,7 @@
 				    	    		<td>${listOrder}</td>
 				    	    		<td>${name}</td>
 				    	    		<td>${nameEn}</td>
-				    	    		<td><s:if test="type==1">页面内容</s:if><s:elseif test="type==2">指定链接</s:elseif></td>
+				    	    		<td><s:if test="type==1">页面内容</s:if><s:elseif test="type==2">指定链接</s:elseif><s:else>新闻资讯类</s:else></td>
 				    	    		<td>
 				    	    			<a href="/admin/menu_edit.action?selectedId=${id}">编辑</a> | <a href="javascript:void(0);" onclick="remove(${id});">删除</a> | 
 				    	    			<s:if test="type==1"><a href="/admin/menu_content.action?selectedId=${id}">内容编辑</a></s:if>

@@ -19,6 +19,9 @@ public class News extends BaseEntity {
 	private String content;
 	private int type; // ”ÎmenuId∂‘”¶
 	
+	private String menuName;
+	private String menuNameEn;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -42,5 +45,17 @@ public class News extends BaseEntity {
 	}
 	public int getType() {
 		return type;
+	}
+	public void setMenuName(String menuName) {
+		this.menuName = menuName;
+	}
+	public String getMenuName() {
+		return menuName;
+	}
+	public void setMenuNameEn(String menuNameEn) {
+		this.menuNameEn = menuNameEn;
+	}
+	public String getMenuNameEn() {
+		return menuNameEn;
 	}
 }

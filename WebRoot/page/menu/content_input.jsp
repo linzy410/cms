@@ -64,9 +64,9 @@
 					    	<input type="hidden" name="content.menuId" value="${content.menuId}"/>
 						    <fieldset>
 								<div class="control-group">
-								    <label class="control-label">中文名称</label>
+								    <label class="control-label">菜单名称</label>
 								    <div class="controls">
-									    <span class="input-xlarge uneditable-input">${content.menuName}</span>
+									    <span class="input-xlarge uneditable-input">${content.menuName} | ${content.menuNameEn}</span>
 								    </div>
 							    </div>
 							    <label class="control-label" for="input01">内容</label>

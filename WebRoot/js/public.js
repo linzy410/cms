@@ -1,3 +1,6 @@
+$(function() {
+	showSuccMsg();
+});
 function goAction(url){
 	window.location.href = url;
 }
@@ -33,8 +36,32 @@ function getUrlParam(name) {
 
 function showSuccMsg() {
 	var operTag = getUrlParam("operTag")
-	if (operTag == 'succ' && $(".alert").size() >0){
+	if (operTag != null) {
+		createAlert(operTag);
 		$(".alert").slideDown();
-		setTimeout("$('.alert').slideUp();",2000);
+		if (operTag == 'succ'){
+			setTimeout("$('.alert').slideUp();",2000);
+			setTimeout("$('.alert').remove()",2500);
+		}
 	}
+}
+
+function createAlert(tag){
+	var alertHtml = null;
+	if (tag == "succ") {
+		alertHtml = '<div class="alert alert-success"  style="margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>操作成功</div>';
+	} else {
+		var msg = null;
+		if ('hasNews'==tag) {
+			msg = '该目录下存在新闻资讯，不能删除，请先移除新闻资讯。';
+		} else {
+			msg = '操作失败';
+		}
+		alertHtml = '<div class="alert alert-error"  style="margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>'+msg+'</div>';
+	}
+	$(".data-list").prepend(alertHtml);
+	$(".close").click(function() {
+		$(".alert").slideUp();
+		setTimeout("$('.alert').remove()",2000);
+	});
 }

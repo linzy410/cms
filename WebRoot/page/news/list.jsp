@@ -49,29 +49,40 @@
 							</div>
 						</div>
 			    	</div>
-			    	<div style="position: relative;">
-				    	<div class="alert alert-success hide"  style="margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>操作成功</div>
+			    	<div class="data-list">
 			    	    <table class="table table-striped table-bordered table-condensed">
 				    	    <tr>
 				    	    	<th width="25" style="text-align:center;"><input type="checkbox" name="newschk"/></th>
 				    	    	<th width="30">序号</th>
 				    	    	<th>标题</th>
+				    	    	<th>类别</th>
 				    	    	<th width="70">创建者</th>
-				    	    	<th width="130">创建时间</th>
 				    	    	<th width="70">操作</th>
 				    	    </tr>
-			    	    	<s:iterator value="list" status="st">
+			    	    	<s:iterator value="page.elements" status="st">
 				    	    	<tr>
 				    	    		<td style="text-align:center;"><input type="checkbox" value="${id}" name="newschk"/></td>
 				    	    		<td>${st.index+1}</td>
 				    	    		<td>${title}</td>
+				    	    		<td>${menuName} | ${menuNameEn}</td>
 				    	    		<td>${creator}</td>
-				    	    		<td>${createTime}</td>
 				    	    		<td><a href="/admin/news_edit.action?selectedId=${id}">编辑</a> | <a href="javascript:void(0);" onclick="remove(${id});">删除</a></td>
 				    	    	</tr>
 			    	    	</s:iterator>
 	    				</table>
     				</div>
+					<div class="pagination">
+						<ul>
+							<li class="disabled"><a href="#">共有<font color="red">${page.total}</font>条记录</a></li>
+							<%if(startRow == 0){ %>
+							<li><a href="#">«</a></li>
+							<li class="active"><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">»</a></li>
+						</ul>
+					</div>    				
 			    </div>
 		    </div>
 	    </div>

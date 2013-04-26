@@ -15,7 +15,7 @@
 					elements : "text",
 					theme : "advanced",
 					width : "100%",
-					height : "565px",
+					height : "500px",
 					force_br_newlines : true,
 					convert_urls : false,
 					language : "zh-cn",
@@ -74,11 +74,24 @@
 									    <input type="text" class="input-xlarge" placeholder="请输入标题" name="title" value="${news.title}"/>
 								    </div>
 							    </div>
-							    <label class="control-label" for="input01">内容</label>
-							    <div class="controls">
-								    <textarea name="content" id="text">${news.content}</textarea>
+								<div class="control-group">
+									<label for="select01" class="control-label">菜单类别</label>
+									<div class="controls">
+										<select name="type">
+											<option>请选择一个菜单</option>
+											<s:iterator value="menus">
+												<option value="${id}" <s:if test="id==news.type || menus.size==1">selected="selected"</s:if>>${name} | ${nameEn}</option>
+											</s:iterator>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+								    <label class="control-label" for="input01">内容</label>
+								    <div class="controls">
+									    <textarea name="content" id="text">${news.content}</textarea>
+								    </div>
 							    </div>
-							    <div class="controls" style="padding-top:10px;">
+							    <div class="controls">
 							    	<button class="btn btn-primary" type="submit">确定</button>
 							    	<a href="/admin/news_list.action" class="btn">返回</a>
 							    </div>
