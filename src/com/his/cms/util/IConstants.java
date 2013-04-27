@@ -29,4 +29,7 @@ public interface IConstants {
 	
 	public static String KEY_FILE_UPLOAD_SAVE_PATH = "file.upload.save.path";
 	
+	public static int HYPERLINK_STATE_ACTIVE = 1;
+	public static int HYPERLINK_STATE_DISABLED = 2;
+	public static int HYPERLINK_STATE_NOMAL = 3;
 }

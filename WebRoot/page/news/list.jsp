@@ -74,13 +74,15 @@
 					<div class="pagination">
 						<ul>
 							<li class="disabled"><a href="#">共有<font color="red">${page.total}</font>条记录</a></li>
-							<%if(startRow == 0){ %>
-							<li><a href="#">«</a></li>
+							<li><a href="${page.previousPage}">«</a></li>
+							<s:iterator value="page.links">
+								
+							</s:iterator>
 							<li class="active"><a href="#">1</a></li>
 							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
+							<li><a href="#">...</a></li>
 							<li><a href="#">4</a></li>
-							<li><a href="#">»</a></li>
+							<li><a href="${page.nextPage}">»</a></li>
 						</ul>
 					</div>    				
 			    </div>

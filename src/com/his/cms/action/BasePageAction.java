@@ -44,6 +44,8 @@ public abstract class BasePageAction extends BaseAction {
 	}
 
 	public Page getPage() {
+		page.setPageNo(super.getPageNo());
+		page.setPageSize(super.getPageSize());
 		return page;
 	}
 }
