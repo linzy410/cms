@@ -24,6 +24,10 @@
 		order by listOrder asc
 	</select>
 	
+	<select id="findShowMenuList" parameterClass="int" resultClass="menu">
+		select * from Menu where isShow=0 order by listOrder asc
+	</select>
+	
 	<select id="findMenu" parameterClass="int" resultClass="menu">
 		select * from Menu where id=#id#
 	</select>

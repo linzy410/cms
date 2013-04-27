@@ -33,6 +33,16 @@ public class MenuDao extends BaseDao {
 		return super.getSqlMapClientTemplate().queryForList("menu.findMenuList", type);
 	}
 	
+	/**
+	 * 展示的菜单
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Menu> findShowMenuList() {
+		return super.getSqlMapClientTemplate().queryForList("menu.findShowMenuList");
+	}
+	
+	
 	public void deleteMenu(int id) {
 		super.getSqlMapClientTemplate().delete("menu.deleteMenu", id);
 	}

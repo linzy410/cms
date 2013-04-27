@@ -27,7 +27,7 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	private MenuContent content;
 
 	public String list() {
-		menus = menuService.getMenuList(type);
+		menus = menuService.getMenuListByType(type);
 		return "list";
 	}
 	
@@ -58,7 +58,7 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	}
 	
 	public String order() throws Exception {
-		menus = menuService.getMenuList(0);
+		menus = menuService.getMenuListByType(0);
 		return "order";
 	}
 	
@@ -73,7 +73,7 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	 * @throws Exception
 	 */
 	public String url() throws Exception {
-		menus = menuService.getMenuList(IConstants.MENU_TYPE_ASSIGN);
+		menus = menuService.getMenuListByType(IConstants.MENU_TYPE_ASSIGN);
 		return "url";
 	}
 	

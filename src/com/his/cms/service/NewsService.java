@@ -20,17 +20,17 @@ public class NewsService {
 	
 	private NewsDao newsDao;
 
-	public Page getNewsPage(News news, int pageNo, int pageSize) {
-		List<News> list = newsDao.findNewsList(news, pageNo, pageSize);
-		int count = newsDao.findCountNews(news);
+	public Page getNewsPage(String title, int type, int lang, int pageNo, int pageSize) {
+		List<News> list = newsDao.findNewsList(title, type, lang, pageNo, pageSize);
+		int count = newsDao.findCountNews(title, type, lang);
 		Page page = new Page(list, count);
 		String url = "/admin/news_list.action";
 		StringBuilder params = new StringBuilder();
-		if (news.getType() > 0) {
-			params.append("&type=").append(news.getType());
+		if (type > 0) {
+			params.append("&typeQuery=").append(type);
 		}
-		if (StringUtils.isNotEmpty(news.getTitle())) {
-			params.append("&title=").append(news.getTitle());
+		if (StringUtils.isNotEmpty(title)) {
+			params.append("&titleQuery=").append(title);
 		}
 		if (params.length() > 0)
 			url += "?" + params.substring(1);

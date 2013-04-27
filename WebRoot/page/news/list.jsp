@@ -11,9 +11,9 @@
 		
 		<script type="text/javascript">
 			$(function() {
-				showSuccMsg();
-				$(".close").click(function() {
-					$(".alert").slideUp();
+				$("#queryType").change(function(){
+					$("#hTypeQuery").val(this.value);
+					$("#f1").submit();
 				});
 			});
 
@@ -41,9 +41,10 @@
 									<ul class="nav">
 									<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/news_add.action')" value="新增"/></li>
 									</ul>
-									<form class="navbar-form pull-left" action="/admin/news_list.action">
-										<input type="text" placeholder="请输入标题" class="span3 searchIpt" />
-										<input type="button" class="btn searchBtn" value="搜索"/>
+									<form id="f1" class="navbar-form pull-left" method="post" action="/admin/news_list.action">
+										<input type="hidden" name="typeQuery" id="hTypeQuery" value="${typeQuery}"/> 
+										<input type="text" name="titleQuery" placeholder="请输入标题" value="${titleQuery}" class="span3 searchIpt" />
+										<input type="submit" class="btn searchBtn" value="搜索"/>
 									</form>
 								</div>
 							</div>
@@ -55,7 +56,14 @@
 				    	    	<th width="25" style="text-align:center;"><input type="checkbox" name="newschk"/></th>
 				    	    	<th width="30">序号</th>
 				    	    	<th>标题</th>
-				    	    	<th>类别</th>
+				    	    	<th>
+				    	    		<select id="queryType" style="margin-bottom:0px;">
+										<option value="0">类别</option>
+										<s:iterator value="menus">
+											<option value="${id}" <s:if test="id==typeQuery">selected="selected"</s:if>>${name} | ${nameEn}</option>
+										</s:iterator>
+									</select>
+								</th>
 				    	    	<th width="70">创建者</th>
 				    	    	<th width="70">操作</th>
 				    	    </tr>
@@ -76,12 +84,8 @@
 							<li class="disabled"><a href="#">共有<font color="red">${page.total}</font>条记录</a></li>
 							<li><a href="${page.previousPage}">«</a></li>
 							<s:iterator value="page.links">
-								
+								<li class="<s:if test='state==1'>active</s:if><s:elseif test='state==2'>disabled</s:elseif>"><a href="${href}">${name}</a></li>
 							</s:iterator>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">...</a></li>
-							<li><a href="#">4</a></li>
 							<li><a href="${page.nextPage}">»</a></li>
 						</ul>
 					</div>    				

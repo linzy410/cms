@@ -19,7 +19,7 @@
 	
 	<sql id="whereSql">
 		where n.lang=#lang# <isNotNull property="title" prepend="and"> n.title like CONCAT('%',#title#,'%')</isNotNull> 
-		<isGreaterThan property="type" compareValue="0" prepend="and">n.type=#type#</isGreaterThan>
+		<isGreaterThan property="type" compareValue="0" prepend="and"> n.type=#type#</isGreaterThan>
 	</sql>
 	
 	<select id="findNewsList" parameterClass="java.util.Map" resultClass="news">
@@ -28,7 +28,7 @@
 		order by n.id desc limit #startRow#, #pageSize#
 	</select>
 	
-	<select id="findCountNews" parameterClass="news" resultClass="int">
+	<select id="findCountNews" parameterClass="java.util.Map" resultClass="int">
 		select count(*) from News n <include refid="whereSql"/>
 	</select>
 	

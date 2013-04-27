@@ -33,18 +33,22 @@ public class NewsDao extends BaseDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<News> findNewsList(News news, int pageNo, int pageSize) {
+	public List<News> findNewsList(String title, int type, int lang, int pageNo, int pageSize) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("startRow", pageNo * pageSize);
 		map.put("pageSize", pageSize);
-		map.put("title", news.getTitle());
-		map.put("type", news.getType());
-		map.put("lang", news.getLang());
+		map.put("title", title);
+		map.put("type", type);
+		map.put("lang", lang);
 		return super.getSqlMapClientTemplate().queryForList("news.findNewsList", map);
 	}
 
-	public int findCountNews(News news) {
-		return (Integer) super.getSqlMapClientTemplate().queryForObject("news.findCountNews", news);
+	public int findCountNews(String title, int type, int lang) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("title", title);
+		map.put("type", type);
+		map.put("lang", lang);
+		return (Integer) super.getSqlMapClientTemplate().queryForObject("news.findCountNews", map);
 	}
 	
 	public void deleteNews(int id) {

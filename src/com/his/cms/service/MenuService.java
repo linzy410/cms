@@ -23,8 +23,21 @@ public class MenuService {
 	
 	private MenuDao menuDao;
 	private NewsDao newsDao;
+	
+	/**
+	 * 展示中的菜单
+	 * @return
+	 */
+	public List<Menu> getShowMenuList() {
+		return menuDao.findShowMenuList();
+	}
 
-	public List<Menu> getMenuList(int type) {
+	/**
+	 * 根据类型查找
+	 * @param type
+	 * @return
+	 */
+	public List<Menu> getMenuListByType(int type) {
 		return menuDao.findMenuList(type);
 	}
 	
@@ -69,6 +82,7 @@ public class MenuService {
 			content.setMenuId(menuId);
 			content.setContent(StringUtils.EMPTY);
 			menuDao.addMenuContent(content);
+			content = menuDao.findMenuContent(menuId);
 		}
 		return content;
 	}

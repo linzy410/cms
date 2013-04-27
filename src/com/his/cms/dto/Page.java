@@ -27,11 +27,11 @@ public class Page implements Serializable {
 	public List<Hyperlink> getLinks() {
 		int totalPage = getTotalPage();
 		if (totalPage <= 10) {
-			for (int i = 0; i < totalPage; i++) {
+			for (int i = 0; i <= totalPage; i++) {
 				links.add(getHyperlink(i == pageNo, i));
 			}
-		} else if (pageNo <= 5) {
-			for (int i = 0; i <= 5; i++) {
+		} else if (pageNo < 4) {
+			for (int i = 0; i < 5; i++) {
 				links.add(getHyperlink(i == pageNo, i));
 			}
 			links.add(new Hyperlink(POUND, APOSTROPHE, IConstants.HYPERLINK_STATE_DISABLED));
@@ -39,7 +39,7 @@ public class Page implements Serializable {
 		} else if (pageNo > totalPage - 5) {
 			links.add(getHyperlink(0));
 			links.add(new Hyperlink(POUND, APOSTROPHE, IConstants.HYPERLINK_STATE_DISABLED));
-			for (int i = totalPage - 5; i <= totalPage; i++) {
+			for (int i = totalPage - 5; i < totalPage; i++) {
 				links.add(getHyperlink(i == pageNo, i));
 			}
 		} else {
@@ -66,8 +66,8 @@ public class Page implements Serializable {
 	 */
 	private Hyperlink getHyperlink(boolean current, int pageShowNo) {
 		if (current)
-			return new Hyperlink(POUND, String.valueOf(pageShowNo), IConstants.HYPERLINK_STATE_ACTIVE);
-		return new Hyperlink(getUrl(pageShowNo), String.valueOf(pageShowNo), IConstants.HYPERLINK_STATE_NOMAL);
+			return new Hyperlink(POUND, String.valueOf(pageShowNo + 1), IConstants.HYPERLINK_STATE_ACTIVE);
+		return new Hyperlink(getUrl(pageShowNo), String.valueOf(pageShowNo + 1), IConstants.HYPERLINK_STATE_NOMAL);
 	}
 
 	private String getUrl(int pageShowNo) {
@@ -96,7 +96,7 @@ public class Page implements Serializable {
 	}
 
 	public String getNextPage() {
-		if (pageNo == getTotalPage())
+		if (pageNo == (getTotalPage() - 1))
 			return POUND;
 		return getUrl(pageNo + 1);
 	}
@@ -141,6 +141,7 @@ public class Page implements Serializable {
 		public Hyperlink(String href, String name, int state) {
 			this.href = href;
 			this.name = name;
+			this.state = state;
 		}
 
 		public String getHref() {

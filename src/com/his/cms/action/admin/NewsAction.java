@@ -27,14 +27,17 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	private UploadFileService uploadFileService;
 	private News news = new News();
 	private List<Menu> menus;
+	private String titleQuery;
+	private int typeQuery;
 	
 	public String list() throws Exception {
-		page = newsService.getNewsPage(news, pageNo, pageSize);
+		menus = menuService.getMenuListByType(IConstants.MENU_TYPE_NEWS_LIST);
+		page = newsService.getNewsPage(titleQuery, typeQuery, super.getLang(), pageNo, pageSize);
 		return "list";
 	}
 	
 	public String add() throws Exception {
-		menus = menuService.getMenuList(IConstants.MENU_TYPE_NEWS_LIST);
+		menus = menuService.getMenuListByType(IConstants.MENU_TYPE_NEWS_LIST);
 		return INPUT;
 	}
 	
@@ -56,7 +59,7 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	
 	public String edit() throws Exception {
 		news = newsService.getNewsById(selectedId);
-		menus = menuService.getMenuList(IConstants.MENU_TYPE_NEWS_LIST);
+		menus = menuService.getMenuListByType(IConstants.MENU_TYPE_NEWS_LIST);
 		return INPUT;
 	}
 	
@@ -99,5 +102,21 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 
 	public List<Menu> getMenus() {
 		return menus;
+	}
+
+	public String getTitleQuery() {
+		return titleQuery;
+	}
+
+	public void setTitleQuery(String titleQuery) {
+		this.titleQuery = titleQuery;
+	}
+
+	public int getTypeQuery() {
+		return typeQuery;
+	}
+
+	public void setTypeQuery(int typeQuery) {
+		this.typeQuery = typeQuery;
 	}
 }

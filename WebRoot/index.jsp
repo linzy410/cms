@@ -24,6 +24,9 @@
 		</div>
 		<div class="mainmenu" id="mo_menu">
 			<ul>
+				<s:iterator value="menus">
+					
+				</s:iterator>
 				<li class="current">
 					<a href="/">首页</a>
 				</li>

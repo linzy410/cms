@@ -18,6 +18,7 @@ public class MenuContent implements Serializable {
 
 	private int menuId;
 	private String content;
+	
 	private String menuName;
 	private String menuNameEn;
 

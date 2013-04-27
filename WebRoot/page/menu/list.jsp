@@ -46,10 +46,10 @@
 			    	<div class="data-list">
 			    	    <table class="table table-striped table-bordered table-condensed">
 				    	    <tr>
-				    	    	<td width="60">顺序</td>
+				    	    	<th width="60">顺序</th>
 				    	    	<th>中文名称</th>
 				    	    	<th>英文名称</th>
-				    	    	<td width="80">类型</td>
+				    	    	<th width="80">类型</th>
 				    	    	<th width="140">操作</th>
 				    	    </tr>
 			    	    	<s:iterator value="menus" status="st">
