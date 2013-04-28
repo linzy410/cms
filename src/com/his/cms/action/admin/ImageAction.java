@@ -3,13 +3,13 @@ package com.his.cms.action.admin;
 import java.io.File;
 import java.util.List;
 
-import com.his.cms.action.BaseAction;
-import com.his.cms.service.UploadFileService;
+import com.his.cms.action.BasePageAction;
+import com.his.cms.service.ImageService;
 
-public class UploadAction extends BaseAction {
+public class ImageAction extends BasePageAction {
 	
 	private static final long serialVersionUID = -4848248679889814408L;
-	private UploadFileService uploadFileService;
+	private ImageService imageService;
 	/** 文件对象 */
 	private List<File> Filedata; // uploadify必须使用此变量名称
 	/** 文件名 */
@@ -19,8 +19,18 @@ public class UploadAction extends BaseAction {
 	private int type;
 
 	public String execute() throws Exception {
-		uploadFileService.saveUploadFile(Filedata, FiledataFileName, 0);
+		imageService.saveImage(Filedata, FiledataFileName, type, super.getLang());
 		return JSON;
+	}
+	
+	/**
+	 * 图片空间
+	 * @return
+	 * @throws Exception
+	 */
+	public String list() throws Exception {
+		page = imageService.getPage(super.getLang(), pageNo, pageSize);
+		return "list";
 	}
 	
 	public List<File> getFiledata() {
@@ -55,8 +65,16 @@ public class UploadAction extends BaseAction {
 		return type;
 	}
 
-	public void setUploadFileService(UploadFileService uploadFileService) {
-		this.uploadFileService = uploadFileService;
+	public void setImageService(ImageService imageService) {
+		this.imageService = imageService;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.his.cms.action.BasePageAction#getMenuTag()
+	 */
+	@Override
+	protected String getMenuTag() {
+		return "image";
 	}
 
 }

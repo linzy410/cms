@@ -19,6 +19,9 @@
 			<result name="url">/page/menu/set_url.jsp</result>
 			<result name="content">/page/menu/content_input.jsp</result>
 		</action>
+		<action name="image_*" class="com.his.cms.action.admin.ImageAction" method="{1}">
+			<result name="list">/page/image/list.jsp</result>
+		</action>
 	</package>
 </struts>
 

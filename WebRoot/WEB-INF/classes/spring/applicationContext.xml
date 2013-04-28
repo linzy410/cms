@@ -38,9 +38,9 @@
 	
 	<bean id="newsDao" class="com.his.cms.dao.NewsDao" autowire="byName"/>
 	<bean id="menuDao" class="com.his.cms.dao.MenuDao" autowire="byName"/>
-	<bean id="uploadFileDao" class="com.his.cms.dao.UploadFileDao" autowire="byName"/>
+	<bean id="imageDao" class="com.his.cms.dao.ImageDao" autowire="byName"/>
 	<bean id="newsService" class="com.his.cms.service.NewsService" autowire="byName"/>
 	<bean id="menuService" class="com.his.cms.service.MenuService" autowire="byName"/>
-	<bean id="uploadFileService" class="com.his.cms.service.UploadFileService" autowire="byName"/>
+	<bean id="imageService" class="com.his.cms.service.ImageService" autowire="byName"/>
 	
 </beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="image">
+	<typeAlias alias="image" type="com.his.cms.model.Image" />
+	
+	<sql id="whereSql">
+		from Image where type=#type# and lang=#lang# 
+	</sql>
+	
+	<select id="findImageList" parameterClass="map" resultClass="image">
+		select * <include refid="whereSql"/> order by id desc limit #startRow#, #pageSize#
+	</select>
+	
+	<select id="findCountImage" parameterClass="map" resultClass="int">
+		select count(*) <include refid="whereSql"/>
+	</select>
+
+	<select id="findImageListByType" parameterClass="map" resultClass="image">
+		select * from Image where type=#type# and lang=#lang# order by id desc
+	</select>
+	
+	<insert id="addImage" parameterClass="image">
+		insert into Image (saveFile,name,type,lang,creator,createTime)
+		 values (#saveFile#,#name#,#type#,#lang#,#creator#,#createTime#)
+	</insert>
+
+</sqlMap>

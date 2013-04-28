@@ -3,6 +3,8 @@
  */
 package com.his.cms.model;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * @author 林哲炎
  *
@@ -19,6 +21,11 @@ public class Menu extends BaseEntity {
 	private int type; //1=单张页面  2=特定链接 3=新闻资讯类
 	private int isShow; // 0=展示 1=隐藏
 
+	
+	public String getNameEnSiteShow() {
+		return nameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY);
+	}
+	
 	public String getName() {
 		return name;
 	}

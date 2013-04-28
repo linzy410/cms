@@ -11,10 +11,6 @@
 		
 		<script type="text/javascript">
 			$(function() {
-				$("#queryType").change(function(){
-					$("#hTypeQuery").val(this.value);
-					$("#f1").submit();
-				});
 			});
 
 			function remove(id){
@@ -36,16 +32,11 @@
 			    	<div class="navbar">
 			    		<div class="navbar-inner">
 								<div class="container">
-								<a href="javascript:void(0);" class="brand">新闻管理</a>
+								<a href="javascript:void(0);" class="brand">图片空间</a>
 								<div class="nav-collapse">
 									<ul class="nav">
-									<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/news_add.action')" value="新增"/></li>
+										<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/news_add.action')" value="图片上传"/></li>
 									</ul>
-									<form id="f1" class="navbar-form pull-left" method="post" action="/admin/news_list.action">
-										<input type="hidden" name="typeQuery" id="hTypeQuery" value="${typeQuery}"/> 
-										<input type="text" name="titleQuery" placeholder="请输入标题" value="${titleQuery}" class="span3 searchIpt" />
-										<input type="submit" class="btn searchBtn" value="搜索"/>
-									</form>
 								</div>
 							</div>
 						</div>
@@ -55,31 +46,24 @@
 				    	    <tr>
 				    	    	<th width="25" style="text-align:center;"><input type="checkbox" name="newschk"/></th>
 				    	    	<th width="30">序号</th>
-				    	    	<th>标题</th>
-				    	    	<th>
-				    	    		<select id="queryType" style="margin-bottom:0px;">
-										<option value="0">类别</option>
-										<s:iterator value="menus">
-											<option value="${id}" <s:if test="id==typeQuery">selected="selected"</s:if>>${name} | ${nameEn}</option>
-										</s:iterator>
-									</select>
-								</th>
-				    	    	<th width="70">创建者</th>
-				    	    	<th width="70">操作</th>
 				    	    </tr>
 			    	    	<s:iterator value="page.elements" status="st">
 				    	    	<tr>
-				    	    		<td style="text-align:center;"><input type="checkbox" value="${id}" name="newschk"/></td>
-				    	    		<td>${st.index+1}</td>
-				    	    		<td>${title}</td>
-				    	    		<td>${menuName} | ${menuNameEn}</td>
-				    	    		<td>${creator}</td>
-				    	    		<td><a href="/admin/news_edit.action?selectedId=${id}">编辑</a> | <a href="javascript:void(0);" onclick="remove(${id});">删除</a></td>
+				    	    		<td>${st.index}</td>
 				    	    	</tr>
 			    	    	</s:iterator>
 	    				</table>
     				</div>
-					<%@ include file="/page/include/page.jsp" %>	
+					<div class="pagination">
+						<ul>
+							<li class="disabled"><a href="#">共有<font color="red">${page.total}</font>条记录</a></li>
+							<li><a href="${page.previousPage}">«</a></li>
+							<s:iterator value="page.links">
+								<li class="<s:if test='state==1'>active</s:if><s:elseif test='state==2'>disabled</s:elseif>"><a href="${href}">${name}</a></li>
+							</s:iterator>
+							<li><a href="${page.nextPage}">»</a></li>
+						</ul>
+					</div>    				
 			    </div>
 		    </div>
 	    </div>

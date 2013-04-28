@@ -13,7 +13,12 @@
 		</style>
 		<script>
 			$(function() {
-	
+				var href = window.location.href;
+				$(".mainmenu a").each(function(){
+					if (this.href==href){
+						$(this).parent().addClass("current");
+					}
+				});
 			});
 		</script>
 	</head>
@@ -25,8 +30,8 @@
 		<div class="mainmenu" id="mo_menu">
 			<ul>
 				<s:iterator value="menus">
-					<li class="current">
-					<a href="<s:if test='type==1'></s:if>/news/${nameEn}/${id}<s:elseif test='type==2'>${url}</s:elseif><s:elseif test='type==3'>/news/${id}</s:elseif>">${name}</a>
+					<li id="li_menu_${id}">
+					<a href="<s:if test='type==1'>/${nameEnSiteShow}-${id}</s:if><s:elseif test='type==2'>${url}</s:elseif><s:elseif test='type==3'>/news/${id}</s:elseif>">${name}</a>
 					</li>
 				</s:iterator>
 			</ul>

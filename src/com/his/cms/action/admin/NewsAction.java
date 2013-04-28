@@ -10,7 +10,7 @@ import com.his.cms.model.Menu;
 import com.his.cms.model.News;
 import com.his.cms.service.MenuService;
 import com.his.cms.service.NewsService;
-import com.his.cms.service.UploadFileService;
+import com.his.cms.service.ImageService;
 import com.his.cms.util.IConstants;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -24,7 +24,7 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	private static final long serialVersionUID = 4342284034206304094L;
 	private NewsService newsService;
 	private MenuService menuService;
-	private UploadFileService uploadFileService;
+	private ImageService uploadFileService;
 	private News news = new News();
 	private List<Menu> menus;
 	private String titleQuery;
@@ -53,7 +53,7 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	}
 	
 	public String showImage() throws Exception {
-		result.put("images", uploadFileService.getUploadFileList(IConstants.IMAGE_TYPE_NEWS));
+		result.put("images", uploadFileService.getImageList(IConstants.IMAGE_TYPE_NEWS, super.getLang()));
 		return "showImage";
 	}
 	
@@ -92,7 +92,7 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 		return "news";
 	}
 
-	public void setUploadFileService(UploadFileService uploadFileService) {
+	public void setUploadFileService(ImageService uploadFileService) {
 		this.uploadFileService = uploadFileService;
 	}
 
