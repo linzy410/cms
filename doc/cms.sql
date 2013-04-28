@@ -1,9 +1,9 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.5.27 - MySQL Community Server (GPL)
--- Server OS:                    Win64
+-- Server version:               5.5.3-m3-community - MySQL Community Server (GPL)
+-- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2013-04-28 14:23:24
+-- Date/time:                    2013-04-28 23:02:25
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -14,6 +14,24 @@
 DROP DATABASE IF EXISTS `cms`;
 CREATE DATABASE IF NOT EXISTS `cms` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `cms`;
+
+
+-- Dumping structure for table cms.Image
+DROP TABLE IF EXISTS `Image`;
+CREATE TABLE IF NOT EXISTS `Image` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `saveFile` varchar(100) NOT NULL COMMENT '保存文件',
+  `name` varchar(100) NOT NULL COMMENT '源文件名称',
+  `type` tinyint(4) NOT NULL COMMENT '文件类别 1=manual',
+  `lang` tinyint(4) NOT NULL,
+  `creator` varchar(20) NOT NULL COMMENT '创建时间',
+  `createTime` varchar(20) NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gb2312 COMMENT='文件上传表';
+
+-- Dumping data for table cms.Image: ~0 rows (approximately)
+/*!40000 ALTER TABLE `Image` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Image` ENABLE KEYS */;
 
 
 -- Dumping structure for table cms.Menu
@@ -37,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `Menu` (
 INSERT INTO `Menu` (`id`, `name`, `nameEn`, `listOrder`, `url`, `type`, `isShow`, `lang`, `creator`, `createTime`) VALUES
 	(1, '新闻资讯', 'NEWS', 5, '/news.action', 3, 0, 0, '李四', '2013-04-22 10:21:38'),
 	(4, '展会类别', 'EXHIBITOR', 3, '2312', 1, 0, 0, '李四', '2013-04-22 14:36:54'),
-	(5, '首页', 'HOME', 1, '/home.action', 2, 0, 0, '李四', '2013-04-22 14:37:13'),
+	(5, '首页', 'HOME', 1, '/', 2, 0, 0, '李四', '2013-04-22 14:37:13'),
 	(6, '展会概况', 'DATE & FACTS', 2, '13123', 1, 0, 0, '李四', '2013-04-22 14:37:41'),
 	(7, '观众来源', 'VISITOR', 4, '312', 1, 0, 0, '李四', '2013-04-22 14:38:32'),
 	(8, '合作伙伴', 'PARTNERS', 6, '312', 1, 0, 0, '李四', '2013-04-22 14:38:48'),
@@ -97,23 +115,6 @@ INSERT INTO `News` (`id`, `title`, `type`, `imageId`, `content`, `lang`, `creato
 	(21, 'a', 1, 0, '<p>b</p>', 0, '李四', '2013-04-23 09:18:13'),
 	(22, 'asdfasd基本原则塔顶 塔顶 ', 1, 0, '<p>fasdfasdf</p>\r\n<p>枯</p>\r\n<p>塔顶 塔顶</p>', 0, '李四', '2013-04-26 10:36:21');
 /*!40000 ALTER TABLE `News` ENABLE KEYS */;
-
-
--- Dumping structure for table cms.UploadFile
-DROP TABLE IF EXISTS `UploadFile`;
-CREATE TABLE IF NOT EXISTS `UploadFile` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `fileName` varchar(100) NOT NULL COMMENT '文件保存名称',
-  `filePath` varchar(100) NOT NULL COMMENT '文件保存路径',
-  `uploadName` varchar(100) NOT NULL COMMENT '文件上传名称',
-  `type` tinyint(4) NOT NULL COMMENT '文件类别 1=manual',
-  `createTime` varchar(20) NOT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=gb2312 COMMENT='文件上传表';
-
--- Dumping data for table cms.UploadFile: ~0 rows (approximately)
-/*!40000 ALTER TABLE `UploadFile` DISABLE KEYS */;
-/*!40000 ALTER TABLE `UploadFile` ENABLE KEYS */;
 
 
 -- Dumping structure for table cms.User
