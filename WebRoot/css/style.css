@@ -171,8 +171,8 @@ a:focus{outline:none;-moz-outline-style:none}
 .mainmenu ul {float: left;list-style: none outside none;margin: 0;}
 .mainmenu li.current {    color: #FAD00B;    text-decoration: none !important;}
 .mainmenu li {background: url("/img/menulinebg.gif") no-repeat scroll right center transparent;float: left;text-align: center;}
-.mainmenu .current a:link, .mainmenu .current a:visited {color: #FAD00B;padding: 8px 20px;}
-.mainmenu a:link, .mainmenu a:visited {color: #FFFFFF;display: block;font: bold 14px/13px tahoma;padding: 8px 20px;text-decoration: none;}
+.mainmenu .current a:link, .mainmenu .current a:visited {color: #FAD00B;padding: 6px 20px;}
+.mainmenu a:link, .mainmenu a:visited {color: #FFFFFF;display: block;font: bold 14px/13px tahoma;padding: 6px 20px;text-decoration: none;}
 .mainmenu a:hover {color: #FAD00B;text-decoration: none;}
 
 .tree{position:relative;float:right;display:inline;border-bottom:1px solid #DEC197;padding-left:20px;height:23px;margin-right:6px}

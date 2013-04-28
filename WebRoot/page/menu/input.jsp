@@ -54,7 +54,7 @@
 							    <label class="control-label" for="input01">菜单类别</label>
 							    <div class="controls">
 					              <label class="radio" title="该菜单详细页面仅有一张页面组成"><input name="type" value="1" <s:if test="menu.type==1">checked=""</s:if> type="radio">单张页面内容</label>
-					              <label class="radio" title="指向一个特定的链接"><input name="type" value="2" <s:if test="menu.type==2">checked=""</s:if> type="radio">特定链接</label>
+					              <label class="radio" title="指向一个特定的链接"><input name="type" value="2" <s:if test="menu.type==2">checked=""</s:if> type="radio">指定链接</label>
 					              <label class="radio" title="做为新闻资讯的一个类别"><input name="type" value="3" <s:if test="menu.type==3">checked=""</s:if> type="radio">新闻资讯类</label>
 							    </div>
 							    <label class="control-label" for="input01">是否显示</label>

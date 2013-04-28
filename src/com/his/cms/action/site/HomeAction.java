@@ -3,10 +3,11 @@
  * Copyright HiSupplier.com 
  */
 
-package com.his.cms.action;
+package com.his.cms.action.site;
 
 import java.util.List;
 
+import com.his.cms.action.BasePageAction;
 import com.his.cms.model.Menu;
 import com.his.cms.service.MenuService;
 
@@ -15,7 +16,7 @@ import com.his.cms.service.MenuService;
  *
  * 2013-4-19
  */
-public class HomeAction extends BaseAction {
+public class HomeAction extends BasePageAction {
 
 	private static final long serialVersionUID = 86129058907673013L;
 	private MenuService menuService;
@@ -32,5 +33,13 @@ public class HomeAction extends BaseAction {
 
 	public List<Menu> getMenus() {
 		return menus;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.his.cms.action.BasePageAction#getMenuTag()
+	 */
+	@Override
+	protected String getMenuTag() {
+		return "home";
 	}
 }
