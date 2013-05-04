@@ -4,13 +4,9 @@
 <div class="well" style="padding: 8px 0;">
 	<ul class="nav nav-list">
 	    <li class="nav-header" style="font-size: 12px;">菜单</li>
-	    <li <s:if test='menuTag=="menu"'>class="active"</s:if>><a href="/admin/menu_list.action"><i class="icon-book"></i>导航菜单</a></li>
-	    <li <s:if test='menuTag=="news"'>class="active"</s:if>><a href="/admin/news_list.action"><i class="icon-home"></i>新闻资讯</a></li>
-	    <li <s:if test='menuTag=="image"'>class="active"</s:if>><a href="/admin/image_list.action"><i class="icon-pencil"></i>图片空间</a></li>
-	    <li class="nav-header">另一个列表头</li>
-	    <li><a href="#"><i class="icon-user"></i> 介绍</a></li>
-	    <li><a href="#"><i class="icon-cog"></i> 设置</a></li>
-	    <li class="divider"></li>
-	    <li><a href="#"><i class="icon-flag"></i> 帮助</a></li>
+	    <li <s:if test='menuTag=="menu"'>class="active"</s:if>><a href="/admin/menu_list.action"><i class="icon-th-list"></i>导航菜单</a></li>
+	    <li <s:if test='menuTag=="news"'>class="active"</s:if>><a href="/admin/news_list.action"><i class="icon-list-alt"></i>新闻资讯</a></li>
+	    <li <s:if test='menuTag=="image"'>class="active"</s:if>><a href="/admin/image_list.action"><i class="icon-file"></i>图片空间</a></li>
+	    <li <s:if test='menuTag=="user"'>class="active"</s:if>><a href="/admin/user_list.action"><i class="icon-user"></i>用户管理</a></li>
     </ul>
 </div>

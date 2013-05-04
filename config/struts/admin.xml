@@ -22,6 +22,12 @@
 		<action name="image_*" class="com.his.cms.action.admin.ImageAction" method="{1}">
 			<result name="list">/page/image/list.jsp</result>
 		</action>
+		<action name="user_*" class="com.his.cms.action.admin.UserAction" method="{1}">
+			<result name="list">/page/user/list.jsp</result>
+			<result name="input">/page/user/input.jsp</result>
+			<result name="inputErr">/page/user/input.jsp?operTag=${operTag}</result>
+			<result name="listAction" type="redirect">/admin/user_list.action?operTag=${operTag}</result>
+		</action>
 	</package>
 </struts>
 

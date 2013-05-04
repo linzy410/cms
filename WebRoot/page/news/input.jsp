@@ -40,12 +40,6 @@
 					},
 	　　			});
 			});
-
-			function remove(id){
-				if(confirm("确定删除吗？")){
-					goAction("/admin/news_remove.action?selectedId="+id);
-				}
-			}
 		</script>
 	</head>
 	<body>

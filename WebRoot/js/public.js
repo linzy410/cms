@@ -1,5 +1,12 @@
 $(function() {
 	showSuccMsg();
+	$(".close").click(function() {
+		$(".alert").slideUp();
+		setTimeout("$('.alert').remove()",2000);
+	});
+	if ($(".alert").text().length<=1){
+		$(".alert").hide();
+	}
 });
 function goAction(url){
 	window.location.href = url;
@@ -49,19 +56,17 @@ function showSuccMsg() {
 function createAlert(tag){
 	var alertHtml = null;
 	if (tag == "succ") {
-		alertHtml = '<div class="alert alert-success"  style="margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>操作成功</div>';
+		alertHtml = '<div class="alert alert-success" style="top:0px;margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>操作成功</div>';
 	} else {
 		var msg = null;
 		if ('hasNews'==tag) {
 			msg = '该目录下存在新闻资讯，不能删除，请先移除新闻资讯。';
+		}else if ('exsitUsername'==tag) {
+			msg = '该用户名已存在。';
 		} else {
 			msg = '操作失败';
 		}
-		alertHtml = '<div class="alert alert-error"  style="margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>'+msg+'</div>';
+		alertHtml = '<div class="alert alert-error" style="top:0px;margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>'+msg+'</div>';
 	}
-	$(".data-list").prepend(alertHtml);
-	$(".close").click(function() {
-		$(".alert").slideUp();
-		setTimeout("$('.alert').remove()",2000);
-	});
+	$(".navbar").append(alertHtml);
 }

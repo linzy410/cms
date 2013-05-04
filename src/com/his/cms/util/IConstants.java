@@ -15,10 +15,6 @@ public interface IConstants {
 	public static int CN = 0;
 	public static int EN = 1;
 	
-	/**½ÇÉ«*/
-	public static int ROLE_ADMIN = 1;
-	public static int ROLE_USER = 2;
-	
 	public static int IMAGE_TYPE_NEWS = 1; 
 	public static int IMAGE_TYPE_SPACE = 2;
 	

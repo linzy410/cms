@@ -11,12 +11,6 @@
 		<script type="text/javascript">
 			$(function() {
 			});
-
-			function remove(id){
-				if(confirm("确定删除吗？")){
-					goAction("/admin/menu_remove.action?selectedId="+id);
-				}
-			}
 		</script>
 	</head>
 	<body>
