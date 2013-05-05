@@ -28,4 +28,6 @@ public interface IConstants {
 	public static int HYPERLINK_STATE_ACTIVE = 1;
 	public static int HYPERLINK_STATE_DISABLED = 2;
 	public static int HYPERLINK_STATE_NOMAL = 3;
+	
+	public static String SLASH = "/";
 }

@@ -18,9 +18,9 @@ public class ImageAction extends BasePageAction {
 	private List<String> FiledataContentType;
 	private int type;
 
-	public String execute() throws Exception {
+	public String upload() throws Exception {
 		imageService.saveImage(Filedata, FiledataFileName, type, super.getLang());
-		return JSON;
+		return null;
 	}
 	
 	/**

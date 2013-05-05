@@ -8,6 +8,6 @@
 	
 	<include file="struts/base.xml"></include>
 	<include file="struts/admin.xml"></include>
-	<include file="struts/json.xml"></include>
+<!--	<include file="struts/json.xml"></include>-->
 </struts>
 

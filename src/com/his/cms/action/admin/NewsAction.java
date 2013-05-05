@@ -24,7 +24,7 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	private static final long serialVersionUID = 4342284034206304094L;
 	private NewsService newsService;
 	private MenuService menuService;
-	private ImageService uploadFileService;
+	private ImageService imageService;
 	private News news = new News();
 	private List<Menu> menus;
 	private String titleQuery;
@@ -53,7 +53,7 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	}
 	
 	public String showImage() throws Exception {
-		result.put("images", uploadFileService.getImageList(IConstants.IMAGE_TYPE_NEWS, super.getLang()));
+		result.put("images", imageService.getImageList(IConstants.IMAGE_TYPE_NEWS, super.getLang()));
 		return "showImage";
 	}
 	
@@ -92,8 +92,8 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 		return "news";
 	}
 
-	public void setUploadFileService(ImageService uploadFileService) {
-		this.uploadFileService = uploadFileService;
+	public void setUploadFileService(ImageService imageService) {
+		this.imageService = imageService;
 	}
 
 	public void setMenuService(MenuService menuService) {
@@ -118,5 +118,9 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 
 	public void setTypeQuery(int typeQuery) {
 		this.typeQuery = typeQuery;
+	}
+
+	public void setImageService(ImageService imageService) {
+		this.imageService = imageService;
 	}
 }

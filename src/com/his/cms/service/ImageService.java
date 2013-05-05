@@ -60,8 +60,9 @@ public class ImageService {
 	 * @throws IOException 
 	 */
 	public void saveImage(List<File> files, List<String> fileNames, int imageType, int lang) throws IOException {
-		String datePath = new SimpleDateFormat("yyyyMMdd").format(new Date());
-		File uploadFolder = new File(PropertiesUtil.getString(IConstants.KEY_FILE_UPLOAD_SAVE_PATH) + "/" + datePath);
+		String datePath = new SimpleDateFormat("yyyyMM ").format(new Date());
+		// 文件物理地址
+		File uploadFolder = new File(PropertiesUtil.getString(IConstants.KEY_FILE_UPLOAD_SAVE_PATH) + IConstants.SLASH + datePath); 
 		if (!uploadFolder.exists()) {
 			uploadFolder.mkdirs();
 		}
@@ -70,10 +71,10 @@ public class ImageService {
 			String extension = fileNames.get(i).substring(fileNames.get(i).lastIndexOf("."));
 			String targetFilename = new SimpleDateFormat("HHmmsssssss").format(new Date());
 			targetFilename = checkFilenameUnique(uploadFolder.getAbsolutePath(), targetFilename, extension);
-			File target = new File(uploadFolder.getAbsolutePath() + "/" + targetFilename);
+			File target = new File(uploadFolder.getAbsolutePath() + IConstants.SLASH + targetFilename);
 			FileUtils.copyFile(files.get(i), target);
 			Image image = new Image();
-			image.setSaveFile(datePath + "/" + targetFilename);
+			image.setSaveFile(datePath + IConstants.SLASH + targetFilename);
 			image.setType(imageType);
 			image.setLang(lang);
 			image.setName(fileNames.get(i));
@@ -84,13 +85,14 @@ public class ImageService {
 	}
 	
 	/**
-	 * 
+	 * 确认文件名不重复
+	 * @param dir 		文件保存物理地址
 	 * @param filename  文件名前辍(除扩展名部分)
 	 * @param extension 扩展名
 	 * @return
 	 */
 	private String checkFilenameUnique(String dir, String filename, String extension) {
-		File file = new File(dir + "/" + filename + extension);
+		File file = new File(dir + IConstants.SLASH + filename + extension);
 		if (file.exists()) {
 			filename += new Random().nextInt(1000);
 			return checkFilenameUnique(dir, filename, extension);
