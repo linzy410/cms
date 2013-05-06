@@ -14,6 +14,10 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.his.cms.model.User;
+import com.his.cms.util.SessionUtil;
 
 /**
  * @author linzheyan
@@ -34,7 +38,22 @@ public class LoginFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {	
 		HttpServletRequest request = (HttpServletRequest) req;
+		HttpServletResponse response = (HttpServletResponse) res;
 		String uri = request.getRequestURI();
+		
+		if (uri.indexOf("/admin/") >= 0) {
+			// session过期处理
+			if (request.getSession(false) == null){
+				response.sendRedirect("/login_login.action");
+				return ;
+			}
+			
+			User sessionUser = SessionUtil.getSessionUser(request);
+			if (sessionUser == null) {
+				response.sendRedirect("/login_login.action");
+				return ;
+			}
+		}
 		chain.doFilter(req, res);
 	}
 

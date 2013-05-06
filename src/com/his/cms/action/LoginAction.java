@@ -5,6 +5,9 @@
 
 package com.his.cms.action;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.ServletActionContext;
+
 import com.his.cms.service.UserService;
 
 /**
@@ -25,7 +28,15 @@ public class LoginAction extends BaseAction {
 	}
 	
 	public String execute() {
-		
+		if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
+			addActionError("请输入用户名、密码");
+			return "login";
+		}
+		boolean rsl = userService.login(username, password, ServletActionContext.getRequest());
+		if (!rsl) {
+			addActionError("用户名或密码错误！");
+			return "login";
+		}
 		return "admin";
 	}
 

@@ -8,8 +8,6 @@ package com.his.cms.util;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.struts2.ServletActionContext;
-
 import com.his.cms.model.User;
 
 /**
@@ -21,8 +19,7 @@ public class SessionUtil {
 	
 	private static String KEY_USER_SESSION = "user";
 	
-	public static void setUserSession(User user) {
-		HttpServletRequest request = ServletActionContext.getRequest();
+	public static void setUserSession(User user, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		if (user != null) {
 			session.setAttribute(KEY_USER_SESSION, user);

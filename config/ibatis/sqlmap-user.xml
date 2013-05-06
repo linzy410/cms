@@ -21,6 +21,10 @@
 		select * from User where username=#username#
 	</select>
 	
+	<select id="findUserByUsernameAndPassword" parameterClass="map" resultClass="User">
+		select * from User where username=#username# and password=#password#
+	</select>
+	
 	<select id="findUser" parameterClass="int" resultClass="user">
 		select * from User where id=#id#
 	</select>

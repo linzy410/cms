@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<div class="row">
-			<div class="span10"  style="padding-top:180px;margin: 0 auto;float: none;">
+			<div class="span7"  style="padding-top:180px;margin: 0 auto;float: none;">
 				<div class="alert alert-error" style="width:98%;"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
 			    <form class="form-horizontal" method="post" action="/login.action">
 				    <fieldset>
@@ -24,7 +24,7 @@
 					    </div>
 					    <label class="control-label" for="input01">密  码</label>
 					    <div class="controls">
-						    <input type="text" class="input-xlarge" placeholder="请输入密码" name="password"/>
+						    <input type="password" class="input-xlarge" placeholder="请输入密码" name="password"/>
 					    </div>
 					    <div class="controls" style="padding-top:10px;">
 					    	<button class="btn btn-primary" type="submit">登录</button>

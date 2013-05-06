@@ -1,6 +1,8 @@
 package com.his.cms.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.his.cms.model.User;
 
@@ -17,6 +19,13 @@ public class UserDao extends BaseDao {
 	
 	public User findUserByUsername(String username) {
 		return (User) super.getSqlMapClientTemplate().queryForObject("user.findUserByUsername", username);
+	}
+	
+	public User findUserByUsernameAndPassword(String username, String password) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("username", username);
+		map.put("password", password);
+		return (User) super.getSqlMapClientTemplate().queryForObject("user.findUserByUsernameAndPassword", map);
 	}
 	
 	public void addUser(User user) {

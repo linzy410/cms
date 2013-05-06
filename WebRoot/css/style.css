@@ -109,7 +109,7 @@ a:focus{outline:none;-moz-outline-style:none}
 .head h3.cn{float:right;display:inline;width:185px;height:50px;overflow:hidden;background:url(/img/cn_pc_head_date.gif) no-repeat;text-indent:-9999px;margin:50px 48px 0 0}
 .main{width:1148px;padding-bottom:2px}
 .main .main_btn{position:absolute;bottom:5px}
-.main .main_btn a{float:left;display:inline-block;width:150px;height:60px;overflow:hidden;background-image:url(btn_quick.gif);background-repeat:no-repeat;text-indent:-9999px}
+.main .main_btn a{float:left;display:inline-block;width:150px;height:60px;overflow:hidden;background-image:url(/img/btn_quick.gif);background-repeat:no-repeat;text-indent:-9999px}
 .main .main_btn a#gallery{background-position:0 -70px;margin-left:4px;margin-right:4px}
 .main .main_btn a#gallery:hover{background-position:-160px -70px}
 .main .main_btn a#videos{background-position:0 -140px}
@@ -145,7 +145,7 @@ a:focus{outline:none;-moz-outline-style:none}
 
 .main .cpage2 .cright{float:right;display:inline;width:151px;margin-right:50px}
 .main .cpage2 .cright .btn{padding-top:44px}
-.main .cpage2 .cright .btn a{display:inline-block;width:151px;height:60px;overflow:hidden;background-image:url(btn_quick.gif);background-repeat:no-repeat;text-indent:-9999px;margin-bottom:25px}
+.main .cpage2 .cright .btn a{display:inline-block;width:151px;height:60px;overflow:hidden;background-image:url(/img/btn_quick.gif);background-repeat:no-repeat;text-indent:-9999px;margin-bottom:25px}
 .main .cpage2 .cright .btn a#news{background-position:0 0}
 .main .cpage2 .cright .btn a:hover#news{background-position:-160px 0}
 .main .cpage2 .cright .btn a#gallery{background-position:0 -70px}
