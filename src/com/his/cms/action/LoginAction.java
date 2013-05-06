@@ -5,6 +5,8 @@
 
 package com.his.cms.action;
 
+import com.his.cms.service.UserService;
+
 /**
  * @author linzheyan
  *
@@ -14,6 +16,7 @@ public class LoginAction extends BaseAction {
 
 	private static final long serialVersionUID = -4563886695584137855L;
 	
+	private UserService userService; 
 	private String username;
 	private String password;
 	
@@ -42,4 +45,7 @@ public class LoginAction extends BaseAction {
 		return password;
 	}
 
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 }

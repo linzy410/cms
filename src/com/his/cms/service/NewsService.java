@@ -22,8 +22,8 @@ public class NewsService {
 
 	public Page getNewsPage(String title, int type, int lang, int pageNo, int pageSize) {
 		List<News> list = newsDao.findNewsList(title, type, lang, pageNo, pageSize);
-		int count = newsDao.findCountNews(title, type, lang);
-		Page page = new Page(list, count);
+		int total = newsDao.findCountNews(title, type, lang);
+		Page page = new Page(list, total, pageSize);
 		String url = "/admin/news_list.action";
 		StringBuilder params = new StringBuilder();
 		if (type > 0) {

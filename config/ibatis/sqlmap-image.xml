@@ -24,4 +24,11 @@
 		 values (#saveFile#,#name#,#type#,#lang#,#creator#,#createTime#)
 	</insert>
 
+	<select id="findImageByIds" parameterClass="String" resultClass="image">
+		select * from Image where id in ($imageIds$)
+	</select>
+	
+	<delete id="deleteImageByIds" parameterClass="String">
+		delete from Image where id in ($imageIds$)
+	</delete>
 </sqlMap>

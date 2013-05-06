@@ -19,7 +19,6 @@ import com.his.cms.dao.ImageDao;
 import com.his.cms.dto.Page;
 import com.his.cms.model.Image;
 import com.his.cms.util.IConstants;
-import com.his.cms.util.PropertiesUtil;
 
 /**
  * @author linzheyan
@@ -40,7 +39,7 @@ public class ImageService {
 	public Page getPage(int lang, int pageNo, int pageSize) {
 		List<Image> images = imageDao.findImageList(IConstants.IMAGE_TYPE_SPACE, lang, pageNo, pageSize);
 		int total = imageDao.findCountImage(IConstants.IMAGE_TYPE_SPACE, lang);
-		Page page = new Page(images, total);
+		Page page = new Page(images, total, pageSize);
 		page.setUrl("/admin/image_list.action");
 		return page;
 	}
@@ -59,10 +58,10 @@ public class ImageService {
 	 * @param files
 	 * @throws IOException 
 	 */
-	public void saveImage(List<File> files, List<String> fileNames, int imageType, int lang) throws IOException {
-		String datePath = new SimpleDateFormat("yyyyMM ").format(new Date());
+	public void saveImage(List<File> files, List<String> fileNames, int imageType, int lang, String creator) throws IOException {
+		String datePath = new SimpleDateFormat("yyyyMM").format(new Date());
 		// 文件物理地址
-		File uploadFolder = new File(PropertiesUtil.getString(IConstants.KEY_FILE_UPLOAD_SAVE_PATH) + IConstants.SLASH + datePath); 
+		File uploadFolder = new File(IConstants.FILE_UPLOAD_SAVE_PATH + IConstants.SLASH + datePath); 
 		if (!uploadFolder.exists()) {
 			uploadFolder.mkdirs();
 		}
@@ -78,6 +77,7 @@ public class ImageService {
 			image.setType(imageType);
 			image.setLang(lang);
 			image.setName(fileNames.get(i));
+			image.setCreator(creator);
 			image.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 			images.add(image);
 		}
@@ -98,6 +98,16 @@ public class ImageService {
 			return checkFilenameUnique(dir, filename, extension);
 		}
 		return filename + extension;
+	}
+	
+	public void removeImage(String imageIds) {
+		List<Image> images = imageDao.findImageByIds(imageIds);
+		File file = null;
+		for (Image img : images) {
+			file = new File(IConstants.FILE_UPLOAD_SAVE_PATH + IConstants.SLASH + img.getSaveFile()); 
+			file.delete();
+		}
+		imageDao.deleteImageByIds(imageIds);
 	}
 
 	public void setImageDao(ImageDao imageDao) {

@@ -79,7 +79,7 @@
 			    	    	</s:iterator>
 	    				</table>
     				</div>
-					<%@ include file="/page/include/page.jsp" %>	
+					<%@ include file="/page/include/page.jsp" %>
 			    </div>
 		    </div>
 	    </div>

@@ -5,6 +5,9 @@
 <struts>
 	
 	<package name="json" namespace="/json" extends="json-default">
+<!--		<action name="upload_*" class="com.his.cms.action.UploadAction" method="{1}">-->
+<!--			<result name="json" type="json" />-->
+<!--		</action>-->
 	</package>
 </struts>
 

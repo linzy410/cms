@@ -19,9 +19,10 @@ public class Page implements Serializable {
 	private static String APOSTROPHE = "...";
 	private static String POUND  = "#";
 
-	public Page(List<?> elements, int total) {
+	public Page(List<?> elements, int total, int pageSize) {
 		this.elements = elements;
 		this.total = total;
+		this.pageSize = pageSize;
 	}
 
 	public List<Hyperlink> getLinks() {

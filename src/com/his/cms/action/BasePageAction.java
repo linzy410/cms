@@ -16,6 +16,7 @@ public abstract class BasePageAction extends BaseAction {
 	private static final long serialVersionUID = -3535086611747121940L;
 	
 	protected int selectedId;
+	protected String selectedIds;
 	protected String message;
 	protected String operTag = "succ";
 	protected Page page;
@@ -29,6 +30,14 @@ public abstract class BasePageAction extends BaseAction {
 
 	public void setSelectedId(int selectedId) {
 		this.selectedId = selectedId;
+	}
+
+	public String getSelectedIds() {
+		return selectedIds;
+	}
+
+	public void setSelectedIds(String selectedIds) {
+		this.selectedIds = selectedIds;
 	}
 
 	public void setMessage(String message) {
@@ -45,7 +54,6 @@ public abstract class BasePageAction extends BaseAction {
 
 	public Page getPage() {
 		page.setPageNo(super.getPageNo());
-		page.setPageSize(super.getPageSize());
 		return page;
 	}
 }

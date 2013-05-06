@@ -8,9 +8,11 @@
 		<title>后台管理</title>
 		<link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 		<link href="/js/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="/js/fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
 		<script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
 		<script type="text/javascript" src="/js/public.js"></script>
 		<script type="text/javascript" src="/js/bootstrap-modal.js"></script>
+		<script type="text/javascript" src="/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
 		<script type="text/javascript" src="/js/uploadify/swfobject.js"></script>
 		<script type="text/javascript" src="/js/uploadify/jquery.uploadify.min.js"></script>
 		
@@ -21,21 +23,30 @@
 			        keyboard:false,
 			        show:false
 		        });
+			    
+			    $("#closebtn").click(function(){
+			    	$('#myModal').modal('hide');
+			    });
 
 			    $('#myModal').on('hide', function () {
-				    window.location.reload();
+			    	$(".modal-backdrop").remove();
+			    	if ($("#isUpload").val() == 1) {
+					    window.location.reload();
+			    	}
 		        })
 
 		        $("#uploadify").uploadify({
-					'auto'           : true,
+					'auto'           : false,
 					'swf'            : '/js/uploadify/uploadify.swf',
-					'uploader'       : '/admin/image_upload.action?type="<%=IConstants.IMAGE_TYPE_SPACE%>"',
+					'uploader'       : '/admin/upload.action?type=<%=IConstants.IMAGE_TYPE_SPACE%>',
 					'buttonText'	 : '选择图片',
 					'fileTypeExts'	 : '*.gif;*.jpg;*.png;*.jpeg',
 					'onUploadSuccess':function(file, data, response){
 						
         			}
 				});
+			    
+			    $(".fancybox").fancybox();
 			});
 
 			function showUpload(){
@@ -43,10 +54,21 @@
 				$("#myModal").before(black);
 				$('#myModal').modal('show');
 			}
-
-			function remove(id){
-				if(confirm("确定删除吗？")){
-					goAction("/admin/image_remove.action?selectedId="+id);
+			
+			function uploadImage() {
+				$("#isUpload").val(1);
+				$('#uploadify').uploadify('upload','*');
+			}
+			
+			function deleteImage() {
+				var imgIds = "";
+				$(":checkbox:checked").each(function(){
+					imgIds+="," + this.value;
+				});
+				if (imgIds.length > 0) {
+					if (confirm("确认要删除图片吗？")){
+						goAction("/admin/image_remove.action?selectedIds=" + imgIds.substring(1));
+					}
 				}
 			}
 		</script>
@@ -66,39 +88,29 @@
 								<a href="javascript:void(0);" class="brand">图片空间</a>
 								<div class="nav-collapse">
 									<ul class="nav">
-										<li><input type="button" class="btn btn-primary" onclick="showUpload();" value="图片上传"/></li>
+										<li><input type="button" class="btn btn-primary" onclick="deleteImage();" value="批量删除"/></li>
+										<li style="padding-left: 5px;"><input type="button" class="btn btn-primary" onclick="showUpload();" value="图片上传"/></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 			    	</div>
 			    	<div class="data-list">
-			    	    <table class="table table-striped table-bordered table-condensed">
-				    	    <tr>
-				    	    	<th width="25" style="text-align:center;"><input type="checkbox" name="imagechk"/></th>
-				    	    	<th width="30">序号</th>
-				    	    </tr>
+						<ul class="thumbnails">
 			    	    	<s:iterator value="page.elements" status="st">
-				    	    	<tr>
-				    	    		<td>${st.index}</td>
-				    	    	</tr>
+								<li class="span3">
+									<a class="thumbnail fancybox" rel="group" href="/upload/${saveFile}" title="${name}"><img style="height:150px;" src="/upload/${saveFile}"></a>
+									<label class="checkbox"><input type="checkbox" value="${id}">${name}</label>
+								</li>
 			    	    	</s:iterator>
-	    				</table>
-    				</div>
-					<div class="pagination">
-						<ul>
-							<li class="disabled"><a href="#">共有<font color="red">${page.total}</font>条记录</a></li>
-							<li><a href="${page.previousPage}">«</a></li>
-							<s:iterator value="page.links">
-								<li class="<s:if test='state==1'>active</s:if><s:elseif test='state==2'>disabled</s:elseif>"><a href="${href}">${name}</a></li>
-							</s:iterator>
-							<li><a href="${page.nextPage}">»</a></li>
 						</ul>
-					</div>
+    				</div>
+					<%@ include file="/page/include/page.jsp" %>
 			    </div>
 		    </div>
 	    </div>
     </div>
+    <input type="hidden" id="isUpload" value="0"/>
 	<div class="modal hide" id="myModal">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal" href="#">×</a>
@@ -106,10 +118,10 @@
 		</div>
 		<div class="modal-body">
 			<input type="file" name="uploadify" id="uploadify" />
-			<a href="javascript:$('#uploadify').uploadify('upload','*')">图片上传</a>
+			<a href="javascript:void(0);" onclick="uploadImage();" class="btn">图片上传</a>
 		</div>
 		<div class="modal-footer">
-			<a href="#" class="btn">关闭</a>
+			<a href="javascript:void(0);" class="btn" id="closebtn">关闭</a>
 		</div>
 	</div>
 	</body>

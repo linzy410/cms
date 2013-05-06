@@ -1,9 +1,9 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.5.3-m3-community - MySQL Community Server (GPL)
--- Server OS:                    Win32
+-- Server version:               5.5.27 - MySQL Community Server (GPL)
+-- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2013-04-28 23:02:25
+-- Date/time:                    2013-05-06 17:18:48
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -20,17 +20,31 @@ USE `cms`;
 DROP TABLE IF EXISTS `Image`;
 CREATE TABLE IF NOT EXISTS `Image` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `saveFile` varchar(100) NOT NULL COMMENT '保存文件',
-  `name` varchar(100) NOT NULL COMMENT '源文件名称',
+  `saveFile` varchar(100) NOT NULL COMMENT '文件保存名称',
+  `name` varchar(100) NOT NULL COMMENT '文件保存路径',
   `type` tinyint(4) NOT NULL COMMENT '文件类别 1=manual',
   `lang` tinyint(4) NOT NULL,
-  `creator` varchar(20) NOT NULL COMMENT '创建时间',
+  `creator` varchar(20) NOT NULL,
   `createTime` varchar(20) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=gb2312 COMMENT='文件上传表';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=gb2312 COMMENT='文件上传表';
 
--- Dumping data for table cms.Image: ~0 rows (approximately)
+-- Dumping data for table cms.Image: ~7 rows (approximately)
 /*!40000 ALTER TABLE `Image` DISABLE KEYS */;
+INSERT INTO `Image` (`id`, `saveFile`, `name`, `type`, `lang`, `creator`, `createTime`) VALUES
+	(10, '201305/16510000004.jpg', '5f204f4a3070442e09f7ef87.jpg', 2, 0, '张三', '2013-05-06 16:51:04'),
+	(11, '201305/1651000000426.jpg', '2111801_jietu.jpg', 2, 0, '张三', '2013-05-06 16:51:04'),
+	(12, '201305/16510000004293.jpg', '3050636_082642593076_2.jpg', 2, 0, '张三', '2013-05-06 16:51:04'),
+	(13, '201305/16510000005.jpg', '3546312_103013013206_2.jpg', 2, 0, '张三', '2013-05-06 16:51:05'),
+	(14, '201305/16510000005686.jpg', '3781343_144710048593_2.jpg', 2, 0, '张三', '2013-05-06 16:51:05'),
+	(15, '201305/16510000005842.jpg', '5900523_143830081572_2.jpg', 2, 0, '张三', '2013-05-06 16:51:05'),
+	(16, '201305/16510000005377.jpg', '6062870_035324015793_2.jpg', 2, 0, '张三', '2013-05-06 16:51:05'),
+	(17, '201305/16510000006.png', '6109148_155907604000_2.png', 2, 0, '张三', '2013-05-06 16:51:06'),
+	(18, '201305/16510000006.jpg', '8444952_130307297172_2.jpg', 2, 0, '张三', '2013-05-06 16:51:06'),
+	(19, '201305/16510000007.jpg', '8860088_202405441127_2.jpg', 2, 0, '张三', '2013-05-06 16:51:07'),
+	(20, '201305/16510000007896.jpg', '01300000196866121655107279124.jpg', 2, 0, '张三', '2013-05-06 16:51:07'),
+	(21, '201305/16510000007323.jpg', 'bf39b899c2f02a286f068c4b.jpg', 2, 0, '张三', '2013-05-06 16:51:07'),
+	(22, '201305/16510000007765.jpg', 'e9d63261fb4132b6257fb532.jpg', 2, 0, '张三', '2013-05-06 16:51:07');
 /*!40000 ALTER TABLE `Image` ENABLE KEYS */;
 
 
@@ -55,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `Menu` (
 INSERT INTO `Menu` (`id`, `name`, `nameEn`, `listOrder`, `url`, `type`, `isShow`, `lang`, `creator`, `createTime`) VALUES
 	(1, '新闻资讯', 'NEWS', 5, '/news.action', 3, 0, 0, '李四', '2013-04-22 10:21:38'),
 	(4, '展会类别', 'EXHIBITOR', 3, '2312', 1, 0, 0, '李四', '2013-04-22 14:36:54'),
-	(5, '首页', 'HOME', 1, '/', 2, 0, 0, '李四', '2013-04-22 14:37:13'),
+	(5, '首页', 'HOME', 1, '/home.action', 2, 0, 0, '李四', '2013-04-22 14:37:13'),
 	(6, '展会概况', 'DATE & FACTS', 2, '13123', 1, 0, 0, '李四', '2013-04-22 14:37:41'),
 	(7, '观众来源', 'VISITOR', 4, '312', 1, 0, 0, '李四', '2013-04-22 14:38:32'),
 	(8, '合作伙伴', 'PARTNERS', 6, '312', 1, 0, 0, '李四', '2013-04-22 14:38:48'),
@@ -124,13 +138,14 @@ CREATE TABLE IF NOT EXISTS `User` (
   `username` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `role` tinyint(4) NOT NULL,
   `createTime` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
 -- Dumping data for table cms.User: ~0 rows (approximately)
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` (`id`, `username`, `name`, `password`, `createTime`) VALUES
+	(1, 'admin', '管理员', '123456', '2013-05-06 16:20:44');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

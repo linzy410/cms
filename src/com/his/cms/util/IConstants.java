@@ -23,7 +23,7 @@ public interface IConstants {
 	public static int MENU_TYPE_ASSIGN = 2; 
 	public static int MENU_TYPE_NEWS_LIST = 3;
 	
-	public static String KEY_FILE_UPLOAD_SAVE_PATH = "file.upload.save.path";
+	public static String FILE_UPLOAD_SAVE_PATH = PropertiesUtil.getString("file.upload.save.path");
 	
 	public static int HYPERLINK_STATE_ACTIVE = 1;
 	public static int HYPERLINK_STATE_DISABLED = 2;

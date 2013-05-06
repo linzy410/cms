@@ -52,10 +52,19 @@ public class ImageDao extends BaseDao {
 			public Object doInSqlMapClient(SqlMapExecutor executor) throws SQLException {
 				executor.startBatch();
 				for (Image file : imageFiles) {
-					executor.insert("image.addUploadFile", file);
+					executor.insert("image.addImage", file);
 				}
 				return executor.executeBatch();
 			}
 		});
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Image> findImageByIds(String imageIds) {
+		return super.getSqlMapClientTemplate().queryForList("image.findImageByIds", imageIds);
+	}
+	
+	public void deleteImageByIds(String imageIds) {
+		super.getSqlMapClientTemplate().delete("image.deleteImageByIds", imageIds);
 	}
 }
