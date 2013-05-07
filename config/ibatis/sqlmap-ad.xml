@@ -26,6 +26,7 @@
 	</select>
 	
 	<select id="findAd" parameterClass="int" resultClass="ad">
-		select * from Ad where id=#id#
+		select a.*, i.saveFile,i.name from Ad a
+		left join Image i on a.imgId=i.id where a.id=#id#
 	</select>
 </sqlMap>

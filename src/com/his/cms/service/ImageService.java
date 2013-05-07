@@ -99,7 +99,7 @@ public class ImageService {
 
 	private Image saveImage(File file, String fileName, int imageType, int lang, String creator, String createTime, String datePath, File uploadFolder) throws IOException {
 		String extension = fileName.substring(fileName.lastIndexOf("."));
-		String targetFilename = new SimpleDateFormat("HHmmsssssss").format(new Date());
+		String targetFilename = new SimpleDateFormat("ddHHmmsssss").format(new Date());
 		targetFilename = checkFilenameUnique(uploadFolder.getAbsolutePath(), targetFilename, extension);
 		File target = new File(uploadFolder.getAbsolutePath() + IConstants.SLASH + targetFilename);
 		FileUtils.copyFile(file, target);

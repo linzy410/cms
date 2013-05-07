@@ -23,9 +23,16 @@
 					'fileTypeExts'	 : '*.gif;*.jpg;*.png;*.jpeg',
 					'onUploadSuccess':function(file, data, response){
 						data = eval('('+data+')');
-						alert(data.image.id);
+						$("#imgId").val(data.image.id);
+						$("#uploadImgShow").attr("src", "/upload/" + data.image.saveFile);
+						$("li[class='span3'] > img").remove();
+						$("li[class='span3']").append('<img style="height:150px;" src="/upload/'+data.image.saveFile+'"/>');
         			}
 				});
+
+				<s:if test="ad!=null&&ad.id>0">
+					$("li[class='span3']").append('<img style="height:150px;" src="/upload/${ad.saveFile}"/>');
+				</s:if>
 			});
 		</script>
 	</head>
@@ -48,7 +55,7 @@
 			    	<div>
 					    <form class="form-horizontal" method="post" action="/admin/<s:if test="ad.id==0">ad_save.action</s:if><s:else>ad_update.action</s:else>">
 					    	<input type="hidden" name="id" value="${ad.id}"/>
-					    	<input type="hidden" name="imgId" value="${ad.imgId}"/>
+					    	<input type="hidden" name="imgId" id="imgId" value="${ad.imgId}"/>
 						    <fieldset>
 								<div class="control-group">
 							   		<label class="control-label">标题</label>
@@ -60,12 +67,17 @@
 								    <label class="control-label">图片</label>
 								    <div class="controls">
 									    <input type="file" name="uploadify" id="uploadify" />
+								    	<div class="data-list">
+											<ul class="thumbnails">
+												<li class="span3"></li>
+											</ul>
+					    				</div>
 								    </div>
 							    </div>
 							    <label class="control-label" for="input01">是否显示</label>
 							    <div class="controls">
-					              <label class="radio"><input name="isShow" value="0" <s:if test="ad.isShow==0">checked=""</s:if> type="radio">显示</label>
-					              <label class="radio"><input name="isShow" value="1" <s:if test="ad.isShow==1">checked=""</s:if> type="radio">隐藏</label>
+					              <label class="radio"><input name="isShow" value="0" <s:if test="ad.isShow==0">checked=""</s:if> type="radio"/>显示</label>
+					              <label class="radio"><input name="isShow" value="1" <s:if test="ad.isShow==1">checked=""</s:if> type="radio"/>隐藏</label>
 							    </div>
 							    <div class="controls" style="padding-top:10px;">
 							    	<button class="btn btn-primary" type="submit">确定</button>

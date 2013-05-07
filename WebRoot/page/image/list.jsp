@@ -38,7 +38,7 @@
 		        $("#uploadify").uploadify({
 					'auto'           : false,
 					'swf'            : '/js/uploadify/uploadify.swf',
-					'uploader'       : '/admin/upload.action?type=<%=IConstants.IMAGE_TYPE_SPACE%>',
+					'uploader'       : '/admin/upload.action;jsessionid=<%=request.getSession().getId()%>?type=<%=IConstants.IMAGE_TYPE_SPACE%>',
 					'buttonText'	 : '选择图片',
 					'fileTypeExts'	 : '*.gif;*.jpg;*.png;*.jpeg',
 					'onUploadSuccess':function(file, data, response){
@@ -99,8 +99,8 @@
 						<ul class="thumbnails">
 			    	    	<s:iterator value="page.elements" status="st">
 								<li class="span3">
-									<a class="thumbnail fancybox" rel="group" href="/upload/${saveFile}" title="${name}"><img style="height:150px;" src="/upload/${saveFile}"></a>
-									<label class="checkbox"><input type="checkbox" value="${id}">${name}</label>
+									<a class="thumbnail fancybox" rel="group" href="/upload/${saveFile}" title="${name}"><img style="height:150px;" src="/upload/${saveFile}"/></a>
+									<label class="checkbox"><input type="checkbox" value="${id}"/>${name}</label>
 								</li>
 			    	    	</s:iterator>
 						</ul>

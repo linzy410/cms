@@ -3,6 +3,7 @@
  */
 package com.his.cms.service;
 
+import java.io.File;
 import java.util.List;
 
 import com.his.cms.dao.AdDao;
@@ -49,12 +50,16 @@ public class AdService {
 		UpdateMap updateMap = new UpdateMap("Ad");
 		updateMap.addField("title", ad.getTitle());
 		updateMap.addField("imgId", ad.getImgId());
+		updateMap.addField("isShow", ad.getIsShow());
 		updateMap.addWhere("id", ad.getId());
 		adDao.update(updateMap);
 	}
 	
 	public void removeAd(int id) {
+		Ad ad = adDao.findAd(id);
 		adDao.deleteAd(id);
+		File file = new File(IConstants.FILE_UPLOAD_SAVE_PATH + IConstants.SLASH + ad.getSaveFile()); 
+		file.delete();
 	}
 	
 	public void setAdDao(AdDao adDao) {

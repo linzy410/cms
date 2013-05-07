@@ -35,7 +35,7 @@ public class AdAction extends BasePageAction implements ModelDriven<Ad> {
 		return "input";
 	}
 	
-	public String add() throws Exception {
+	public String save() throws Exception {
 		ad.setCreateTime(super.getCurrentTime());
 		ad.setCreator(super.getCreator());
 		adService.saveAd(ad);
@@ -43,6 +43,7 @@ public class AdAction extends BasePageAction implements ModelDriven<Ad> {
 	}
 	
 	public String edit() throws Exception{
+		ad = adService.getAdById(selectedId);
 		return "input";
 	}
 	
@@ -51,6 +52,10 @@ public class AdAction extends BasePageAction implements ModelDriven<Ad> {
 		return "listAction";
 	}
 	
+	public String remove() throws Exception {
+		adService.removeAd(selectedId);
+		return "listAction";
+	}
 
 	@Override
 	protected String getMenuTag() {

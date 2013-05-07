@@ -16,100 +16,53 @@
 		
 		<script type="text/javascript">
 			$(function() {
-			    $('#myModal').modal({
-			        backdrop:false,
-			        keyboard:false,
-			        show:false
-		        });
-			    
-			    $("#closebtn").click(function(){
-			    	$('#myModal').modal('hide');
-			    });
-
-			    $('#myModal').on('hide', function () {
-			    	$(".modal-backdrop").remove();
-			    	if ($("#isUpload").val() == 1) {
-					    window.location.reload();
-			    	}
-		        })
-
-		        $("#uploadify").uploadify({
-					'auto'           : false,
-					'swf'            : '/js/uploadify/uploadify.swf',
-					'uploader'       : '/admin/upload.action?type=<%=IConstants.IMAGE_TYPE_SPACE%>',
-					'buttonText'	 : '选择图片',
-					'fileTypeExts'	 : '*.gif;*.jpg;*.png;*.jpeg',
-					'onUploadSuccess':function(file, data, response){
-						
-        			}
-				});
-			    
 			    $(".fancybox").fancybox();
 			});
 			
-			function deleteImage() {
-				var imgIds = "";
-				$(":checkbox:checked").each(function(){
-					imgIds+="," + this.value;
-				});
-				if (imgIds.length > 0) {
-					if (confirm("确认要删除图片吗？")){
-						goAction("/admin/image_remove.action?selectedIds=" + imgIds.substring(1));
-					}
+			function removeAd(id) {
+				if (confirm("确认要删除吗？")){
+					goAction("/admin/ad_remove.action?selectedId=" + id);
 				}
 			}
 		</script>
 	</head>
 	<body>
-    <div class="row">
-	    <div class="span12">
-		    预留位置
-		    <div class="row">
-			    <div class="span3">
-			    	 <%@ include file="/page/include/menu.jsp" %>
-			    </div>
-			    <div class="span9">
-			    	<div class="navbar">
-			    		<div class="navbar-inner">
-								<div class="container">
-								<a href="javascript:void(0);" class="brand">广告管理</a>
-								<div class="nav-collapse">
-									<ul class="nav">
-										<li><input type="button" class="btn btn-primary" onclick="deleteImage();" value="批量删除"/></li>
-										<li style="padding-left: 5px;"><input type="button" class="btn btn-primary" onclick="goAction('/admin/ad_input.action');" value="新增"/></li>
-									</ul>
+	    <div class="row">
+		    <div class="span12">
+			    预留位置
+			    <div class="row">
+				    <div class="span3">
+				    	 <%@ include file="/page/include/menu.jsp" %>
+				    </div>
+				    <div class="span9">
+				    	<div class="navbar">
+				    		<div class="navbar-inner">
+									<div class="container">
+									<a href="javascript:void(0);" class="brand">广告管理</a>
+									<div class="nav-collapse">
+										<ul class="nav">
+											<li><input type="button" class="btn btn-primary" onclick="deleteImage();" value="批量删除"/></li>
+											<li style="padding-left: 5px;"><input type="button" class="btn btn-primary" onclick="goAction('/admin/ad_input.action');" value="新增"/></li>
+										</ul>
+									</div>
 								</div>
 							</div>
-						</div>
-			    	</div>
-			    	<div class="data-list">
-						<ul class="thumbnails">
-			    	    	<s:iterator value="adList" status="st">
-								<li class="span3">
-									<a class="thumbnail fancybox" rel="group" href="/upload/${saveFile}" title="${title}"><img style="height:150px;" src="/upload/${saveFile}"></a>
-									<label class="checkbox"><input type="checkbox" value="${id}">${title}</label>
-								</li>
-			    	    	</s:iterator>
-						</ul>
-    				</div>
-					<%@ include file="/page/include/page.jsp" %>
+				    	</div>
+				    	<div class="data-list">
+							<ul class="thumbnails">
+				    	    	<s:iterator value="adList" status="st">
+									<li class="span3" style="position: relative;">
+										<a class="thumbnail fancybox" rel="group" href="/upload/${saveFile}" title="${title}"><img style="height:150px;" src="/upload/${saveFile}"/></a>
+										<s:if test='isShow==1'><span class="hideAd">隐藏</span></s:if>
+										${title}
+										<a href="/admin/ad_edit.action?selectedId=${id}">编辑</a> | <a href="javascript:void(0);" onclick="removeAd(${id});">删除</a>  
+									</li>
+				    	    	</s:iterator>
+							</ul>
+	    				</div>
+				    </div>
 			    </div>
 		    </div>
 	    </div>
-    </div>
-    <input type="hidden" id="isUpload" value="0"/>
-	<div class="modal hide" id="myModal">
-		<div class="modal-header">
-			<a class="close" data-dismiss="modal" href="#">×</a>
-			<h3>图片上传</h3>
-		</div>
-		<div class="modal-body">
-			<input type="file" name="uploadify" id="uploadify" />
-			<a href="javascript:void(0);" onclick="uploadImage();" class="btn">图片上传</a>
-		</div>
-		<div class="modal-footer">
-			<a href="javascript:void(0);" class="btn" id="closebtn">关闭</a>
-		</div>
-	</div>
 	</body>
 </html>
