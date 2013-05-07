@@ -13,6 +13,7 @@ import java.util.Map;
 import org.apache.struts2.ServletActionContext;
 
 import com.his.cms.util.LangUtil;
+import com.his.cms.util.SessionUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -28,6 +29,10 @@ public class BaseAction extends ActionSupport {
 	protected int pageNo = 0;
 	protected int pageSize = 20;
 	protected static String JSON = "json";
+	
+	protected String getCreator() {
+		return SessionUtil.getSessionUser(ServletActionContext.getRequest()).getName();
+	}
 	
 	protected String getCurrentTime() {
 		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());

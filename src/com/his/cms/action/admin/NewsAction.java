@@ -43,7 +43,7 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	
 	public String save() throws Exception {
 		news.setCreateTime(super.getCurrentTime());
-		news.setCreator("ÀîËÄ");
+		news.setCreator(super.getCreator());
 		newsService.saveNews(news);
 		return "listAction";
 	}

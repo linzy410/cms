@@ -17,6 +17,7 @@ public interface IConstants {
 	
 	public static int IMAGE_TYPE_NEWS = 1; 
 	public static int IMAGE_TYPE_SPACE = 2;
+	public static int IMAGE_TYPE_AD = 3;
 	
 	/** 菜单类别  1=单张页面  2=特定链接 3=新闻资讯类*/
 	public static int MENU_TYPE_PAGE = 1; 
@@ -30,4 +31,6 @@ public interface IConstants {
 	public static int HYPERLINK_STATE_NOMAL = 3;
 	
 	public static String SLASH = "/";
+	
+	public static int AD_TYPE_BANNER = 1;
 }

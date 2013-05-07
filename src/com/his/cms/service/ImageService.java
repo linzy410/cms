@@ -58,7 +58,7 @@ public class ImageService {
 	 * @param files
 	 * @throws IOException 
 	 */
-	public void saveImage(List<File> files, List<String> fileNames, int imageType, int lang, String creator) throws IOException {
+	public void saveImage(List<File> files, List<String> fileNames, int imageType, int lang, String creator, String createTime) throws IOException {
 		String datePath = new SimpleDateFormat("yyyyMM").format(new Date());
 		// 文件物理地址
 		File uploadFolder = new File(IConstants.FILE_UPLOAD_SAVE_PATH + IConstants.SLASH + datePath); 
@@ -67,21 +67,50 @@ public class ImageService {
 		}
 		List<Image> images = new ArrayList<Image>();
 		for (int i = 0; i < files.size(); i++) {
-			String extension = fileNames.get(i).substring(fileNames.get(i).lastIndexOf("."));
-			String targetFilename = new SimpleDateFormat("HHmmsssssss").format(new Date());
-			targetFilename = checkFilenameUnique(uploadFolder.getAbsolutePath(), targetFilename, extension);
-			File target = new File(uploadFolder.getAbsolutePath() + IConstants.SLASH + targetFilename);
-			FileUtils.copyFile(files.get(i), target);
-			Image image = new Image();
-			image.setSaveFile(datePath + IConstants.SLASH + targetFilename);
-			image.setType(imageType);
-			image.setLang(lang);
-			image.setName(fileNames.get(i));
-			image.setCreator(creator);
-			image.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+//			String extension = fileNames.get(i).substring(fileNames.get(i).lastIndexOf("."));
+//			String targetFilename = new SimpleDateFormat("HHmmsssssss").format(new Date());
+//			targetFilename = checkFilenameUnique(uploadFolder.getAbsolutePath(), targetFilename, extension);
+//			File target = new File(uploadFolder.getAbsolutePath() + IConstants.SLASH + targetFilename);
+//			FileUtils.copyFile(files.get(i), target);
+//			Image image = new Image();
+//			image.setSaveFile(datePath + IConstants.SLASH + targetFilename);
+//			image.setType(imageType);
+//			image.setLang(lang);
+//			image.setName(fileNames.get(i));
+//			image.setCreator(creator);
+//			image.setCreateTime(createTime);
+			Image image = saveImage(files.get(i), fileNames.get(i), imageType, lang, creator, createTime, datePath, uploadFolder);
 			images.add(image);
 		}
 		imageDao.batchAdd(images);
+	}
+	
+	public Image saveImage(File file, String fileName, int imageType, int lang, String creator, String createTime) throws IOException {
+		String datePath = new SimpleDateFormat("yyyyMM").format(new Date());
+		File uploadFolder = new File(IConstants.FILE_UPLOAD_SAVE_PATH + IConstants.SLASH + datePath); 
+		if (!uploadFolder.exists()) {
+			uploadFolder.mkdirs();
+		}
+		Image image = saveImage(file, fileName, imageType, lang, creator, createTime, datePath, uploadFolder);
+		int imgId = imageDao.addImage(image);
+		image.setId(imgId);
+		return image;
+	}
+
+	private Image saveImage(File file, String fileName, int imageType, int lang, String creator, String createTime, String datePath, File uploadFolder) throws IOException {
+		String extension = fileName.substring(fileName.lastIndexOf("."));
+		String targetFilename = new SimpleDateFormat("HHmmsssssss").format(new Date());
+		targetFilename = checkFilenameUnique(uploadFolder.getAbsolutePath(), targetFilename, extension);
+		File target = new File(uploadFolder.getAbsolutePath() + IConstants.SLASH + targetFilename);
+		FileUtils.copyFile(file, target);
+		Image image = new Image();
+		image.setSaveFile(datePath + IConstants.SLASH + targetFilename);
+		image.setType(imageType);
+		image.setLang(lang);
+		image.setName(fileName);
+		image.setCreator(creator);
+		image.setCreateTime(createTime);
+		return image;
 	}
 	
 	/**

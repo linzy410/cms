@@ -3,7 +3,7 @@
 -- Server version:               5.5.27 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2013-05-06 17:18:48
+-- Date/time:                    2013-05-07 17:45:17
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -14,6 +14,24 @@
 DROP DATABASE IF EXISTS `cms`;
 CREATE DATABASE IF NOT EXISTS `cms` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `cms`;
+
+
+-- Dumping structure for table cms.Ad
+DROP TABLE IF EXISTS `Ad`;
+CREATE TABLE IF NOT EXISTS `Ad` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `imgId` int(11) NOT NULL,
+  `type` tinyint(4) NOT NULL,
+  `isShow` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=展示 1=隐藏',
+  `creator` varchar(50) NOT NULL,
+  `createTime` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cms.Ad: ~0 rows (approximately)
+/*!40000 ALTER TABLE `Ad` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Ad` ENABLE KEYS */;
 
 
 -- Dumping structure for table cms.Image
@@ -27,9 +45,9 @@ CREATE TABLE IF NOT EXISTS `Image` (
   `creator` varchar(20) NOT NULL,
   `createTime` varchar(20) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=gb2312 COMMENT='文件上传表';
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=gb2312 COMMENT='文件上传表';
 
--- Dumping data for table cms.Image: ~7 rows (approximately)
+-- Dumping data for table cms.Image: ~23 rows (approximately)
 /*!40000 ALTER TABLE `Image` DISABLE KEYS */;
 INSERT INTO `Image` (`id`, `saveFile`, `name`, `type`, `lang`, `creator`, `createTime`) VALUES
 	(10, '201305/16510000004.jpg', '5f204f4a3070442e09f7ef87.jpg', 2, 0, '张三', '2013-05-06 16:51:04'),
@@ -44,7 +62,17 @@ INSERT INTO `Image` (`id`, `saveFile`, `name`, `type`, `lang`, `creator`, `creat
 	(19, '201305/16510000007.jpg', '8860088_202405441127_2.jpg', 2, 0, '张三', '2013-05-06 16:51:07'),
 	(20, '201305/16510000007896.jpg', '01300000196866121655107279124.jpg', 2, 0, '张三', '2013-05-06 16:51:07'),
 	(21, '201305/16510000007323.jpg', 'bf39b899c2f02a286f068c4b.jpg', 2, 0, '张三', '2013-05-06 16:51:07'),
-	(22, '201305/16510000007765.jpg', 'e9d63261fb4132b6257fb532.jpg', 2, 0, '张三', '2013-05-06 16:51:07');
+	(22, '201305/16510000007765.jpg', 'e9d63261fb4132b6257fb532.jpg', 2, 0, '张三', '2013-05-06 16:51:07'),
+	(23, '201305/14470000024.jpg', '3781343_144710048593_2.jpg', 3, 0, '管理员', '2013-05-07 14:47:24'),
+	(24, '201305/14470000038.jpg', '5900523_143830081572_2.jpg', 3, 0, '管理员', '2013-05-07 14:47:38'),
+	(25, '201305/14480000012.jpg', '3781343_144710048593_2.jpg', 3, 0, '管理员', '2013-05-07 14:48:12'),
+	(26, '201305/14480000024.jpg', '3781343_144710048593_2.jpg', 3, 0, '管理员', '2013-05-07 14:48:24'),
+	(27, '201305/14490000052.jpg', '5900523_143830081572_2.jpg', 3, 0, '管理员', '2013-05-07 14:49:52'),
+	(28, '201305/17100000012.jpg', '3781343_144710048593_2.jpg', 3, 0, '管理员', '2013-05-07 17:10:12'),
+	(29, '201305/17110000032.jpg', '3546312_103013013206_2.jpg', 3, 0, '管理员', '2013-05-07 17:11:32'),
+	(30, '201305/17110000050.jpg', '3781343_144710048593_2.jpg', 3, 0, '管理员', '2013-05-07 17:11:50'),
+	(31, '201305/17220000038.jpg', '3781343_144710048593_2.jpg', 3, 0, '管理员', '2013-05-07 17:22:38'),
+	(32, '201305/17230000039.jpg', '3781343_144710048593_2.jpg', 3, 0, '管理员', '2013-05-07 17:23:39');
 /*!40000 ALTER TABLE `Image` ENABLE KEYS */;
 
 
@@ -142,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
--- Dumping data for table cms.User: ~0 rows (approximately)
+-- Dumping data for table cms.User: ~1 rows (approximately)
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
 INSERT INTO `User` (`id`, `username`, `name`, `password`, `createTime`) VALUES
 	(1, 'admin', '管理员', '123456', '2013-05-06 16:20:44');

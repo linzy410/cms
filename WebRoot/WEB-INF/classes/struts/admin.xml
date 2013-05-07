@@ -23,6 +23,11 @@
 			<result name="list">/page/image/list.jsp</result>
 			<result name="listAction" type="redirect">/admin/image_list.action?operTag=${operTag}</result>
 		</action>
+		<action name="ad_*" class="com.his.cms.action.admin.AdAction" method="{1}">
+			<result name="list">/page/ad/list.jsp</result>
+			<result name="input">/page/ad/input.jsp</result>
+			<result name="listAction" type="redirect">/admin/ad_list.action?operTag=${operTag}</result>
+		</action>
 		<action name="user_*" class="com.his.cms.action.admin.UserAction" method="{1}">
 			<result name="list">/page/user/list.jsp</result>
 			<result name="input">/page/user/input.jsp</result>

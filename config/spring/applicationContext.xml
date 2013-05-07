@@ -40,9 +40,11 @@
 	<bean id="menuDao" class="com.his.cms.dao.MenuDao" autowire="byName"/>
 	<bean id="imageDao" class="com.his.cms.dao.ImageDao" autowire="byName"/>
 	<bean id="userDao" class="com.his.cms.dao.UserDao" autowire="byName"/>
+	<bean id="adDao" class="com.his.cms.dao.AdDao" autowire="byName"/>
 	<bean id="newsService" class="com.his.cms.service.NewsService" autowire="byName"/>
 	<bean id="menuService" class="com.his.cms.service.MenuService" autowire="byName"/>
 	<bean id="imageService" class="com.his.cms.service.ImageService" autowire="byName"/>
 	<bean id="userService" class="com.his.cms.service.UserService" autowire="byName"/>
+	<bean id="adService" class="com.his.cms.service.AdService" autowire="byName"/>
 	
 </beans>

@@ -37,7 +37,7 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	
 	public String save() throws Exception {
 		menu.setCreateTime(super.getCurrentTime());
-		menu.setCreator("ÀîËÄ");
+		menu.setCreator(super.getCreator());
 		menuService.saveMenu(menu);
 		return "listAction";
 	}

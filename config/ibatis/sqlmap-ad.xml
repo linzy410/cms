@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ad">
+	<typeAlias alias="ad" type="com.his.cms.model.Ad" />
+
+	<insert id="addAd" parameterClass="ad">
+		insert into Ad (title,imgId,createTime,creator,type,isShow) values (#title#,#imgId#,#createTime#,#creator#,#type#,#isShow#)
+	</insert>
+	
+	<delete id="deleteAd" parameterClass="int">
+		delete from Ad where id=#id#
+	</delete>
+	
+	<select id="findAdList" parameterClass="int" resultClass="ad">
+		select a.*, i.saveFile,i.name from Ad a
+		left join Image i on a.imgId=i.id
+		where 0=0
+		<isGreaterThan property="value" compareValue="0" prepend="and"> a.type=#type#</isGreaterThan>
+		order by i.id desc
+	</select>
+	
+	<select id="findShowAdList" parameterClass="int" resultClass="ad">
+		select * from Ad where isShow=0 order by id desc
+	</select>
+	
+	<select id="findAd" parameterClass="int" resultClass="ad">
+		select * from Ad where id=#id#
+	</select>
+</sqlMap>

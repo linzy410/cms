@@ -8,6 +8,7 @@ package com.his.cms.action;
 import java.io.File;
 import java.util.List;
 
+import com.his.cms.model.Image;
 import com.his.cms.service.ImageService;
 
 /**
@@ -27,10 +28,21 @@ public class UploadAction extends BaseAction {
 	/** 文件内容类型 */
 	private List<String> FiledataContentType;
 	private int type;
+	private Image image;
 
 	public String execute() throws Exception {
-		imageService.saveImage(Filedata, FiledataFileName, type, super.getLang(), "张三");
+		imageService.saveImage(Filedata, FiledataFileName, type, super.getLang(), super.getCreator(), super.getCurrentTime());
 		return null;
+	}
+	
+	/**
+	 * 单个图片上传
+	 * @return
+	 * @throws Exception
+	 */
+	public String single_image() throws Exception {
+		setImage(imageService.saveImage(Filedata.get(0), FiledataFileName.get(0), type, super.getLang(), super.getCreator(), super.getCurrentTime()));
+		return JSON;
 	}
 
 	public ImageService getImageService() {
@@ -71,5 +83,13 @@ public class UploadAction extends BaseAction {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	public Image getImage() {
+		return image;
 	}
 }

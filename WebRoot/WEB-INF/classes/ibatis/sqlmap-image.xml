@@ -22,6 +22,9 @@
 	<insert id="addImage" parameterClass="image">
 		insert into Image (saveFile,name,type,lang,creator,createTime)
 		 values (#saveFile#,#name#,#type#,#lang#,#creator#,#createTime#)
+		 <selectKey resultClass="int" keyProperty="id">
+			select last_insert_id() as id
+		</selectKey>
 	</insert>
 
 	<select id="findImageByIds" parameterClass="String" resultClass="image">

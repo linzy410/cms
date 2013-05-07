@@ -59,6 +59,10 @@ public class ImageDao extends BaseDao {
 		});
 	}
 	
+	public int addImage(Image image) {
+		return (Integer) super.getSqlMapClientTemplate().insert("image.addImage", image);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Image> findImageByIds(String imageIds) {
 		return super.getSqlMapClientTemplate().queryForList("image.findImageByIds", imageIds);

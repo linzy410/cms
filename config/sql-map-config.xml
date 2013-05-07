@@ -13,4 +13,5 @@
 	<sqlMap resource="ibatis/sqlmap-image.xml" />
 	<sqlMap resource="ibatis/sqlmap-common.xml" />
 	<sqlMap resource="ibatis/sqlmap-user.xml" />
+	<sqlMap resource="ibatis/sqlmap-ad.xml" />
 </sqlMapConfig>
