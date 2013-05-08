@@ -32,8 +32,8 @@ public class AdDao extends BaseDao {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Ad> findShowAdList() {
-		return super.getSqlMapClientTemplate().queryForList("ad.findShowAdList");
+	public List<Ad> findShowAdList(int type) {
+		return super.getSqlMapClientTemplate().queryForList("ad.findShowAdList", type);
 	}
 	
 	public void deleteAd(int id) {

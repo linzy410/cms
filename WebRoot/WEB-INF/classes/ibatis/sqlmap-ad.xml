@@ -22,7 +22,10 @@
 	</select>
 	
 	<select id="findShowAdList" parameterClass="int" resultClass="ad">
-		select * from Ad where isShow=0 order by id desc
+		select a.*, i.saveFile,i.name from Ad a
+		left join Image i on a.imgId=i.id
+		where isShow=0 <isGreaterThan property="value" compareValue="0" prepend="and"> a.type=#type#</isGreaterThan>
+		order by id desc
 	</select>
 	
 	<select id="findAd" parameterClass="int" resultClass="ad">

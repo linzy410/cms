@@ -5,6 +5,8 @@ package com.his.cms.model;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.his.cms.util.IConstants;
+
 /**
  * @author ÁÖÕÜÑ×
  *
@@ -22,8 +24,21 @@ public class Menu extends BaseEntity {
 	private int isShow; // 0=Õ¹Ê¾ 1=Òþ²Ø
 
 	
-	public String getNameEnSiteShow() {
-		return nameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY);
+//	public String getNameEnSiteShow() {
+//		return nameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY);
+//	}
+	
+	public String getPageHyperlink() {
+		if (type == IConstants.MENU_TYPE_ASSIGN) {
+			return url;
+		}
+		if (type == IConstants.MENU_TYPE_NEWS_LIST) {
+			return IConstants.SLASH +  nameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY) + "-" + super.getId() + ".html";
+		}
+		if (type == IConstants.MENU_TYPE_PAGE) {
+			return "/news/" + super.getId() + ".html";
+		}
+		return StringUtils.EMPTY;
 	}
 	
 	public String getName() {

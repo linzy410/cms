@@ -191,7 +191,7 @@ a:focus{outline:none;-moz-outline-style:none}
 .place span{background:url(/img/icon1.gif) no-repeat right center;padding-right:12px;margin-right:10px}
 
 /* focus */
-#focus{  border: 1px solid #DEC197;display: inline;float: left;height: 427px;overflow: hidden;position: relative;width: 640px;}
+#focus{  border: 1px solid #DEC197;display: inline;float: left;height: 427px;overflow: hidden;position: relative;width: 830px;}
 #focus ul{height:380px;position:absolute;}
 #focus ul li{float:left;width:640px;height:427px;overflow:hidden;position:relative;background:#000;}
 #focus ul li div{position:absolute;overflow:hidden;}

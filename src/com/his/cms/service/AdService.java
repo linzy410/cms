@@ -24,8 +24,8 @@ public class AdService {
 	 * 展示中的菜单
 	 * @return
 	 */
-	public List<Ad> getShowAdList() {
-		return adDao.findShowAdList();
+	public List<Ad> getShowAdList(int type) {
+		return adDao.findShowAdList(type);
 	}
 
 	/**

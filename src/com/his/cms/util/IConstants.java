@@ -25,6 +25,9 @@ public interface IConstants {
 	public static int MENU_TYPE_NEWS_LIST = 3;
 	
 	public static String FILE_UPLOAD_SAVE_PATH = PropertiesUtil.getString("file.upload.save.path");
+	public static String VELOCITY_VM_DIR = PropertiesUtil.getString("velocity.vm.dir");
+	public static String VELOCITY_RUNTIME_LOG_FILE_DIR = PropertiesUtil.getString("velocity.log.dir");
+	public static String VELOCITY_OUTPUT_DIR = PropertiesUtil.getString("velocity.output.dir");
 	
 	public static int HYPERLINK_STATE_ACTIVE = 1;
 	public static int HYPERLINK_STATE_DISABLED = 2;
