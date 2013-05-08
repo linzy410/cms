@@ -33,10 +33,10 @@ public class Menu extends BaseEntity {
 			return url;
 		}
 		if (type == IConstants.MENU_TYPE_NEWS_LIST) {
-			return IConstants.SLASH +  nameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY) + "-" + super.getId() + ".html";
+			return "/news/" + super.getId() + IConstants.SLASH;
 		}
 		if (type == IConstants.MENU_TYPE_PAGE) {
-			return "/news/" + super.getId() + ".html";
+			return IConstants.SLASH + nameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY)  + IConstants.SLASH;
 		}
 		return StringUtils.EMPTY;
 	}

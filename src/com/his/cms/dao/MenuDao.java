@@ -28,6 +28,10 @@ public class MenuDao extends BaseDao {
 		return (Menu) super.getSqlMapClientTemplate().queryForObject("menu.findMenu", id);
 	}
 	
+	public Menu findMenuByName(String name) {
+		return (Menu) super.getSqlMapClientTemplate().queryForObject("menu.findMenuByName", name);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Menu> findMenuList(int type) {
 		return super.getSqlMapClientTemplate().queryForList("menu.findMenuList", type);

@@ -32,6 +32,10 @@
 		select * from Menu where id=#id#
 	</select>
 	
+	<select id="findMenuByName" parameterClass="String" resultClass="menu">
+		select * from Menu where name=#name#
+	</select>
+	
 	<update id="updateMenuListOrder" parameterClass="java.util.ArrayList">
 		update Menu set listOrder= case id
 			<iterate>

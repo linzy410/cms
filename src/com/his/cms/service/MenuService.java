@@ -45,6 +45,10 @@ public class MenuService {
 		return menuDao.findMenu(id);
 	}
 	
+	public Menu getMenuByName(String name) {
+		return menuDao.findMenuByName(name);
+	}
+	
 	public void saveMenu(Menu menu) {
 		menuDao.addMenu(menu);
 	}

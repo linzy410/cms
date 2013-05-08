@@ -20,6 +20,8 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
+import com.his.cms.service.MenuService;
+import com.his.cms.util.Global;
 import com.his.cms.util.IConstants;
 
 
@@ -29,6 +31,8 @@ import com.his.cms.util.IConstants;
  * 2011-12-26
  */
 public abstract class HtmlBuilder {
+	
+	private MenuService menuService = (MenuService) Global.getBean("menuService");
 
 	/**
 	 * 构造文件
@@ -50,6 +54,8 @@ public abstract class HtmlBuilder {
 		for (String filename : keySet) {
 			VelocityContext context = (VelocityContext) contextMap.get(filename);
 			if (context != null) {
+				context.put("activeMenuId", getActiveMenuId());
+				context.put("menus", menuService.getMenuListByType(0));
 				buildFiles(template, context, filename);
 			}
 		}
@@ -65,6 +71,7 @@ public abstract class HtmlBuilder {
 	 */
 	protected abstract String getFileOutPath();
 	protected abstract String getVmName();
+	protected abstract int getActiveMenuId();
 
 	/**
 	 * 文件输出

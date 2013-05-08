@@ -11,12 +11,7 @@
 		</style>
 		<script>
 			$(function() {
-				var href = window.location.href;
-				$(".mainmenu a").each(function(){
-					if (this.href==href){
-						$(this).parent().addClass("current");
-					}
-				});
+				$("#li_menu_${activeMenuId}").addClass("current");
 			});
 		</script>
 	</head>
@@ -28,7 +23,7 @@
 		<div class="mainmenu" id="mo_menu">
 			<ul>
 			#foreach( $menu in $menus)
-				<li id="li_menu_${id}">
+				<li id="li_menu_${menu.id}">
 					<a href="${menu.pageHyperlink}">${menu.name}</a>
 				</li>
 			#end
