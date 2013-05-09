@@ -7,11 +7,11 @@
 	<typeAlias alias="content" type="com.his.cms.model.MenuContent" />
 
 	<insert id="addMenu" parameterClass="menu">
-		insert into Menu (name,nameEn,createTime,creator,type,isShow) values (#name#,#nameEn#,#createTime#,#creator#,#type#,#isShow#)
+		insert into Menu (name,nameEn,createTime,creator,type,isShow,imgId) values (#name#,#nameEn#,#createTime#,#creator#,#type#,#isShow#,imgId)
 	</insert>
 	
 	<update id="updateMenu" parameterClass="menu">
-		update Menu set name=#name#,nameEn=#nameEn#,type=#type# where id=#id#
+		update Menu set name=#name#,nameEn=#nameEn#,type=#type#,imgId=#imgId# where id=#id#
 	</update>
 	
 	<delete id="deleteMenu" parameterClass="int">
@@ -19,7 +19,8 @@
 	</delete>
 	
 	<select id="findMenuList" parameterClass="int" resultClass="menu">
-		select * from Menu where 0=0
+		select m.*, i.saveFile from Menu m left join Image i on m.imgId=i.id
+		 where 0=0
 		<isGreaterThan property="value" compareValue="0" prepend="and"> type=#type#</isGreaterThan>
 		order by listOrder asc
 	</select>
@@ -65,6 +66,6 @@
 	</select>
 	
 	<insert id="addMenuContent" parameterClass="content">
-		insert into MenuContent (menuId,content) values (#menuId#,#content#)
+		insert into MenuContent (menuId,content,contentEn) values (#menuId#,#content#,#contentEn#)
 	</insert>
 </sqlMap>

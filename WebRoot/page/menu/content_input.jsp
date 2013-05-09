@@ -12,7 +12,7 @@
 			$(function() {
 				tinyMCE.init({
 	　　				mode : "exact",
-					elements : "text",
+					elements : "text,textEn",
 					theme : "advanced",
 					width : "100%",
 					height : "500px",
@@ -69,9 +69,17 @@
 									    <span class="input-xlarge uneditable-input">${content.menuName} | ${content.menuNameEn}</span>
 								    </div>
 							    </div>
-							    <label class="control-label" for="input01">内容</label>
-							    <div class="controls">
-								    <textarea name="content.content" id="text">${content.content}</textarea>
+							    <div class="control-group">
+								    <label class="control-label" for="input01">内容</label>
+								    <div class="controls">
+									    <textarea name="content.content" id="text">${content.content}</textarea>
+								    </div>
+							    </div>
+							    <div class="control-group">
+								    <label class="control-label" for="input01">英文内容</label>
+								    <div class="controls">
+									    <textarea name="content.contentEn" id="textEn">${content.contentEn}</textarea>
+								    </div>
 							    </div>
 							    <div class="controls" style="padding-top:10px;">
 							    	<button class="btn btn-primary" type="submit">确定</button>

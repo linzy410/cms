@@ -1,34 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>TOP MARQUES 上海奢侈品展:::博锐会展 BORRISON:::2013年10月25日-27日 上海展览中心</title>
-		<link href="/css/style.css" rel="stylesheet" type="text/css"/>
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
-		<script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
-		<script type="text/javascript" src="/js/common.js"></script>
-		<style type="text/css">
-		</style>
-		<script>
-			$(function() {
-				$("#li_menu_${activeMenuId}").addClass("current");
-			});
-		</script>
+		#parse("/header.vm")
 	</head>
 	<body>
 		<div class="box head">
 			<h2><a href="cn/index.html">TOP MARQUES 上海奢侈品展:::博锐会展 BORRISON:::2013年10月25日-27日 上海展览中心</a></h2>
 			<h3 class="cn">2013年10月25日-27日 上海展览中心</h3>
 		</div>
-		<div class="mainmenu" id="mo_menu">
-			<ul>
-			#foreach( $menu in $menus)
-				<li id="li_menu_${menu.id}">
-					<a href="${menu.pageHyperlink}">${menu.name}</a>
-				</li>
-			#end
-			</ul>
-		</div>
+		#parse("/menu.vm")
 		<div class="main">
     		<div id="focus">
 				<ul>
@@ -60,12 +40,6 @@
 		  </div>
 			<div class="clear"></div>
 		</div>
-		<div class="box foot clear">
-			<strong>Celebrating the 16th Edition of Top Marques in China</strong>
-			<p>Borrison / Luxuery Events Organiser</p>
-		</div>
-		<div style="height:30px"></div>
-		<p>&nbsp;</p>
-		<p align="center">沪ICP备07508629号-4<a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20120417163158237" target="_blank"> <img src="images/icon4.gif" alt="上海工商亮照标识" width="25" height="25"></a></p>
+		#parse("/footer.vm")
 	</body>
 </html>

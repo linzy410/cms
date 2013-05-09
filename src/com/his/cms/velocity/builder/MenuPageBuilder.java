@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
 import com.his.cms.model.Menu;
@@ -18,6 +19,9 @@ import com.his.cms.util.IConstants;
 import com.his.cms.velocity.HtmlBuilder;
 
 /**
+ * 
+ * 单张页面内容的菜单
+ * 
  * @author 林哲炎
  *
  * creat in 2013-5-8
@@ -25,23 +29,33 @@ import com.his.cms.velocity.HtmlBuilder;
 public class MenuPageBuilder extends HtmlBuilder {
 	
 	private MenuService menuService = (MenuService) Global.getBean("menuService");
-	private Menu menu;
 
 	/* (non-Javadoc)
-	 * @see com.his.cms.velocity.HtmlBuilder#getContextMap()
+	 * @see com.his.cms.velocity.HtmlBuilder#builder()
 	 */
 	@Override
-	protected Map<String, VelocityContext> getContextMap() throws SQLException {
+	protected void builder() throws Exception {
+		super.builder(getContextMap(cn), cn);
+		super.builder(getContextMap(en), en);
+	}
+
+	private Map<String, VelocityContext> getContextMap(String lang) throws SQLException {
 		Map<String, VelocityContext> map = new HashMap<String, VelocityContext>();
 		List<Menu> menus = menuService.getMenuListByType(IConstants.MENU_TYPE_PAGE);
 		for (Menu menu : menus) {
-			this.menu = menu;
 			VelocityContext context = new VelocityContext();
 			MenuContent content = menuService.getMenuContent(menu.getId());
-			context.put("content", content.getContent());
-			map.put("index.html", context);
+			if (lang == super.cn)
+				context.put("content", content.getContent());
+			else
+				context.put("content", content.getContentEn());
+				
+			context.put(relativeFolderPath, menu.getNameEn().toLowerCase().replaceAll(" ", StringUtils.EMPTY));
+			context.put(activeMenuId, menu.getId());
+			context.put(super.lang, lang);
+			map.put("index.html-menu-" + menu.getId(), context);
 		}
-		return null;
+		return map;
 	}
 
 	/* (non-Javadoc)
@@ -49,7 +63,7 @@ public class MenuPageBuilder extends HtmlBuilder {
 	 */
 	@Override
 	protected String getFileOutPath() {
-		return "cn/";
+		return "";
 	}
 
 	/* (non-Javadoc)
@@ -57,16 +71,11 @@ public class MenuPageBuilder extends HtmlBuilder {
 	 */
 	@Override
 	protected String getVmName() {
-		
-		return null;
+		return "news_page.vm";
 	}
-
-	/* (non-Javadoc)
-	 * @see com.his.cms.velocity.HtmlBuilder#getActiveMenuId()
-	 */
-	@Override
-	protected int getActiveMenuId() {
-		return menu.getId();
+	
+	public static void main(String[] args) throws Exception {
+		MenuPageBuilder builder = new MenuPageBuilder();
+		builder.builder();
 	}
-
 }

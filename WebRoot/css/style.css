@@ -116,12 +116,12 @@ a:focus{outline:none;-moz-outline-style:none}
 .main .main_btn a#videos:hover{background-position:-160px -140px}
 .main .center a#news{display:block;width:302px;height:165px;margin-bottom:10px;overflow:hidden;background:url(/img/pc_news.gif) no-repeat;text-indent:-9999px}
 .main .center a#news:hover{background-position:0 -175px}
-.main .left{width:956px;height:427px;border:1px solid #DEC197}
+.main .left{width:1146px;border:1px solid #DEC197}
 .main .left .partners{position:relative;float:left;display:inline;width:720px;height:360px;overflow:hidden}
 .main .left .partners li{position:absolute;display:none}
 .main .left .partners li img{width:720px;height:360px;background:#201A11}
 .main .left .banner{float:left;display:inline;width:170px;border-right:1px solid #605341;margin:20px 0 0 20px}
-.main .left .cpage{float:right;display:inline;width:720px;height:365px;overflow-y:auto;margin:30px 20px 0 0}
+.main .left .cpage{float:right;display:inline;width:912px;overflow-y:auto;margin:30px 20px 0 0}
 .main .left .cpage a{text-decoration:underline}
 .main .right{width:186px;height:427px;border:1px solid #DEC197;margin-left:2px}
 .main .right .customers{position:relative;float:left;display:inline;width:179px;height:420px;overflow:hidden;margin:2px 0 0 2px}

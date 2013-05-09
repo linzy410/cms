@@ -11,11 +11,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.sql.SQLException;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -33,37 +33,43 @@ import com.his.cms.util.IConstants;
 public abstract class HtmlBuilder {
 	
 	private MenuService menuService = (MenuService) Global.getBean("menuService");
+	protected String relativeFolderPath = "relativeFolderPath";
+	protected String activeMenuId = "activeMenuId";
+	protected String en = "en";
+	protected String cn = "cn";
+	protected String lang = "lang";
+	
+	protected abstract void builder() throws Exception;
 
 	/**
 	 * 构造文件
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean builder() throws Exception {
+	public boolean builder(Map<String, VelocityContext> contextMap, String lang) throws Exception {
 		Properties prop = new Properties();
 		prop.put("file.resource.loader.path", IConstants.VELOCITY_VM_DIR);
 		prop.put("runtime.log", IConstants.VELOCITY_RUNTIME_LOG_FILE_DIR);
 		// HtmlBuilder.class.getClassLoader().getResource("velocity.properties").getPath()
 		Velocity.init(prop);
 		Template template = Velocity.getTemplate(getVmName(), "utf-8");
-		Map<String, VelocityContext> contextMap = getContextMap();
 		if (contextMap == null || contextMap.isEmpty() || contextMap.keySet() == null || contextMap.keySet().isEmpty()) {
 			return false;
 		}
 		Set<String> keySet = contextMap.keySet();
 		for (String filename : keySet) {
 			VelocityContext context = (VelocityContext) contextMap.get(filename);
+			if (filename.indexOf("-menu-") >= 0) {
+				filename = filename.substring(0, filename.indexOf("-menu-"));
+			}
 			if (context != null) {
-				context.put("activeMenuId", getActiveMenuId());
-				context.put("menus", menuService.getMenuListByType(0));
-				buildFiles(template, context, filename);
+				context.put("menus", menuService.getShowMenuList());
+				buildFiles(template, context, filename, lang);
 			}
 		}
 		contextMap = null;
 		return true;
 	}
-	
-	protected abstract Map<String, VelocityContext> getContextMap() throws SQLException;
 	
 	/**
 	 * 文件相对路径，含前/,不含后/
@@ -71,7 +77,6 @@ public abstract class HtmlBuilder {
 	 */
 	protected abstract String getFileOutPath();
 	protected abstract String getVmName();
-	protected abstract int getActiveMenuId();
 
 	/**
 	 * 文件输出
@@ -80,10 +85,14 @@ public abstract class HtmlBuilder {
 	 * @param outputFileName 输出的文件名称
 	 * @throws IOException
 	 */
-	protected void buildFiles(Template template, VelocityContext context, String outputFileName) throws IOException {
+	protected void buildFiles(Template template, VelocityContext context, String outputFileName, String lang) throws IOException {
 		Writer writer = null;
 		try {
-			File outPath = new File(IConstants.VELOCITY_OUTPUT_DIR + IConstants.SLASH + getFileOutPath());
+			String outFilePath = IConstants.VELOCITY_OUTPUT_DIR + IConstants.SLASH + lang + IConstants.SLASH + getFileOutPath();
+			String folderPath = (String) context.get(relativeFolderPath);
+			if (StringUtils.isNotEmpty(folderPath))
+				outFilePath += IConstants.SLASH + folderPath;
+			File outPath = new File(outFilePath);
 			if (!outPath.exists()) {
 				outPath.mkdirs();
 			}

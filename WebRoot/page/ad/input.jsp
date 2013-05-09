@@ -24,9 +24,8 @@
 					'onUploadSuccess':function(file, data, response){
 						data = eval('('+data+')');
 						$("#imgId").val(data.image.id);
-						$("#uploadImgShow").attr("src", "/upload/" + data.image.saveFile);
-						$("li[class='span3'] > img").remove();
-						$("li[class='span3']").append('<img style="height:150px;" src="/upload/'+data.image.saveFile+'"/>');
+						$(".thumbnails > li[class='span3'] > img").remove();
+						$(".thumbnails > li[class='span3']").append('<img style="height:150px;" src="/upload/'+data.image.saveFile+'"/>');
         			}
 				});
 

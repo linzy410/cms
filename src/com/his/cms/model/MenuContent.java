@@ -18,6 +18,7 @@ public class MenuContent implements Serializable {
 
 	private int menuId;
 	private String content;
+	private String contentEn;
 	
 	private String menuName;
 	private String menuNameEn;
@@ -52,5 +53,13 @@ public class MenuContent implements Serializable {
 
 	public String getMenuNameEn() {
 		return menuNameEn;
+	}
+
+	public void setContentEn(String contentEn) {
+		this.contentEn = contentEn;
+	}
+
+	public String getContentEn() {
+		return contentEn;
 	}
 }

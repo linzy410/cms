@@ -41,16 +41,16 @@ public class LoginFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		String uri = request.getRequestURI();
 		
-		if (uri.indexOf("/admin/") >= 0) {
+		if (uri.indexOf("/admin/") >= 0 || uri.indexOf("/admin.action") >= 0) {
 			// session过期处理
 			if (request.getSession(false) == null){
-				response.sendRedirect("/login_login.action");
+				response.sendRedirect("/login.action");
 				return ;
 			}
 			
 			User sessionUser = SessionUtil.getSessionUser(request);
 			if (sessionUser == null) {
-				response.sendRedirect("/login_login.action");
+				response.sendRedirect("/login.action");
 				return ;
 			}
 		}

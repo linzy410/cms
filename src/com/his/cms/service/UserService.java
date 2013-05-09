@@ -2,12 +2,9 @@ package com.his.cms.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.his.cms.dao.UserDao;
 import com.his.cms.dto.UpdateMap;
 import com.his.cms.model.User;
-import com.his.cms.util.SessionUtil;
 
 public class UserService {
 	
@@ -17,13 +14,8 @@ public class UserService {
 		return userDao.findUserList();
 	}
 	
-	public boolean login(String username, String password, HttpServletRequest request) {
-		User user = userDao.findUserByUsernameAndPassword(username, password);
-		if (user == null) {
-			return false;
-		}
-		SessionUtil.setUserSession(user, request);
-		return true;
+	public User getUserByUsernameAndPassword(String username, String password) {
+		return userDao.findUserByUsernameAndPassword(username, password);
 	}
 	
 	public User getUserByUsername(String username) {

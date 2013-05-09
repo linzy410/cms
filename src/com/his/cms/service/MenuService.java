@@ -94,6 +94,7 @@ public class MenuService {
 	public void updateMenuContent(MenuContent content) {
 		UpdateMap map = new UpdateMap("MenuContent");
 		map.addField("content", content.getContent());
+		map.addField("contentEn", content.getContentEn());
 		map.addWhere("menuId", content.getMenuId());
 		menuDao.update(map);
 	}

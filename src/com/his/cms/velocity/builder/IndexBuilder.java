@@ -29,13 +29,21 @@ public class IndexBuilder extends HtmlBuilder {
 	private AdService adService = (AdService) Global.getBean("adService");
 
 	/* (non-Javadoc)
-	 * @see com.his.cms.velocity.HtmlBuilder#getContextMap()
+	 * @see com.his.cms.velocity.HtmlBuilder#builder()
 	 */
 	@Override
-	protected Map<String, VelocityContext> getContextMap() throws SQLException {
+	protected void builder() throws Exception {
+		super.builder(getContextMap(cn), cn);
+		super.builder(getContextMap(en), en);
+	}
+	
+	private Map<String, VelocityContext> getContextMap(String lang) throws SQLException {
 		Map<String, VelocityContext> map = new HashMap<String, VelocityContext>();
 		VelocityContext context = new VelocityContext();
 		context.put("ads", adService.getShowAdList(IConstants.AD_TYPE_BANNER));
+		Menu menu = menuService.getMenuByName("Ê×Ò³");
+		context.put(super.activeMenuId, menu.getId());
+		context.put(super.lang, lang);
 		map.put("index.html", context);
 		return map;
 	}
@@ -45,7 +53,7 @@ public class IndexBuilder extends HtmlBuilder {
 	 */
 	@Override
 	protected String getFileOutPath() {
-		return "cn";
+		return "";
 	}
 	
 	/* (non-Javadoc)
@@ -59,14 +67,5 @@ public class IndexBuilder extends HtmlBuilder {
 	public static void main(String[] args) throws Exception {
 		IndexBuilder builder = new IndexBuilder();
 		builder.builder();
-	}
-
-	/* (non-Javadoc)
-	 * @see com.his.cms.velocity.HtmlBuilder#getActiveMenuId()
-	 */
-	@Override
-	protected int getActiveMenuId() {
-		Menu menu = menuService.getMenuByName("Ê×Ò³");
-		return menu.getId();
 	}
 }

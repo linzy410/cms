@@ -6,7 +6,7 @@
 	<package name="base" namespace="/" extends="struts-default">
 		<action name="login_*" class="com.his.cms.action.LoginAction" method="{1}">
 			<result name="login">/page/base/login.jsp</result>
-			<result name="admin" type="redirect">/admin.action</result>
+			<result name="success" type="redirect">/admin.action</result>
 		</action>
 		<action name="home_*" class="com.his.cms.action.site.HomeAction" method="{1}">
 			<result name="home">/page/home/home.jsp</result>

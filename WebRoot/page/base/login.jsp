@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="span7"  style="padding-top:180px;margin: 0 auto;float: none;">
 				<div class="alert alert-error" style="width:98%;"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
-			    <form class="form-horizontal" method="post" action="/login.action">
+			    <form class="form-horizontal" method="post" action="/login_login.action">
 				    <fieldset>
 						<legend>登录</legend>
 						<div class="control-group">
@@ -26,6 +26,7 @@
 					    <div class="controls">
 						    <input type="password" class="input-xlarge" placeholder="请输入密码" name="password"/>
 					    </div>
+					    <div style="padding-left:160px;"><label class="checkbox"><input type="checkbox" name="remember" value="1" id="remember" />次自动登录</label></div>
 					    <div class="controls" style="padding-top:10px;">
 					    	<button class="btn btn-primary" type="submit">登录</button>
 					    </div>
