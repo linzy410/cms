@@ -35,9 +35,9 @@
 						$("#div_menu_img").hide();
 					}
 				});
-
 				<s:if test="menu!=null&&menu.id>0">
-					$(".thumbnails > li[class='span3']").append('<img style="height:150px;" src="/upload/${menu.saveFile}"/>');
+				$(".thumbnails > li[class='span3']").append('<img style="height:150px;" src="/upload/${menu.saveFile}"/>');
+				$("#div_menu_img").show();
 				</s:if>
 			});
 		</script>

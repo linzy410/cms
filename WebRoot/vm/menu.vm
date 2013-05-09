@@ -1,13 +1,13 @@
 <div class="mainmenu" id="mo_menu">
 	<ul>
 	#foreach( $menu in $menus)
-		<li id="li_menu_${menu.id}">
-			#if($lang == "cn")
-			<a href="/${lang}${menu.pageHyperlink}">${menu.name}</a>
-			#else
-			<a href="/${lang}${menu.pageHyperlink}">${menu.nameEn}</a>
-			#end
+		<li id="li_menu_${menu.id}">#if($lang == "cn")<a href="/${lang}${menu.pageHyperlink}">${menu.name}</a>#else<a href="/${lang}${menu.pageHyperlink}">${menu.nameEn}</a>#end
 		</li>
 	#end
+	</ul>
+	<ul class="lang">
+		<li><a href="/cn/">中文</a></li>
+		<li class="separate">|</li>
+		<li><a href="/en/">English</a></li>
 	</ul>
 </div>

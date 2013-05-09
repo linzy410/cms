@@ -39,8 +39,6 @@ public abstract class HtmlBuilder {
 	protected String cn = "cn";
 	protected String lang = "lang";
 	
-	protected abstract void builder() throws Exception;
-
 	/**
 	 * 构造文件
 	 * @return

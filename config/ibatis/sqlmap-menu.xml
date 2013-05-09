@@ -21,7 +21,7 @@
 	<select id="findMenuList" parameterClass="int" resultClass="menu">
 		select m.*, i.saveFile from Menu m left join Image i on m.imgId=i.id
 		 where 0=0
-		<isGreaterThan property="value" compareValue="0" prepend="and"> type=#type#</isGreaterThan>
+		<isGreaterThan property="value" compareValue="0" prepend="and"> m.type=#type#</isGreaterThan>
 		order by listOrder asc
 	</select>
 	
@@ -30,7 +30,7 @@
 	</select>
 	
 	<select id="findMenu" parameterClass="int" resultClass="menu">
-		select * from Menu where id=#id#
+		select m.*, i.saveFile from Menu m left join Image i on m.imgId=i.id where m.id=#id#
 	</select>
 	
 	<select id="findMenuByName" parameterClass="String" resultClass="menu">

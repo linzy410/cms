@@ -30,11 +30,7 @@ public class MenuPageBuilder extends HtmlBuilder {
 	
 	private MenuService menuService = (MenuService) Global.getBean("menuService");
 
-	/* (non-Javadoc)
-	 * @see com.his.cms.velocity.HtmlBuilder#builder()
-	 */
-	@Override
-	protected void builder() throws Exception {
+	public void builder() throws Exception {
 		super.builder(getContextMap(cn), cn);
 		super.builder(getContextMap(en), en);
 	}
@@ -49,7 +45,7 @@ public class MenuPageBuilder extends HtmlBuilder {
 				context.put("content", content.getContent());
 			else
 				context.put("content", content.getContentEn());
-				
+			context.put("menu", menu);
 			context.put(relativeFolderPath, menu.getNameEn().toLowerCase().replaceAll(" ", StringUtils.EMPTY));
 			context.put(activeMenuId, menu.getId());
 			context.put(super.lang, lang);

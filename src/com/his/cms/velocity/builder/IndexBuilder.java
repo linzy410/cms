@@ -31,8 +31,7 @@ public class IndexBuilder extends HtmlBuilder {
 	/* (non-Javadoc)
 	 * @see com.his.cms.velocity.HtmlBuilder#builder()
 	 */
-	@Override
-	protected void builder() throws Exception {
+	public void builder() throws Exception {
 		super.builder(getContextMap(cn), cn);
 		super.builder(getContextMap(en), en);
 	}

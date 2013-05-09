@@ -13,7 +13,7 @@
 		#parse("/menu.vm")
 		<div class="main">
 			<div class="left">
-				<div class="banner"><img src="images/c1.jpg"></div>
+				<div class="banner"><img src="/upload/${menu.saveFile}"></div>
 				<div class="cpage">
 				<div class="h20">
 				${content}

@@ -102,7 +102,7 @@ a:focus{outline:none;-moz-outline-style:none}
 
 /*网页盒子样式定义*/
 .box{width:1146px;border:1px solid #DEC197}
-.head{height:152px;overflow:hidden;margin-top:20px}
+.head{height:152px;overflow:hidden;margin-top:10px}
 .head h2{float:left;display:inline;width:691px;height:152px;overflow:hidden;background:url(/img/logo.gif) no-repeat;text-indent:-9999px;margin-left:52px}
 .head h2 a{display:block;width:691px;height:152px}
 .head h3.en{float:right;display:inline;width:246px;height:41px;overflow:hidden;background:url(/img/pc_head_date.gif) no-repeat;text-indent:-9999px;margin:55px 48px 0 0}
@@ -167,13 +167,17 @@ a:focus{outline:none;-moz-outline-style:none}
 .intro .n a.hover{background:url(/img/../images/icon_intro_num.png) no-repeat}
 .intro .bar{display:none/*;position:absolute;bottom:0;width:680px;height:28px;background:#000;opacity:0.3;filter:alpha(opacity=30);z-index:9*/}
 
-.mainmenu {background: url("/img/mainMenuBg.gif") repeat scroll 0 0 transparent;clear: both;height: 30px;margin: 0 auto !important;width: 1146px;border: 1px solid #DEC197;			}
+.mainmenu {background: url("/img/mainMenuBg.gif") repeat scroll 0 0 transparent;clear: both;height: 30px;margin: 0 auto !important;width: 1146px;border: 1px solid #DEC197;}
 .mainmenu ul {float: left;list-style: none outside none;margin: 0;}
 .mainmenu li.current {    color: #FAD00B;    text-decoration: none !important;}
 .mainmenu li {background: url("/img/menulinebg.gif") no-repeat scroll right center transparent;float: left;text-align: center;}
 .mainmenu .current a:link, .mainmenu .current a:visited {color: #FAD00B;padding: 6px 20px;}
 .mainmenu a:link, .mainmenu a:visited {color: #FFFFFF;display: block;font: bold 14px/13px tahoma;padding: 6px 20px;text-decoration: none;}
 .mainmenu a:hover {color: #FAD00B;text-decoration: none;}
+.mainmenu ul.lang{float:right;}
+.mainmenu ul.lang li{background:none;}
+.mainmenu ul.lang li.separate{padding-top: 6px;}
+.mainmenu ul.lang li a{color: #DEC197;font-size:12px;padding: 6px 10px 0 10px}
 
 .tree{position:relative;float:right;display:inline;border-bottom:1px solid #DEC197;padding-left:20px;height:23px;margin-right:6px}
 .tree a{float:left;display:inline-block;height:22px;line-height:22px;background:#DEC197;border:1px solid #DEC197;color:#4A3415;padding:0 15px;margin-left:4px;font-family:'Microsoft YaHei';}
