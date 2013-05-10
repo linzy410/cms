@@ -12,9 +12,9 @@ public class HtmlPage implements Serializable {
 	private static final long serialVersionUID = -9103367921678297596L;
 
 	private List<?> elements;
-	private int total;
+	private int total; // 总记录数
 	private int pageNo; // 当前页面
-	private int pageSize;
+	private int pageSize; // 分页显示数量
 	private String url;
 	private static String APOSTROPHE = "...";
 	private static String POUND  = "javascript:void(0);";
@@ -38,11 +38,11 @@ public class HtmlPage implements Serializable {
 				links.add(getHyperlink(i == pageNo, i));
 			}
 			links.add(new Hyperlink(POUND, APOSTROPHE, IConstants.HYPERLINK_STATE_DISABLED));
-			links.add(getHyperlink(getTotal()));
-		} else if (pageNo > totalPage - 5) {
+			links.add(getHyperlink(totalPage));
+		} else if (pageNo > totalPage - 4) {
 			links.add(getHyperlink(0));
 			links.add(new Hyperlink(POUND, APOSTROPHE, IConstants.HYPERLINK_STATE_DISABLED));
-			for (int i = totalPage - 5; i < totalPage; i++) {
+			for (int i = totalPage - 4; i <= totalPage; i++) {
 				links.add(getHyperlink(i == pageNo, i));
 			}
 		} else {
@@ -52,7 +52,7 @@ public class HtmlPage implements Serializable {
 				links.add(getHyperlink(i == pageNo, i));
 			}
 			links.add(new Hyperlink(POUND, APOSTROPHE, IConstants.HYPERLINK_STATE_DISABLED));
-			links.add(getHyperlink(getTotal()));
+			links.add(getHyperlink(totalPage));
 		}
 		return links;
 	}
@@ -75,14 +75,14 @@ public class HtmlPage implements Serializable {
 
 	/**
 	 * 
-	 * @param pageShowNo 页面展示页码，比真实分页数大1
+	 * @param pageNo 页面展示页码，比真实分页数大1
 	 * @return
 	 */
-	private String getUrl(int pageShowNo) {
-		if (pageShowNo == 1) {
+	private String getUrl(int pageNo) {
+		if (pageNo == 0) {
 			return url + "index.html";
 		}
-		return url + "page-" + pageShowNo + ".html";
+		return url + "page-" + pageNo + ".html";
 	}
 	
 	public void setUrl(String url) {
@@ -90,7 +90,7 @@ public class HtmlPage implements Serializable {
 	}
 	
 	public int getTotalPage() {
-		return total / pageSize;
+		return total % pageSize == 0 ? total / pageSize - 1 : total / pageSize;
 	}
 
 	public String getPreviousPage() {

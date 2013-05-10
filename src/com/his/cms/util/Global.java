@@ -15,7 +15,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class Global {
 	private static ApplicationContext _ctx = null;
-	private static String defaultContextPath = "classpath*:spring/*.xml";
+	private static String defaultContextPath = "classpath*:spring/applicationContext.xml";
 
 	public static void initContext(String contextPath) {
 		_ctx = new ClassPathXmlApplicationContext(defaultContextPath);

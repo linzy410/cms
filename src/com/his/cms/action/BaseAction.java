@@ -27,7 +27,7 @@ public class BaseAction extends ActionSupport {
 
 	protected Map<String, Object> result = new HashMap<String, Object>(); 
 	protected int pageNo = 0;
-	protected int pageSize = 20;
+	protected int pageSize = 1;
 	protected static String JSON = "json";
 	
 	protected String getCreator() {

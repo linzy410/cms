@@ -36,11 +36,11 @@ public class Page implements Serializable {
 				links.add(getHyperlink(i == pageNo, i));
 			}
 			links.add(new Hyperlink(POUND, APOSTROPHE, IConstants.HYPERLINK_STATE_DISABLED));
-			links.add(getHyperlink(getTotal()));
-		} else if (pageNo > totalPage - 5) {
+			links.add(getHyperlink(totalPage));
+		} else if (pageNo > totalPage - 4) {
 			links.add(getHyperlink(0));
 			links.add(new Hyperlink(POUND, APOSTROPHE, IConstants.HYPERLINK_STATE_DISABLED));
-			for (int i = totalPage - 5; i < totalPage; i++) {
+			for (int i = totalPage - 4; i <= totalPage; i++) {
 				links.add(getHyperlink(i == pageNo, i));
 			}
 		} else {
@@ -50,7 +50,7 @@ public class Page implements Serializable {
 				links.add(getHyperlink(i == pageNo, i));
 			}
 			links.add(new Hyperlink(POUND, APOSTROPHE, IConstants.HYPERLINK_STATE_DISABLED));
-			links.add(getHyperlink(getTotal()));
+			links.add(getHyperlink(totalPage));
 		}
 		return links;
 	}
@@ -62,13 +62,13 @@ public class Page implements Serializable {
 	/**
 	 * 
 	 * @param current 是否为当前页面, 当前页面的链接为# 
-	 * @param pageShowNo 分页显示页码
+	 * @param pageNo 分页显示页码
 	 * @return
 	 */
-	private Hyperlink getHyperlink(boolean current, int pageShowNo) {
+	private Hyperlink getHyperlink(boolean current, int pageNo) {
 		if (current)
-			return new Hyperlink(POUND, String.valueOf(pageShowNo + 1), IConstants.HYPERLINK_STATE_ACTIVE);
-		return new Hyperlink(getUrl(pageShowNo), String.valueOf(pageShowNo + 1), IConstants.HYPERLINK_STATE_NOMAL);
+			return new Hyperlink(POUND, String.valueOf(pageNo + 1), IConstants.HYPERLINK_STATE_ACTIVE);
+		return new Hyperlink(getUrl(pageNo), String.valueOf(pageNo + 1), IConstants.HYPERLINK_STATE_NOMAL);
 	}
 
 	private String getUrl(int pageShowNo) {
@@ -87,7 +87,7 @@ public class Page implements Serializable {
 	}
 	
 	public int getTotalPage() {
-		return total / pageSize;
+		return total % pageSize == 0 ? total / pageSize - 1 : total / pageSize;
 	}
 
 	public String getPreviousPage() {

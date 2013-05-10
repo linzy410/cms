@@ -6,7 +6,6 @@
 package com.his.cms.velocity.builder;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +50,7 @@ public class MenuNewsListBuilder extends HtmlBuilder {
 				total = newsService.getCountNews(null, menu.getId(), IConstants.EN);
 			}
 			int pageSize = 5;
-			int totalPageNo = total / pageSize;
+			int totalPageNo = total % pageSize == 0 ? total / pageSize - 1 : total / pageSize;
 			for (int i = 0; i <= totalPageNo; i++) {
 				VelocityContext context = new VelocityContext();
 				context.put(relativeFolderPath, menu.getNameEnSiteShow());
@@ -68,9 +67,6 @@ public class MenuNewsListBuilder extends HtmlBuilder {
 				} else {
 					map.put("page-" + i + ".html", context);
 				}
-				//page = null;
-				//tmp = null;
-				//break;
 			}
 		}
 		return map;
@@ -95,16 +91,6 @@ public class MenuNewsListBuilder extends HtmlBuilder {
 	public static void main(String[] args) throws Exception {
 		MenuNewsListBuilder builder = new MenuNewsListBuilder();
 		builder.builder();
-//		List<Integer> list = new ArrayList<Integer>();
-//		for (int i = 0; i < 22; i++) {
-//			list.add(i);
-//		}
-//		for (int i = 0; i <= list.size() / 10; i++) {
-//			for (Integer a : list.subList(i * 10, (i+1)*10>=list.size() ? list.size() : (i+1)*10)) {
-//				System.out.print(a + " ");
-//			}
-//			System.out.println("");
-//		}
 	}
 	
 }
