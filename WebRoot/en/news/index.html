@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -12,14 +11,24 @@
 </style>
 <script>
 $(function() {
-	$("#li_menu_6").addClass("current");
+	$("#li_menu_1").addClass("current");
 });
-</script>	</head>
+</script>		<script type="text/javascript">
+			// 隔行换色
+			$(function() {
+				$(".cn_newslist li").mouseover(function() {
+					$(this).addClass("hover");
+				}).mouseout(function() {
+					$(this).removeClass("hover");
+				})
+				$(".cn_newslist li:even").addClass("space");
+			})
+		</script>
+	</head>
 	<body>
 		<div class="box head">
-			<h2><a href="cn/index.html">TOP MARQUES 上海奢侈品展:::博锐会展
-			BORRISON:::2013年10月25日-27日 上海展览中心</a></h2>
-			<h3 class="cn">2013年10月25日-27日 上海展览中心</h3>
+		<h2><a href="cn/index.html">TOP MARQUES 上海奢侈品展:::博锐会展 BORRISON:::2013年10月25日-27日 上海展览中心</a></h2>
+		<h3 class="cn">2013年10月25日-27日 上海展览中心</h3>
 		</div>
 		<div class="mainmenu" id="mo_menu">
 	<ul>
@@ -39,22 +48,25 @@ $(function() {
 		<li><a href="/en/">English</a></li>
 	</ul>
 </div>		<div class="main">
-			<div class="left">
-				<div class="banner"><img src="/upload/201305/09212400053.jpg"></div>
-				<div class="cpage">
-				<div class="h20">
-				<p><strong>Organized by:</strong><br /> Borrison Asia Ltd.</p>
-<p>Shanghai Borrison Expo Co., Ltd</p>
-<p>&nbsp;</p>
-<p><strong>Time:</strong><br /> October 25 (Friday) &ndash; Opening Ceremony &amp; VIP Preview Party &ndash; from 20:00 to 24:00<br /> October 26 (Saturday) &ndash; Only for VIP &ndash; from 10:00 to 18:00</p>
-<p>October 27 (Sunday) &ndash; for VIP and Public &ndash; from 10:00 to 17:00</p>
-<p>&nbsp;</p>
-<p><strong>Venue:</strong><br /> Shanghai Exhibition Center (No.1000, Middle Yan'an Road, Shanghai)<br /> Located at the Central Business District of Shanghai, the chosen venue, Shanghai Exhibition Centre (SEC), is alongside West Nanjing Rd. which is the most palatial shopping Mecca for rich Chinese. It is a perfect venue for LUXURY. SEC is also a historical landmark surrounded by Plaza 66, Citic Square, Westgate Mall, and Jiu Guang Mall, where Louis Vuitton, Gucci, Mont Blanc, Cartier, Hermes located their flagship boutiques. There are also a number of prestigious five star hotels around SEC such as Ritz Carlton, Shangri-la, JC Mandarin, etc...</p>
+			<div class="cpage2">
+				<div class="cleft">
+					<h2>News 最新资讯</h2>
+					<ul class="cn_newslist">
+										</ul>
+					<div class="pages clear">
+					<a class="next" href="javascript:void(0);">Previous</a>
+											<a href="javascript:void(0);" class="hover">1</a>
+										<a class="next" href="javascript:void(0);">Next</a>
+					</div>
 				</div>
+				<div class="cright">
+					<div class="btn"><a href="cn/news/" id="news">新闻</a> <a
+						href="cn/gallery/Exhibitors&Booths/" id="gallery">图库</a> <a
+						href="cn/videos/" id="videos">视频</a> <a href="cn/press/" id="press">媒体报道</a>
+					</div>
 				</div>
 				<div class="clear"></div>
 			</div>
-			<div class="clear"></div>
 		</div>
 		<div class="box foot clear">
 	<strong>Celebrating the 16th Edition of Top Marques in China</strong>

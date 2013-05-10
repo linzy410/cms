@@ -4,6 +4,7 @@
 package com.his.cms.model;
 
 
+
 /**
  * 新闻资讯
  * @author 林哲炎
@@ -15,24 +16,23 @@ public class News extends BaseEntity {
 	private static final long serialVersionUID = 7504363644345073726L;
 	
 	private String title;
-	private int imageId;
 	private String content;
 	private int type; // 与menuId对应
+	private String imgPath;
+	private String summary;
 	
 	private String menuName;
 	private String menuNameEn;
+	
+	public String getSiteTimeShow() {
+		return super.getCreateTime().substring(0, 10);
+	}
 	
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public int getImageId() {
-		return imageId;
-	}
-	public void setImageId(int imageId) {
-		this.imageId = imageId;
 	}
 	public String getContent() {
 		return content;
@@ -57,5 +57,17 @@ public class News extends BaseEntity {
 	}
 	public String getMenuNameEn() {
 		return menuNameEn;
+	}
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+	public String getImgPath() {
+		return imgPath;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+	public String getSummary() {
+		return summary;
 	}
 }

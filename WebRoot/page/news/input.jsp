@@ -44,13 +44,13 @@
 	</head>
 	<body>
     <div class="row">
-	    <div class="span12">
+	    <div class="span15">
 		    预留位置
 		    <div class="row">
 			    <div class="span3">
 			    	 <%@ include file="/page/include/menu.jsp" %>
 			    </div>
-			    <div class="span9">
+			    <div class="span12">
 			    	<div class="navbar">
 			    		<div class="navbar-inner">
 								<div class="container">
@@ -65,7 +65,7 @@
 								<div class="control-group">
 								    <label class="control-label" for="input01">标题</label>
 								    <div class="controls">
-									    <input type="text" class="input-xlarge" placeholder="请输入标题" name="title" value="${news.title}"/>
+									    <input type="text" style="width:770px;" placeholder="请输入标题" name="title" value="${news.title}"/>
 								    </div>
 							    </div>
 								<div class="control-group">

@@ -42,6 +42,15 @@ public class NewsDao extends BaseDao {
 		map.put("lang", lang);
 		return super.getSqlMapClientTemplate().queryForList("news.findNewsList", map);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<News> findAllNewsList(String title, int type, int lang) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("title", title);
+		map.put("type", type);
+		map.put("lang", lang);
+		return super.getSqlMapClientTemplate().queryForList("news.findAllNewsList", map);
+	}
 
 	public int findCountNews(String title, int type, int lang) {
 		Map<String, Object> map = new HashMap<String, Object>();

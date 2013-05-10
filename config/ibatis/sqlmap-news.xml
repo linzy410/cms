@@ -6,11 +6,11 @@
 	<typeAlias alias="news" type="com.his.cms.model.News" />
 
 	<insert id="addNews" parameterClass="news">
-		insert into News (title,imageId,content,createTime,creator,type,lang) values (#title#,#imageId#,#content#,#createTime#,#creator#,#type#,#lang#)
+		insert into News (title,imgPath,content,createTime,creator,type,lang,summary) values (#title#,#imgPath#,#content#,#createTime#,#creator#,#type#,#lang#,#summary#)
 	</insert>
 	
 	<update id="updateNews" parameterClass="news">
-		update News set title=#title#,content=#content#,imageId=#imageId#,type=#type# where id=#id#
+		update News set title=#title#,content=#content#,imgPath=#imgPath#,type=#type#,summary=#summary# where id=#id#
 	</update>
 	
 	<delete id="deleteNews" parameterClass="int">
@@ -26,6 +26,10 @@
 		select n.*, m.name as menuName, m.nameEn as menuNameEn from News n left join Menu m on n.type=m.id
 		<include refid="whereSql"/>
 		order by n.id desc limit #startRow#, #pageSize#
+	</select>
+	
+	<select id="findAllNewsList" parameterClass="java.util.Map" resultClass="news">
+		select * from News n <include refid="whereSql"/> order by n.id desc
 	</select>
 	
 	<select id="findCountNews" parameterClass="java.util.Map" resultClass="int">

@@ -15,7 +15,7 @@
 	</head>
 	<body>
     <div class="row">
-	    <div class="span12">
+	    <div class="span15">
 		    预留位置
 		    <div class="row">
 			    <div class="span3">

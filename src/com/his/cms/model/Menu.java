@@ -26,18 +26,15 @@ public class Menu extends BaseEntity {
 
 	private String saveFile;
 	
-//	public String getNameEnSiteShow() {
-//		return nameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY);
-//	}
+	public String getNameEnSiteShow() {
+		return nameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY);
+	}
 	
 	public String getPageHyperlink() {
 		if (type == IConstants.MENU_TYPE_ASSIGN) {
 			return url;
 		}
-		if (type == IConstants.MENU_TYPE_NEWS_LIST) {
-			return "/news/" + super.getId() + IConstants.SLASH;
-		}
-		if (type == IConstants.MENU_TYPE_PAGE) {
+		if (type == IConstants.MENU_TYPE_NEWS_LIST || type == IConstants.MENU_TYPE_PAGE) {
 			return IConstants.SLASH + nameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY)  + IConstants.SLASH;
 		}
 		return StringUtils.EMPTY;

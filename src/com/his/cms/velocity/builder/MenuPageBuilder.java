@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
 import com.his.cms.model.Menu;
@@ -41,12 +40,12 @@ public class MenuPageBuilder extends HtmlBuilder {
 		for (Menu menu : menus) {
 			VelocityContext context = new VelocityContext();
 			MenuContent content = menuService.getMenuContent(menu.getId());
-			if (lang == super.cn)
+			if (lang.equals(cn))
 				context.put("content", content.getContent());
 			else
 				context.put("content", content.getContentEn());
 			context.put("menu", menu);
-			context.put(relativeFolderPath, menu.getNameEn().toLowerCase().replaceAll(" ", StringUtils.EMPTY));
+			context.put(relativeFolderPath, menu.getNameEnSiteShow());
 			context.put(activeMenuId, menu.getId());
 			context.put(super.lang, lang);
 			map.put("index.html-menu-" + menu.getId(), context);

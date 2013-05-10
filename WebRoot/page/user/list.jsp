@@ -22,13 +22,13 @@
 	</head>
 	<body>
     <div class="row">
-	    <div class="span12">
+	    <div class="span15">
 		    预留位置
 		    <div class="row">
 			    <div class="span3">
 			    	 <%@ include file="/page/include/menu.jsp" %>
 			    </div>
-			    <div class="span9">
+			    <div class="span12">
 			    	<div class="navbar">
 			    		<div class="navbar-inner">
 							<div class="container">

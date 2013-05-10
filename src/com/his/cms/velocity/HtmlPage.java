@@ -1,12 +1,13 @@
-package com.his.cms.dto;
+package com.his.cms.velocity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.his.cms.dto.Hyperlink;
 import com.his.cms.util.IConstants;
 
-public class Page implements Serializable {
+public class HtmlPage implements Serializable {
 
 	private static final long serialVersionUID = -9103367921678297596L;
 
@@ -15,17 +16,18 @@ public class Page implements Serializable {
 	private int pageNo; // 当前页面
 	private int pageSize;
 	private String url;
-	private List<Hyperlink> links = new ArrayList<Hyperlink>();
 	private static String APOSTROPHE = "...";
 	private static String POUND  = "javascript:void(0);";
 
-	public Page(List<?> elements, int total, int pageSize) {
+	public HtmlPage(List<?> elements, int total, int pageNo, int pageSize) {
 		this.elements = elements;
 		this.total = total;
+		this.pageNo = pageNo;
 		this.pageSize = pageSize;
 	}
 
 	public List<Hyperlink> getLinks() {
+		List<Hyperlink> links = new ArrayList<Hyperlink>();
 		int totalPage = getTotalPage();
 		if (totalPage <= 10) {
 			for (int i = 0; i <= totalPage; i++) {
@@ -62,24 +64,25 @@ public class Page implements Serializable {
 	/**
 	 * 
 	 * @param current 是否为当前页面, 当前页面的链接为# 
-	 * @param pageShowNo 分页显示页码
+	 * @param pageNo 分页显示页码
 	 * @return
 	 */
-	private Hyperlink getHyperlink(boolean current, int pageShowNo) {
+	private Hyperlink getHyperlink(boolean current, int pageNo) {
 		if (current)
-			return new Hyperlink(POUND, String.valueOf(pageShowNo + 1), IConstants.HYPERLINK_STATE_ACTIVE);
-		return new Hyperlink(getUrl(pageShowNo), String.valueOf(pageShowNo + 1), IConstants.HYPERLINK_STATE_NOMAL);
+			return new Hyperlink(POUND, String.valueOf(pageNo + 1), IConstants.HYPERLINK_STATE_ACTIVE);
+		return new Hyperlink(getUrl(pageNo), String.valueOf(pageNo + 1), IConstants.HYPERLINK_STATE_NOMAL);
 	}
 
+	/**
+	 * 
+	 * @param pageShowNo 页面展示页码，比真实分页数大1
+	 * @return
+	 */
 	private String getUrl(int pageShowNo) {
-		StringBuilder urlbuff = new StringBuilder(url);
-		if (url.indexOf("?") > -1) {
-			urlbuff.append("&");
-		} else {
-			urlbuff.append("?");
+		if (pageShowNo == 1) {
+			return url + "index.html";
 		}
-		urlbuff.append("pageNo=").append(pageShowNo).append("&pageSize=").append(pageSize);
-		return urlbuff.toString();
+		return url + "page-" + pageShowNo + ".html";
 	}
 	
 	public void setUrl(String url) {
@@ -132,41 +135,5 @@ public class Page implements Serializable {
 
 	public int getPageNo() {
 		return pageNo;
-	}
-
-	class Hyperlink {
-		private String href;
-		private String name;
-		private int state;
-
-		public Hyperlink(String href, String name, int state) {
-			this.href = href;
-			this.name = name;
-			this.state = state;
-		}
-
-		public String getHref() {
-			return href;
-		}
-
-		public void setHref(String href) {
-			this.href = href;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public void setState(int state) {
-			this.state = state;
-		}
-
-		public int getState() {
-			return state;
-		}
 	}
 }
