@@ -45,7 +45,7 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 		news.setCreateTime(super.getCurrentTime());
 		news.setCreator(super.getCreator());
 		newsService.saveNews(news);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public String uploadImage() throws Exception {
@@ -65,12 +65,17 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	
 	public String update() throws Exception {
 		newsService.updateNews(news);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public String remove() throws Exception {
 		newsService.remove(selectedId);
-		return "listAction";
+		return LISTACTION;
+	}
+	
+	public String removeMulti() throws Exception {
+		newsService.removeMulti(selectedIds);
+		return LISTACTION;
 	}
 
 	/* (non-Javadoc)

@@ -39,12 +39,12 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 		menu.setCreateTime(super.getCurrentTime());
 		menu.setCreator(super.getCreator());
 		menuService.saveMenu(menu);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public String remove() throws Exception {
 		operTag = menuService.removeMenu(selectedId);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public String edit() throws Exception {
@@ -54,7 +54,7 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	
 	public String update() throws Exception {
 		menuService.updateMenu(menu);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public String order() throws Exception {
@@ -64,7 +64,7 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	
 	public String setOrder() throws Exception {
 		menuService.setListOrder(menus);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	/**
@@ -79,7 +79,7 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	
 	public String setUrl() throws Exception {
 		menuService.setUrl(menus);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	
 	public String updateContent() throws Exception {
 		menuService.updateMenuContent(content);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 

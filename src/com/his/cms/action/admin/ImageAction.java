@@ -20,7 +20,7 @@ public class ImageAction extends BasePageAction {
 	
 	public String remove() throws Exception {
 		imageService.removeImage(selectedIds);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public void setImageService(ImageService imageService) {

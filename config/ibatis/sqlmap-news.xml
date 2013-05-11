@@ -16,6 +16,9 @@
 	<delete id="deleteNews" parameterClass="int">
 		delete from News where id=#id#
 	</delete>
+	<delete id="deleteNewsMulti" parameterClass="String">
+		delete from News where id in ($newsIds$)
+	</delete>
 	
 	<sql id="whereSql">
 		where n.lang=#lang# <isNotNull property="title" prepend="and"> n.title like CONCAT('%',#title#,'%')</isNotNull> 

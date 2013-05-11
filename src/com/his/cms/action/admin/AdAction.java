@@ -39,7 +39,7 @@ public class AdAction extends BasePageAction implements ModelDriven<Ad> {
 		ad.setCreateTime(super.getCurrentTime());
 		ad.setCreator(super.getCreator());
 		adService.saveAd(ad);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public String edit() throws Exception{
@@ -49,12 +49,12 @@ public class AdAction extends BasePageAction implements ModelDriven<Ad> {
 	
 	public String update() throws Exception {
 		adService.updateAd(ad);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public String remove() throws Exception {
 		adService.removeAd(selectedId);
-		return "listAction";
+		return LISTACTION;
 	}
 
 	@Override

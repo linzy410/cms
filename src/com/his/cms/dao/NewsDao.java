@@ -63,5 +63,8 @@ public class NewsDao extends BaseDao {
 	public void deleteNews(int id) {
 		super.getSqlMapClientTemplate().delete("news.deleteNews", id);
 	}
-
+	
+	public void deleteNewsMulti(String newsIds) {
+		super.getSqlMapClientTemplate().delete("news.deleteNewsMulti", newsIds);
+	}
 }

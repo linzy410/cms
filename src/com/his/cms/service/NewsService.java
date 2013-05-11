@@ -83,6 +83,11 @@ public class NewsService {
 		newsDao.deleteNews(id);
 	}
 	
+	public void removeMulti(String newsIds) {
+		if (StringUtils.isNotEmpty(newsIds))
+			newsDao.deleteNewsMulti(newsIds);
+	}
+	
 	public void setNewsDao(NewsDao newsDao) {
 		this.newsDao = newsDao;
 	}

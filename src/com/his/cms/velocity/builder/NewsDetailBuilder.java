@@ -1,8 +1,6 @@
-/* 
- * Created by linzheyan at 2013-5-10 
- * Copyright HiSupplier.com 
+/**
+ * 
  */
-
 package com.his.cms.velocity.builder;
 
 import java.sql.SQLException;
@@ -20,14 +18,13 @@ import com.his.cms.service.NewsService;
 import com.his.cms.util.Global;
 import com.his.cms.util.IConstants;
 import com.his.cms.velocity.HtmlBuilder;
-import com.his.cms.velocity.HtmlPage;
 
 /**
- * @author linzheyan
+ * @author ¡÷’‹—◊
  *
- * 2013-5-10
+ * creat in 2013-5-11
  */
-public class MenuNewsListBuilder extends HtmlBuilder {
+public class NewsDetailBuilder extends HtmlBuilder {
 	
 	private NewsService newsService = (NewsService) Global.getBean("newsService");
 	private MenuService menuService = (MenuService) Global.getBean("menuService");
@@ -42,32 +39,19 @@ public class MenuNewsListBuilder extends HtmlBuilder {
 		List<Menu> menus = menuService.getMenuListByType(IConstants.MENU_TYPE_NEWS_LIST);
 		for (Menu menu : menus) {
 			List<News> list = null;
-			int total = 0;
 			if (lang.equals(cn)) {
 				list = newsService.getNewsList(null, menu.getId(), IConstants.CN);
-				total = newsService.getCountNews(null, menu.getId(), IConstants.CN);
 			} else {
 				list = newsService.getNewsList(null, menu.getId(), IConstants.EN);
-				total = newsService.getCountNews(null, menu.getId(), IConstants.EN);
 			}
-			int pageSize = 5;
-			int totalPageNo = total % pageSize == 0 ? total / pageSize - 1 : total / pageSize;
-			for (int i = 0; i <= totalPageNo; i++) {
+			for (News news : list) {
 				VelocityContext context = new VelocityContext();
-				context.put(relativeFolderPath, menu.getNameEnSiteShow());
-				context.put(activeMenuId, menu.getId());
 				context.put(super.lang, lang);
-				int toIndex = (i + 1) * pageSize >= list.size() ? list.size() : (i + 1) * pageSize;
-				List<News> tmp = list.subList(i * pageSize, toIndex);
-				
-				HtmlPage page = new HtmlPage(tmp, total, i, pageSize);
-				page.setUrl(IConstants.SLASH + lang + IConstants.SLASH + menu.getNameEnSiteShow() + IConstants.SLASH);
-				context.put("page", page);
-				if (i == 0) {
-					map.put("index.html", context);
-				} else {
-					map.put("page-" + i + ".html", context);
-				}
+				context.put("menu", menu);
+				context.put("news", news);
+				context.put(super.activeMenuId, menu.getId());
+				context.put(super.relativeFolderPath, menu.getNameEnSiteShow());
+				map.put("content-" + news.getId() + ".html", context);
 			}
 		}
 		return map;
@@ -86,12 +70,11 @@ public class MenuNewsListBuilder extends HtmlBuilder {
 	 */
 	@Override
 	protected String getVmName() {
-		return "news_list.vm";
+		return "news_detail.vm";
 	}
-	
+
 	public static void main(String[] args) throws Exception {
-		MenuNewsListBuilder builder = new MenuNewsListBuilder();
+		NewsDetailBuilder builder = new NewsDetailBuilder();
 		builder.builder();
 	}
-	
 }

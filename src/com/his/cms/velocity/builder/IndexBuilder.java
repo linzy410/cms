@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
 import com.his.cms.model.Menu;
@@ -52,7 +53,7 @@ public class IndexBuilder extends HtmlBuilder {
 	 */
 	@Override
 	protected String getFileOutPath() {
-		return "";
+		return StringUtils.EMPTY;
 	}
 	
 	/* (non-Javadoc)

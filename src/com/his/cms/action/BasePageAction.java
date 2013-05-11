@@ -20,6 +20,7 @@ public abstract class BasePageAction extends BaseAction {
 	protected String message;
 	protected String operTag = "succ";
 	protected Page page;
+	protected String LISTACTION = "listAction";
 	
 	
 	protected abstract String getMenuTag();

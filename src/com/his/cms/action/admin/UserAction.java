@@ -30,7 +30,7 @@ public class UserAction extends BasePageAction implements ModelDriven<User> {
 			return INPUT;
 		user.setCreateTime(super.getCurrentTime());
 		userService.saveUser(user);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public void validateSave() {
@@ -60,12 +60,12 @@ public class UserAction extends BasePageAction implements ModelDriven<User> {
 			return INPUT;
 		}
 		userService.updateUser(user);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 	public String remove() throws Exception {
 		userService.removeUser(selectedId);
-		return "listAction";
+		return LISTACTION;
 	}
 	
 

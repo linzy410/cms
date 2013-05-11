@@ -15,11 +15,26 @@
 					$("#hTypeQuery").val(this.value);
 					$("#f1").submit();
 				});
+
+				$("#chkall").click(function(){
+					$("input[name='newschk']").attr("checked", this.checked);
+				});
 			});
 
 			function remove(id){
 				if(confirm("确定删除吗？")){
 					goAction("/admin/news_remove.action?selectedId="+id);
+				}
+			}
+			function removeMulti() {
+				var newsIds = "";
+				$("input[name='newschk']:checked").each(function(){
+					newsIds+="," + this.value;
+				});
+				if (newsIds.length > 0) {
+					if (confirm("确认要删除图片吗？")){
+						goAction("/admin/news_removeMulti.action?selectedIds=" + newsIds.substring(1));
+					}
 				}
 			}
 		</script>
@@ -40,6 +55,7 @@
 								<div class="nav-collapse">
 									<ul class="nav">
 									<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/news_add.action')" value="新增"/></li>
+									<li style="padding-left:5px;"><input type="button" class="btn btn-primary" onclick="removeMulti();" value="批量删除"/></li>
 									</ul>
 									<form id="f1" class="navbar-form pull-left" method="post" action="/admin/news_list.action">
 										<input type="hidden" name="typeQuery" id="hTypeQuery" value="${typeQuery}"/> 
@@ -53,7 +69,7 @@
 			    	<div class="data-list">
 			    	    <table class="table table-striped table-bordered table-condensed">
 				    	    <tr>
-				    	    	<th width="25" style="text-align:center;"><input type="checkbox" name="newschk"/></th>
+				    	    	<th width="25" style="text-align:center;"><input type="checkbox" id="chkall"/></th>
 				    	    	<th width="30">序号</th>
 				    	    	<th>标题</th>
 				    	    	<th>

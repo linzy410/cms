@@ -36,13 +36,7 @@
 						</li>
 					#end
 					</ul>
-					<div class="pages clear">
-					<a class="next" href="${page.previousPage}">Previous</a>
-					#foreach($link in $page.links)
-						<a href="${link.href}" #if($link.state==1)class="hover"#end>${link.name}</a>
-					#end
-					<a class="next" href="${page.nextPage}">Next</a>
-					</div>
+					#parse("/pagination.vm")
 				</div>
 				<div class="cright">
 					<div class="btn"><a href="cn/news/" id="news">新闻</a> <a

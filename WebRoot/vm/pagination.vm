@@ -1,0 +1,7 @@
+<div class="pages clear">
+<a class="next" href="${page.previousPage}">Previous</a>
+#foreach($link in $page.links)
+	<a href="${link.href}" #if($link.state==1)class="hover"#end>${link.name}</a>
+#end
+<a class="next" href="${page.nextPage}">Next</a>
+</div>
