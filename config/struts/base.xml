@@ -12,7 +12,7 @@
 			<result name="home">/page/home/home.jsp</result>
 		</action>
 		<action name="admin_*" class="com.his.cms.action.AdminAction" method="{1}">
-			<result name="admin">/page/admin/admin.jsp</result>
+			<result name="success">/page/admin/index.jsp</result>
 		</action>
 	</package>
 </struts>

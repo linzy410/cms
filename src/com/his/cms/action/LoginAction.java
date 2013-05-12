@@ -17,6 +17,7 @@ import com.his.cms.model.User;
 import com.his.cms.service.UserService;
 import com.his.cms.util.CookieUtil;
 import com.his.cms.util.DES;
+import com.his.cms.util.LangUtil;
 import com.his.cms.util.SessionUtil;
 
 /**
@@ -42,7 +43,7 @@ public class LoginAction extends BaseAction {
 				int id = Integer.valueOf(DES.getInstance().decryptStr(code));
 				User user = userService.getUserById(id);
 				if (user != null) {
-					SessionUtil.setUserSession(user, request);
+					doSession(user);
 					return SUCCESS;
 				}
 			} catch (Exception e) {
@@ -61,7 +62,7 @@ public class LoginAction extends BaseAction {
 			addActionError("用户名或密码错误！");
 			return "login";
 		}
-		SessionUtil.setUserSession(user, ServletActionContext.getRequest());
+		doSession(user);
 		if (remember == 1) {
 			try {
 			String code = DES.getInstance().encryptStr(String.valueOf(user.getId()));
@@ -73,6 +74,17 @@ public class LoginAction extends BaseAction {
 			}
 		}
 		return SUCCESS;
+	}
+
+	/**
+	 *  登录成功, session记录用户、语言信息
+	 * @param user
+	 */
+	private void doSession(User user) {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		SessionUtil.setUserSession(user, request);
+		int lang = LangUtil.getLang(request);
+		SessionUtil.setLang(lang, request);
 	}
 
 	public void setUsername(String username) {

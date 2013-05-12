@@ -12,7 +12,6 @@ import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.his.cms.util.LangUtil;
 import com.his.cms.util.SessionUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -39,7 +38,7 @@ public class BaseAction extends ActionSupport {
 	}
 	
 	protected int getLang() {
-		return LangUtil.getLang(ServletActionContext.getRequest());
+		return SessionUtil.getSessionLang(ServletActionContext.getRequest());
 	}
 	
 	public Map<String, Object> getResult() {

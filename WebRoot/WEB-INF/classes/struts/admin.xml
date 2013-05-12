@@ -5,33 +5,33 @@
 <struts>
 	<package name="admin" namespace="/admin" extends="struts-default">
 		<action name="news_*" class="com.his.cms.action.admin.NewsAction" method="{1}">
-			<result name="list">/page/news/list.jsp</result>
+			<result name="list">/page/admin/news/list.jsp</result>
 			<result name="listAction" type="redirect">/admin/news_list.action?operTag=${operTag}</result>
-			<result name="input">/page/news/input.jsp</result>
-			<result name="upload">/page/news/upload.jsp</result>
-			<result name="showImage">/page/news/image-list-inc.jsp</result>
+			<result name="input">/page/admin/news/input.jsp</result>
+			<result name="upload">/page/admin/news/upload.jsp</result>
+			<result name="showImage">/page/admin/news/image-list-inc.jsp</result>
 		</action>
 		<action name="menu_*" class="com.his.cms.action.admin.MenuAction" method="{1}">
-			<result name="list">/page/menu/list.jsp</result>
+			<result name="list">/page/admin/menu/list.jsp</result>
 			<result name="listAction" type="redirect">/admin/menu_list.action?operTag=${operTag}</result>
-			<result name="input">/page/menu/input.jsp</result>
-			<result name="order">/page/menu/set_order.jsp</result>
-			<result name="url">/page/menu/set_url.jsp</result>
-			<result name="content">/page/menu/content_input.jsp</result>
+			<result name="input">/page/admin/menu/input.jsp</result>
+			<result name="order">/page/admin/menu/set_order.jsp</result>
+			<result name="url">/page/admin/menu/set_url.jsp</result>
+			<result name="content">/page/admin/menu/content_input.jsp</result>
 		</action>
 		<action name="image_*" class="com.his.cms.action.admin.ImageAction" method="{1}">
-			<result name="list">/page/image/list.jsp</result>
+			<result name="list">/page/admin/image/list.jsp</result>
 			<result name="listAction" type="redirect">/admin/image_list.action?operTag=${operTag}</result>
 		</action>
 		<action name="ad_*" class="com.his.cms.action.admin.AdAction" method="{1}">
-			<result name="list">/page/ad/list.jsp</result>
-			<result name="input">/page/ad/input.jsp</result>
+			<result name="list">/page/admin/ad/list.jsp</result>
+			<result name="input">/page/admin/ad/input.jsp</result>
 			<result name="listAction" type="redirect">/admin/ad_list.action?operTag=${operTag}</result>
 		</action>
 		<action name="user_*" class="com.his.cms.action.admin.UserAction" method="{1}">
-			<result name="list">/page/user/list.jsp</result>
-			<result name="input">/page/user/input.jsp</result>
-			<result name="inputErr">/page/user/input.jsp?operTag=${operTag}</result>
+			<result name="list">/page/admin/user/list.jsp</result>
+			<result name="input">/page/admin/user/input.jsp</result>
+			<result name="inputErr">/page/admin/user/input.jsp?operTag=${operTag}</result>
 			<result name="listAction" type="redirect">/admin/user_list.action?operTag=${operTag}</result>
 		</action>
 		<action name="upload_*" class="com.his.cms.action.UploadAction" method="{1}">

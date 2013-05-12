@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<link rel="stylesheet" href="/js/fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+	#parse("/header.vm")
+	<script type="text/javascript" src="/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+	<script type="text/javascript">
+		$(function() {$(".gallery").fancybox();});
+	</script>
+	</head>
+	<body>
+		<div class="box head">
+			<h2><a href="cn/index.html">TOP MARQUES 上海奢侈品展:::博锐会展 BORRISON:::2013年10月25日-27日 上海展览中心</a></h2>
+			<h3 class="cn">2013年10月25日-27日 上海展览中心</h3>
+		</div>
+		#parse("/menu.vm")
+		<div class="main">
+			<div class="cpage2">
+				<div class="cleft">
+					<h2>Gallery 照片图库</h2>
+					<ul class="gallerylist">
+					#foreach($image in $page.elements)
+						<a class="gallery cboxElement" rel="group" href="/upload/${image.saveFile}"><img title="${image.title}" src="/upload/${image.saveFile}"></a>
+					#end
+					</ul>
+					#parse("/pagination.vm")
+				</div>
+				#parse("/news_right.vm")
+				<div class="clear"></div>
+			</div>
+		</div>
+		#parse("/footer.vm")
+		<div style="height:30px"></div>
+	</body>
+</html>

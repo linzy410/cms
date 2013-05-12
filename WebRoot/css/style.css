@@ -133,7 +133,7 @@ a:focus{outline:none;-moz-outline-style:none}
 .foot strong{float:left;display:inline;width:337px;height:24px;overflow:hidden;background:url(/img/pc_foot_sty1.gif) no-repeat;text-indent:-9999px;margin:80px 0 0 52px}
 
 .main .cpage2{border:1px solid #DEC197;padding:40px}
-.main .cpage2 .cleft{float:left;display:inline;width:760px;overflow:hidden}
+.main .cpage2 .cleft{float:left;display:inline;width:776px;overflow:hidden}
 .main .cpage2 .cleft h2{font-family:'Microsoft YaHei';font-size:21px;font-weight:normal;height:45px;display:block}
 .main .cpage2 .Infodetail{font-weight:normal}
 .main .cpage2 .Infodetail h1{font-size:19px;font-weight:normal;height:25px;display:block;color:#DEC197}
@@ -157,14 +157,14 @@ a:focus{outline:none;-moz-outline-style:none}
 
 
 /*ÂÖ×ªºÐ×Ó*/
-.intro{position:relative;float:left;display:inline;width:640px;height:427px;border:1px solid #DEC197;overflow:hidden}
+.intro{position:relative;float:left;display:inline;width:830px;height:427px;border:1px solid #DEC197;overflow:hidden}
 .intro .a li{position:absolute;display:none}
-.intro .a li img{width:640px;height:427px;background:#201A11}
+.intro .a li img{width:830px;height:427px;background:#201A11}
 .intro .t{display:none/*position:absolute;left:10px;bottom:0;width:520px;height:28px;line-height:28px;overflow:hidden;z-index:999*/}
 .intro .t h4{position:absolute;left:0;bottom:0;display:none;color:#fff;font-size:12px;font-weight:bold}
 .intro .n{position:absolute;right:10px;bottom:6px;z-index:999}
-.intro .n a{float:left;display:inline;background:url(/img/../images/icon_intro_num.png) no-repeat -16px 0;width:16px;height:15px;overflow:hidden;text-indent:-9999px;cursor:pointer}
-.intro .n a.hover{background:url(/img/../images/icon_intro_num.png) no-repeat}
+.intro .n a{float:left;display:inline;background:url(/img/icon_intro_num.png) no-repeat -16px 0;width:16px;height:15px;overflow:hidden;text-indent:-9999px;cursor:pointer}
+.intro .n a.hover{background:url(/img/icon_intro_num.png) no-repeat}
 .intro .bar{display:none/*;position:absolute;bottom:0;width:680px;height:28px;background:#000;opacity:0.3;filter:alpha(opacity=30);z-index:9*/}
 
 .mainmenu {background: url("/img/mainMenuBg.gif") repeat scroll 0 0 transparent;clear: both;height: 30px;margin: 0 auto !important;width: 1146px;border: 1px solid #DEC197;}
@@ -177,7 +177,7 @@ a:focus{outline:none;-moz-outline-style:none}
 .mainmenu ul.lang{float:right;}
 .mainmenu ul.lang li{background:none;}
 .mainmenu ul.lang li.separate{padding-top: 6px;}
-.mainmenu ul.lang li a{color: #DEC197;font-size:12px;padding: 6px 10px 0 10px}
+.mainmenu ul.lang li a:link, .mainmenu ul.lang li a:visited{color: #DEC197;font-size:12px;padding: 6px 10px 0 10px}
 
 .tree{position:relative;float:right;display:inline;border-bottom:1px solid #DEC197;padding-left:20px;height:23px;margin-right:6px}
 .tree a{float:left;display:inline-block;height:22px;line-height:22px;background:#DEC197;border:1px solid #DEC197;color:#4A3415;padding:0 15px;margin-left:4px;font-family:'Microsoft YaHei';}
@@ -206,3 +206,10 @@ a:focus{outline:none;-moz-outline-style:none}
 #focus .preNext{width:45px;height:100px;position:absolute;top:90px;background:url(/img/sprite.png) no-repeat 0 0;cursor:pointer;}
 #focus .pre{left:0;}
 #focus .next{right:0;background-position:right top;}
+
+
+.ellipsis a{display: block;width: 270px;overflow: hidden;white-space: nowrap;-o-text-overflow: ellipsis;text-overflow: ellipsis;}
+/* firefox only */
+.ellipsis:not(p) {clear: both;}
+.ellipsis:not(p) a {max-width: 270px;float: left;}
+.ellipsis:not(p):after {content: "...";float: left;width: 25px;padding-left: 1px;}

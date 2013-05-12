@@ -32,18 +32,13 @@
 								<h4>${news.title}</h4>
 							</a>
 							<div class="des">${news.summary}</div>
-							<em>Published：${news.siteTimeShow}</em> <a href="/${lang}/${relativeFolderPath}/content-${news.id}.html" title="阅读详情" class="more" ></a>
+							<em>Published：${news.createTimeShowSite}</em> <a href="/${lang}/${relativeFolderPath}/content-${news.id}.html" title="阅读详情" class="more" ></a>
 						</li>
 					#end
 					</ul>
 					#parse("/pagination.vm")
 				</div>
-				<div class="cright">
-					<div class="btn"><a href="cn/news/" id="news">新闻</a> <a
-						href="cn/gallery/Exhibitors&Booths/" id="gallery">图库</a> <a
-						href="cn/videos/" id="videos">视频</a> <a href="cn/press/" id="press">媒体报道</a>
-					</div>
-				</div>
+				#parse("/news_right.vm")
 				<div class="clear"></div>
 			</div>
 		</div>

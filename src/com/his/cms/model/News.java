@@ -3,6 +3,8 @@
  */
 package com.his.cms.model;
 
+import org.apache.commons.lang.StringUtils;
+
 
 
 /**
@@ -24,7 +26,15 @@ public class News extends BaseEntity {
 	private String menuName;
 	private String menuNameEn;
 	
-	public String getSiteTimeShow() {
+	public String getSiteMenuEnShow() {
+		return menuNameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY);
+	}
+	
+	public String getTitleSiteShow() {
+		return title.length() <= 20 ? title : title.subSequence(0, 20) + "...";
+	}
+	
+	public String getCreateTimeShowSite() {
 		return super.getCreateTime().substring(0, 10);
 	}
 	

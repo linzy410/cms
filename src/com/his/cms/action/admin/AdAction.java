@@ -32,7 +32,7 @@ public class AdAction extends BasePageAction implements ModelDriven<Ad> {
 	}
 	
 	public String input() throws Exception{
-		return "input";
+		return INPUT;
 	}
 	
 	public String save() throws Exception {

@@ -7,6 +7,9 @@ $(function() {
 	if ($(".alert").text().length<=1){
 		$(".alert").hide();
 	}
+	$(".btn-group > button").click(function(){
+		goAction('/admin_lang.action?lang=' + $(this).attr("data-lang"));
+	});
 });
 function goAction(url){
 	window.location.href = url;
@@ -48,7 +51,7 @@ function showSuccMsg() {
 		$(".alert").slideDown();
 		if (operTag == 'succ'){
 			setTimeout("$('.alert').slideUp();",2000);
-			setTimeout("$('.alert').remove()",2500);
+		//	setTimeout("$('.alert').remove()",2500);
 		}
 	}
 }
@@ -56,7 +59,7 @@ function showSuccMsg() {
 function createAlert(tag){
 	var alertHtml = null;
 	if (tag == "succ") {
-		alertHtml = '<div class="alert alert-success" style="top:0px;margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>操作成功</div>';
+		alertHtml = '<div class="alert alert-success" style="top:0px;margin-bottom:3px;position: absolute; width:35%;margin-left: 609px;"><a data-dismiss="alert" class="close">×</a>操作成功</div>';
 	} else {
 		var msg = null;
 		if ('hasNews'==tag) {
@@ -68,5 +71,5 @@ function createAlert(tag){
 		}
 		alertHtml = '<div class="alert alert-error" style="top:0px;margin-bottom:3px;position: absolute; width:100%;"><a data-dismiss="alert" class="close">×</a>'+msg+'</div>';
 	}
-	$(".navbar").append(alertHtml);
+	$(".span12 > .navbar").append(alertHtml);
 }

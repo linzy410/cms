@@ -167,7 +167,7 @@ a:hover {
 
 .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container
 	{
-	width: 940px;
+	width: 1180px;
 }
 
 .span15 {
@@ -3157,10 +3157,6 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini { *
 		rgba(0, 0, 0, 0.1);
 }
 
-.navbar .container {
-	width: auto;
-}
-
 .btn-navbar {
 	display: none;
 	float: right;
@@ -3357,7 +3353,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini { *
 }
 
 .navbar-fixed-top .container,.navbar-fixed-bottom .container {
-	width: 940px;
+	width: 1180px;
 }
 
 .navbar-fixed-top {

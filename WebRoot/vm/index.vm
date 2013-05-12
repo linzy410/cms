@@ -2,46 +2,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		#parse("/header.vm")
+		<script type="text/javascript" src="/js/intro.js"></script>
 	</head>
 	<body>
 		<div class="box head">
 			<h2><a href="cn/index.html">TOP MARQUES 上海奢侈品展:::博锐会展 BORRISON:::2013年10月25日-27日 上海展览中心</a></h2>
 			<h3 class="cn">2013年10月25日-27日 上海展览中心</h3>
 		</div>
-		#parse("/menu.vm")87338191
+		#parse("/menu.vm")
 		<div class="main">
-    		<div id="focus">
-				<ul>
-					<li><a href="#" target="_blank"><img src="/upload/2012529182600.jpg"/></a></li>
-					<li><a href="#" target="_blank"><img src="/upload/20125291826260.jpg"/></a></li>
-					<li><a href="#" target="_blank"><img src="/upload/20125291826410.jpg"/></a></li>
+    		<div class="intro">
+				<ul class="a">
+					<li style="display:block"><img src="/upload/2012529182600.jpg"/></li>
+					<li><img src="/upload/20125291826260.jpg"/></li>
+					<li><img src="/upload/20125291826410.jpg"/></li>
 				</ul>
+				</ul>
+				 <div class="t">
+					 <h4 style="display:block">TOP MARQUES Shanghai image1</h4>
+					 <h4>TOP MARQUES Shanghai image2</h4>
+					 <h4>TOP MARQUES Shanghai image3</h4>
+				 </div>
+				 <div class="n">
+					 <a class="hover">1</a>
+					 <a>2</a>
+					 <a>3</a>
+				 </div>
+				 <div class="bar"></div>
 			</div>
-		  <div class="center"> <a href="cn/news/" id="news">新闻</a> 
-		    <div class="cn_Topnews"> 
-		      
-		<a href="cn/news/detail/Ducati/576.html" title="杜卡迪Ducati上海新展厅正式开幕"><h4>杜卡迪Ducati上海新展厅正式开幕<img src="images/systemimg/Iconew.gif" style="position:absolute;margin:5px 0 0 5px"></h4></a>
-		
-		<a href="cn/news/detail/Lamborghini/575.html" title="兰博基尼 Lamborghini 推出50周年限量版超跑 Veneno"><h4>兰博基尼 Lamborghini 推出50周年限量版超…</h4></a>
-		
-		<a href="cn/news/detail/JUVENIA/573.html" title="展商新品 - JUVENIA TOURBILLON 尊皇陀飞轮腕表"><h4>展商新品 - JUVENIA TOURBILLON 尊皇陀飞…<img src="images/systemimg/Icohot.gif" style="position:absolute;margin:5px 0 0 5px"></h4></a>
-		
-		<a href="cn/news/detail/Cadillac/570.html" title="国际巨星布拉德·皮特代言全新豪华轿车凯迪拉克XTS"><h4>国际巨星布拉德·皮特代言全新豪华轿车凯迪…</h4></a>
-		
-		<a href="cn/news/detail/MV-Agusta/569.html" title="意大利顶级摩托车MV Agusta亮相TOP MARQUES 2013！"><h4>意大利顶级摩托车MV Agusta亮相TOP MARQU…</h4></a>
-		
-		<a href="cn/news/detail/EXTRAVAGANZA/568.html" title="EXTRAVAGANZA Haitang Bay 2013 三亚海棠湾精致生活展"><h4>EXTRAVAGANZA Haitang Bay 2013 三亚海棠…</h4></a>
-		
-		<a href="cn/news/detail/TOP-MARQUES/566.html" title="TOP MARQUES业界焦点：中国消费者成为世界最大的奢侈品消费群体"><h4>TOP MARQUES业界焦点：中国消费者成为世界…</h4></a>
-		
-		    </div>
-		    <div class="main_btn"> <a href="cn/gallery/Exhibitors&Booths/" id="gallery">图库</a> 
-		      <a href="cn/videos/" id="videos">视频</a> </div>
-		  </div>
+			<div class="center">
+				<div class="cn_Topnews ellipsis"> 
+				#foreach($news in $newsList)      
+				<a href="/${lang}/${news.menuEnSiteShow}/content-${news.id}.html" title="${news.title}"><h4>${news.title}</h4></a>
+				#end
+				</div>
+				<div class="main_btn">
+					<a href="/${lang}/gallery/" id="gallery">图库</a> 
+				</div>
+			</div>
 			<div class="clear"></div>
 		</div>
 		#parse("/footer.vm")
 		<p>&nbsp;</p>
-		<p align="center">沪ICP备07508629号-4<a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20120417163158237" target="_blank"> <img src="images/icon4.gif" alt="上海工商亮照标识" width="25" height="25"></a></p>
 	</body>
 </html>

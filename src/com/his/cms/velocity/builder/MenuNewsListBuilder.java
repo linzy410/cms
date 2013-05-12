@@ -42,14 +42,12 @@ public class MenuNewsListBuilder extends HtmlBuilder {
 		List<Menu> menus = menuService.getMenuListByType(IConstants.MENU_TYPE_NEWS_LIST);
 		for (Menu menu : menus) {
 			List<News> list = null;
-			int total = 0;
 			if (lang.equals(cn)) {
 				list = newsService.getNewsList(null, menu.getId(), IConstants.CN);
-				total = newsService.getCountNews(null, menu.getId(), IConstants.CN);
 			} else {
 				list = newsService.getNewsList(null, menu.getId(), IConstants.EN);
-				total = newsService.getCountNews(null, menu.getId(), IConstants.EN);
 			}
+			int total = list.size();
 			int pageSize = 5;
 			int totalPageNo = total % pageSize == 0 ? total / pageSize - 1 : total / pageSize;
 			for (int i = 0; i <= totalPageNo; i++) {
@@ -58,9 +56,7 @@ public class MenuNewsListBuilder extends HtmlBuilder {
 				context.put(activeMenuId, menu.getId());
 				context.put(super.lang, lang);
 				int toIndex = (i + 1) * pageSize >= list.size() ? list.size() : (i + 1) * pageSize;
-				List<News> tmp = list.subList(i * pageSize, toIndex);
-				
-				HtmlPage page = new HtmlPage(tmp, total, i, pageSize);
+				HtmlPage page = new HtmlPage(list.subList(i * pageSize, toIndex), total, i, pageSize);
 				page.setUrl(IConstants.SLASH + lang + IConstants.SLASH + menu.getNameEnSiteShow() + IConstants.SLASH);
 				context.put("page", page);
 				if (i == 0) {

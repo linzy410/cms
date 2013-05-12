@@ -44,11 +44,6 @@ public class NewsService {
 	public List<News> getNewsList(String title, int type, int lang) {
 		return newsDao.findAllNewsList(title, type, lang);
 	}
-	
-	public int getCountNews(String title, int type, int lang) {
-		return newsDao.findCountNews(title, type, lang);
-	}
-	
 	public News getNewsById(int id) {
 		return newsDao.findNews(id);
 	}

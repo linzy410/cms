@@ -9,8 +9,6 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
 		<script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
 		<script type="text/javascript" src="/js/common.js"></script>
-		<style type="text/css">
-		</style>
 		<script>
 			$(function() {
 				var href = window.location.href;

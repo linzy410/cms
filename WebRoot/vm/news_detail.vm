@@ -18,7 +18,7 @@
 				<div class="place"><span>Home</span><span>${menu.nameEn}</span>${news.title}</div>
 			#end
 				<h1>${news.title}</h1>
-				<div style="padding-bottom:15px;color:#8E7C62">发布时间. <em>${news.siteTimeShow}</em></div>
+				<div style="padding-bottom:15px;color:#8E7C62">发布时间. <em>${news.createTimeShowSite}</em></div>
 				${news.content}
 			</div>
 			<div class="cright">
