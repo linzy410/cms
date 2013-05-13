@@ -9,5 +9,6 @@
 	    <li <s:if test='menuTag=="image"'>class="active"</s:if>><a href="/admin/image_list.action"><i class="icon-picture"></i>图片空间</a></li>
 	    <li <s:if test='menuTag=="user"'>class="active"</s:if>><a href="/admin/user_list.action"><i class="icon-user"></i>用户管理</a></li>
 	    <li <s:if test='menuTag=="ad"'>class="active"</s:if>><a href="/admin/ad_list.action"><i class="icon-th-large"></i>广告管理</a></li>
+	    <li <s:if test='menuTag=="builder"'>class="active"</s:if>><a href="/admin/builder_list.action"><i class="icon-calendar"></i>生成器管理</a></li>
     </ul>
 </div>

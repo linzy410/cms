@@ -13,14 +13,15 @@
 				$("#uploadify").uploadify({
 					'auto'           : false,
 					'swf'            : '/js/uploadify/uploadify.swf',
-					'uploader'       : '/json/upload.action?type="<%=IConstants.IMAGE_TYPE_NEWS%>"',
+					'uploader'       : '/admin/upload.action;jsessionid=<%=request.getSession().getId()%>?type=<%=IConstants.IMAGE_TYPE_NEWS%>',
 					'buttonText'	 : '选择图片',
 					'fileTypeExts'	 : '*.gif;*.jpg;*.png;*.jpeg',
 					'onUploadSuccess':function(file, data, response){
            				document.getElementById('f1').contentWindow.location.reload();
         			}
 				});
-			});	
+				
+			});
 			
 			function selectImg(images){
 				$(images).each(function(){

@@ -26,7 +26,7 @@ public class News extends BaseEntity {
 	private String menuName;
 	private String menuNameEn;
 	
-	public String getSiteMenuEnShow() {
+	public String getMenuEnSiteShow() {
 		return menuNameEn.toLowerCase().replaceAll(" ", StringUtils.EMPTY);
 	}
 	

@@ -8,9 +8,9 @@ import java.util.List;
 import com.his.cms.action.BasePageAction;
 import com.his.cms.model.Menu;
 import com.his.cms.model.News;
+import com.his.cms.service.ImageService;
 import com.his.cms.service.MenuService;
 import com.his.cms.service.NewsService;
-import com.his.cms.service.ImageService;
 import com.his.cms.util.IConstants;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -44,6 +44,7 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	public String save() throws Exception {
 		news.setCreateTime(super.getCurrentTime());
 		news.setCreator(super.getCreator());
+		news.setLang(getLang());
 		newsService.saveNews(news);
 		return LISTACTION;
 	}

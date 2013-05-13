@@ -52,9 +52,9 @@ public class IndexBuilder extends HtmlBuilder {
 		context.put(super.lang, lang);
 		Page page = null;
 		if (lang.equals(cn))
-			page = newsService.getNewsPage(null, 0, IConstants.CN, 0, 14);
+			page = newsService.getNewsPage(null, 0, IConstants.CN, 0, 15);
 		else 
-			page = newsService.getNewsPage(null, 0, IConstants.EN, 0, 14);
+			page = newsService.getNewsPage(null, 0, IConstants.EN, 0, 15);
 		context.put("newsList", ((List<News>) page.getElements()));
 		map.put("index.html", context);
 		return map;

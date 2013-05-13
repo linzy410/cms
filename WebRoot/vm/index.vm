@@ -13,27 +13,21 @@
 		<div class="main">
     		<div class="intro">
 				<ul class="a">
-					<li style="display:block"><img src="/upload/2012529182600.jpg"/></li>
-					<li><img src="/upload/20125291826260.jpg"/></li>
-					<li><img src="/upload/20125291826410.jpg"/></li>
+				#foreach($ad in $ads)
+					<li style="display:block"><img src="/upload/${ad.saveFile}"/></li>
+				#end
 				</ul>
-				</ul>
-				 <div class="t">
-					 <h4 style="display:block">TOP MARQUES Shanghai image1</h4>
-					 <h4>TOP MARQUES Shanghai image2</h4>
-					 <h4>TOP MARQUES Shanghai image3</h4>
-				 </div>
 				 <div class="n">
-					 <a class="hover">1</a>
-					 <a>2</a>
-					 <a>3</a>
+				 #foreach($ad in $ads)
+					 <a class="hover">${ad.id}</a>
+				#end
 				 </div>
 				 <div class="bar"></div>
 			</div>
 			<div class="center">
 				<div class="cn_Topnews ellipsis"> 
 				#foreach($news in $newsList)      
-				<a href="/${lang}/${news.menuEnSiteShow}/content-${news.id}.html" title="${news.title}"><h4>${news.title}</h4></a>
+				<a href="/${lang}/${news.menuEnSiteShow}/content-${news.id}.html" title="${news.title}"><h4>${news.titleSiteShow}</h4></a>
 				#end
 				</div>
 				<div class="main_btn">

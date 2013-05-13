@@ -34,7 +34,7 @@
 			<table class="table table-bordered">
 				<s:iterator value="result.images" status="st">
 					<s:if test="#st.index%4==0"><tr class=""></s:if>
-						<td width="25%"><img src="/upload/${filePath}/${fileName}" width="160"/></td>
+						<td width="25%"><img src="/upload/${saveFile}" width="160"/></td>
 						<s:if test="#st.last">
 							<s:set name="r" value="3-(#st.index%4)"/>
 							<s:if test="#r==1"><td>&nbsp;</td></s:if>

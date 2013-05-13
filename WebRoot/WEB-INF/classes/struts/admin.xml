@@ -36,6 +36,10 @@
 		</action>
 		<action name="upload_*" class="com.his.cms.action.UploadAction" method="{1}">
 		</action>
+		<action name="builder_*" class="com.his.cms.action.admin.BuilderAction" method="{1}">
+			<result name="list">/page/admin/builder/list.jsp</result>
+			<result name="listAction" type="redirect">/admin/builder_list.action?operTag=${operTag}</result>
+		</action>
 	</package>
 </struts>
 

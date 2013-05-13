@@ -21,14 +21,7 @@
 				<div style="padding-bottom:15px;color:#8E7C62">发布时间. <em>${news.createTimeShowSite}</em></div>
 				${news.content}
 			</div>
-			<div class="cright">
-				<div class="btn">
-					<a href="cn/news/" id="news">新闻</a>
-					<a href="cn/gallery/Exhibitors&Booths/" id="gallery">图库</a>
-					<a href="cn/videos/" id="videos">视频</a>
-					<a href="cn/press/" id="press">媒体报道</a>
-				</div>
-			</div>
+			#parse("/news_right.vm")
 			<div class="clear"></div>
 		</div>
 	</div>

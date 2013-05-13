@@ -206,10 +206,3 @@ a:focus{outline:none;-moz-outline-style:none}
 #focus .preNext{width:45px;height:100px;position:absolute;top:90px;background:url(/img/sprite.png) no-repeat 0 0;cursor:pointer;}
 #focus .pre{left:0;}
 #focus .next{right:0;background-position:right top;}
-
-
-.ellipsis a{display: block;width: 270px;overflow: hidden;white-space: nowrap;-o-text-overflow: ellipsis;text-overflow: ellipsis;}
-/* firefox only */
-.ellipsis:not(p) {clear: both;}
-.ellipsis:not(p) a {max-width: 270px;float: left;}
-.ellipsis:not(p):after {content: "...";float: left;width: 25px;padding-left: 1px;}
