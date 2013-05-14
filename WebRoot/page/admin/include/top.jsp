@@ -13,6 +13,17 @@
 						</div>
 					</li>
 				</ul>
+				<ul class="nav pull-right">
+					<li>
+						<a href="/cn/" target="_blank">中文</a>
+					</li>
+					<li>
+						<a href="/en/" target="_blank">英文</a>
+					</li>
+				</ul>
+				<ul class="pull-right">
+				<a class="brand" style="padding: 8px 0 12px;">预览</a>
+				</ul>
 			</div>
 		</div>
 	</div>

@@ -20,18 +20,10 @@
 		    	 <%@ include file="/page/admin/include/menu.jsp" %>
 		    </div>
 		    <div class="span12">
-		    	<div class="navbar">
-		    		<div class="navbar-inner">
-						<div class="container">
-							<a href="javascript:void(0);" class="brand">用户管理</a>
-							<div class="nav-collapse">
-								<ul class="nav">
-									<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/user_add.action')" value="新增"/></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-		    	</div>
+				<ul class="breadcrumb">
+				    <li class="active">用户管理</li>
+					<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/user_add.action')" value="新增"/></li>
+				</ul>
 		    	<div class="data-list">
 		    	    <table class="table table-striped table-bordered table-condensed">
 			    	    <tr>

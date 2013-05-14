@@ -13,13 +13,10 @@
 		    	 <%@ include file="/page/admin/include/menu.jsp" %>
 		    </div>
 		    <div class="span12">
-		    	<div class="navbar">
-		    		<div class="navbar-inner">
-							<div class="container">
-							<a href="javascript:void(0);" class="brand">菜单管理 >> 排序</a>
-						</div>
-					</div>
-		    	</div>
+				<ul class="breadcrumb">
+				    <li><a href="/admin/menu_list.action">菜单管理</a><span class="divider"> /</span></li>
+				    <li class="active">链接设置</li>
+				</ul>
 		    	<form method="post" action="/admin/menu_setUrl.action">
 	    	    <table class="table table-bordered table-condensed">
 	    	    	<tr>

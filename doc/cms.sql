@@ -3,7 +3,7 @@
 -- Server version:               5.5.27 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2013-05-13 17:33:43
+-- Date/time:                    2013-05-14 17:14:13
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `Image` (
   `creator` varchar(20) NOT NULL,
   `createTime` varchar(20) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=gb2312 COMMENT='文件上传表';
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=gb2312 COMMENT='文件上传表';
 
 -- Dumping data for table cms.Image: ~32 rows (approximately)
 /*!40000 ALTER TABLE `Image` DISABLE KEYS */;
@@ -88,7 +88,30 @@ INSERT INTO `Image` (`id`, `saveFile`, `name`, `type`, `lang`, `creator`, `creat
 	(29, '201305/13103200010.png', '1.png', 1, 1, '管理员', '2013-05-13 10:32:10'),
 	(30, '201305/13103300009.jpg', 'Chrysanthemum.jpg', 1, 1, '管理员', '2013-05-13 10:33:09'),
 	(31, '201305/13103300028.jpg', 'Hydrangeas.jpg', 1, 1, '管理员', '2013-05-13 10:33:28'),
-	(32, '201305/13112500013.jpg', '活性炭雕.jpg', 1, 1, '管理员', '2013-05-13 11:25:13');
+	(32, '201305/13112500013.jpg', '活性炭雕.jpg', 1, 1, '管理员', '2013-05-13 11:25:13'),
+	(33, '201305/14141100009.jpg', '1-12121G53530.jpg', 5, 0, '管理员', '2013-05-14 14:11:09'),
+	(34, '201305/14141700021.jpg', '5900523_143830081572_2.jpg', 5, 0, '管理员', '2013-05-14 14:17:21'),
+	(35, '201305/14141700035.jpg', '1-12121G53530.jpg', 5, 0, '管理员', '2013-05-14 14:17:35'),
+	(36, '201305/14141900005.jpg', '1-12121G53530.jpg', 5, 0, '管理员', '2013-05-14 14:19:05'),
+	(37, '201305/14141900030.jpg', '3781343_144710048593_2.jpg', 5, 0, '管理员', '2013-05-14 14:19:30'),
+	(38, '201305/14141900046.jpg', '3546312_103013013206_2.jpg', 5, 0, '管理员', '2013-05-14 14:19:46'),
+	(39, '201305/14142000010.jpg', '3781343_144710048593_2.jpg', 5, 0, '管理员', '2013-05-14 14:20:10'),
+	(40, '201305/14142200010.jpg', '6062870_035324015793_2.jpg', 5, 0, '管理员', '2013-05-14 14:22:10'),
+	(41, '201305/14142600035.jpg', '3781343_144710048593_2.jpg', 5, 0, '管理员', '2013-05-14 14:26:35'),
+	(42, '201305/14142700038.jpg', 'e9d63261fb4132b6257fb532.jpg', 5, 0, '管理员', '2013-05-14 14:27:38'),
+	(43, '201305/14143700053.jpg', '5900523_143830081572_2.jpg', 5, 0, '管理员', '2013-05-14 14:37:53'),
+	(44, '201305/14143800055.jpg', '5900523_143830081572_2.jpg', 5, 0, '管理员', '2013-05-14 14:38:55'),
+	(45, '201305/14144000030.jpg', '5900523_143830081572_2.jpg', 5, 0, '管理员', '2013-05-14 14:40:30'),
+	(46, '201305/14144100004.jpg', '5900523_143830081572_2.jpg', 5, 0, '管理员', '2013-05-14 14:41:04'),
+	(47, '201305/14144100015.jpg', '5900523_143830081572_2.jpg', 5, 0, '管理员', '2013-05-14 14:41:15'),
+	(48, '201305/14144100018.jpg', '1-12121G53530.jpg', 5, 0, '管理员', '2013-05-14 14:41:18'),
+	(49, '201305/14144100020.jpg', '1-12121G53531-50.jpg', 5, 0, '管理员', '2013-05-14 14:41:20'),
+	(50, '201305/14144500042.jpg', '1-12121G53530.jpg', 5, 0, '管理员', '2013-05-14 14:45:42'),
+	(51, '201305/14144500044.jpg', '1-12121G53531-50.jpg', 5, 0, '管理员', '2013-05-14 14:45:44'),
+	(52, '201305/14144600020.jpg', '1-12121G53530.jpg', 5, 0, '管理员', '2013-05-14 14:46:20'),
+	(53, '201305/14144600022.jpg', '1-12121G53531-50.jpg', 5, 0, '管理员', '2013-05-14 14:46:22'),
+	(54, '201305/14163100026.jpg', '6062870_035324015793_2.jpg', 2, 0, '管理员', '2013-05-14 16:31:26'),
+	(55, '201305/14163100026.png', '6109148_155907604000_2.png', 2, 0, '管理员', '2013-05-14 16:31:26');
 /*!40000 ALTER TABLE `Image` ENABLE KEYS */;
 
 
@@ -201,5 +224,22 @@ CREATE TABLE IF NOT EXISTS `User` (
 INSERT INTO `User` (`id`, `username`, `name`, `password`, `createTime`) VALUES
 	(1, 'admin', '管理员', '123456', '2013-05-06 16:20:44');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
+
+
+-- Dumping structure for table cms.WebSite
+DROP TABLE IF EXISTS `WebSite`;
+CREATE TABLE IF NOT EXISTS `WebSite` (
+  `title` varchar(500) NOT NULL COMMENT '标题',
+  `description` varchar(5000) NOT NULL COMMENT '描述',
+  `keywords` varchar(5000) NOT NULL COMMENT '关键词',
+  `topImg` varchar(100) NOT NULL COMMENT '顶部图片',
+  `bottomImg` varchar(100) NOT NULL COMMENT '底部图片'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='网站信息';
+
+-- Dumping data for table cms.WebSite: ~0 rows (approximately)
+/*!40000 ALTER TABLE `WebSite` DISABLE KEYS */;
+INSERT INTO `WebSite` (`title`, `description`, `keywords`, `topImg`, `bottomImg`) VALUES
+	('我是一个网站', 'asdfwebSiteService', 'webSiteService', '201305/14144600020.jpg', '201305/14144600022.jpg');
+/*!40000 ALTER TABLE `WebSite` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

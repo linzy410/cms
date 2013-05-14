@@ -77,19 +77,11 @@
 		    	 <%@ include file="/page/admin/include/menu.jsp" %>
 		    </div>
 		    <div class="span12">
-		    	<div class="navbar">
-		    		<div class="navbar-inner">
-							<div class="container">
-							<a href="javascript:void(0);" class="brand">图片空间</a>
-							<div class="nav-collapse">
-								<ul class="nav">
-									<li><input type="button" class="btn btn-primary" onclick="deleteImage();" value="批量删除"/></li>
-									<li style="padding-left: 5px;"><input type="button" class="btn btn-primary" onclick="showUpload();" value="图片上传"/></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-		    	</div>
+				<ul class="breadcrumb">
+				    <li>图片空间</li>
+				    <li><input type="button" class="btn btn-primary" onclick="deleteImage();" value="批量删除"/></li>
+					<li><input type="button" class="btn btn-primary" onclick="showUpload();" value="图片上传"/></li>
+				</ul>
 		    	<div class="data-list">
 					<ul class="thumbnails">
 		    	    	<s:iterator value="page.elements" status="st">

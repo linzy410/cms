@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="webSite">
+	<typeAlias alias="webSite" type="com.his.cms.model.WebSite" />
+
+	<insert id="addWebSite" parameterClass="webSite">
+		insert into WebSite (title,description,keywords,topImg,bottomImg) values (#title#,#description#,#keywords#,#topImg#,#bottomImg#)
+	</insert>
+	
+	<select id="findWebSite" resultClass="webSite">
+		select * from WebSite	
+	</select>
+</sqlMap>

@@ -13,13 +13,10 @@
 		    	 <%@ include file="/page/admin/include/menu.jsp" %>
 		    </div>
 		    <div class="span12">
-		    	<div class="navbar">
-		    		<div class="navbar-inner">
-							<div class="container">
-							<a href="javascript:void(0);" class="brand">用户管理 >> <s:if test="user==null || user.id==0">新增</s:if><s:else>编辑</s:else></a>
-						</div>
-					</div>
-		    	</div>
+				<ul class="breadcrumb">
+				    <li><a href="/admin/user_list.action">用户管理</a><span class="divider"> /</span></li>
+				    <li class="active"><s:if test="user==null || user.id==0">新增</s:if><s:else>编辑</s:else></li>
+				</ul>
 		    	<div>
     				<div class="alert alert-error" style="width:98%;"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
 				    <form class="form-horizontal" method="post" action="/admin/<s:if test="user==null || user.id==0">user_save.action</s:if><s:else>user_update.action</s:else>">

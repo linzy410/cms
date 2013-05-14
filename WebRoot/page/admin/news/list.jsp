@@ -42,24 +42,18 @@
 		    	 <%@ include file="/page/admin/include/menu.jsp" %>
 		    </div>
 		    <div class="span12">
-		    	<div class="navbar">
-		    		<div class="navbar-inner">
-							<div class="container">
-							<a href="javascript:void(0);" class="brand">新闻管理</a>
-							<div class="nav-collapse">
-								<ul class="nav">
-								<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/news_add.action')" value="新增"/></li>
-								<li style="padding-left:5px;"><input type="button" class="btn btn-primary" onclick="removeMulti();" value="批量删除"/></li>
-								</ul>
-								<form id="f1" class="navbar-form pull-left" method="post" action="/admin/news_list.action">
-									<input type="hidden" name="typeQuery" id="hTypeQuery" value="${typeQuery}"/> 
-									<input type="text" name="titleQuery" placeholder="请输入标题" value="${titleQuery}" class="span3 searchIpt" />
-									<input type="submit" class="btn searchBtn" value="搜索"/>
-								</form>
-							</div>
-						</div>
-					</div>
-		    	</div>
+				<ul class="breadcrumb">
+				    <li class="active"><a href="/admin/news_list.action">新闻管理</a></li>
+					<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/news_add.action')" value="新增"/></li>
+					<li><input type="button" class="btn btn-primary" onclick="removeMulti();" value="批量删除"/></li>
+					<li>
+						<form id="f1" class="navbar-form" method="post" action="/admin/news_list.action">
+							<input style="margin-top:0px;" type="hidden" name="typeQuery" id="hTypeQuery" value="${typeQuery}"/> 
+							<input style="margin-top:0px;" type="text" name="titleQuery" placeholder="请输入标题" value="${titleQuery}" class="span3 searchIpt" />
+							<input style="margin-top:0px;" type="submit" class="btn searchBtn" value="搜索"/>
+						</form>
+					</li>
+				</ul>
 		    	<div class="data-list">
 		    	    <table class="table table-striped table-bordered table-condensed">
 			    	    <tr>

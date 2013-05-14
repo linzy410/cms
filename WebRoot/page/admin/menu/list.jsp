@@ -21,20 +21,12 @@
 		    	 <%@ include file="/page/admin/include/menu.jsp" %>
 		    </div>
 		    <div class="span12">
-		    	<div class="navbar">
-		    		<div class="navbar-inner">
-							<div class="container">
-							<a href="javascript:void(0);" class="brand">菜单管理</a>
-							<div class="nav-collapse">
-								<ul class="nav">
-									<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/menu_add.action')" value="新增"/></li>
-									<li style="padding-left: 5px;"><input type="button" class="btn btn-primary" onclick="goAction('/admin/menu_order.action')" value="排序"/></li>
-									<li style="padding-left: 5px;"><input type="button" class="btn btn-primary" onclick="goAction('/admin/menu_url.action')" value="链接设置"/></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-		    	</div>
+		    	<ul class="breadcrumb">
+				    <li class="active">菜单管理</li>
+					<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/menu_add.action')" value="新增"/></li>
+					<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/menu_order.action')" value="排序"/></li>
+					<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/menu_url.action')" value="链接设置"/></li>
+				</ul>
 		    	<div class="data-list">
 		    	    <table class="table table-striped table-bordered table-condensed">
 			    	    <tr>

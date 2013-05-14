@@ -19,6 +19,7 @@ public interface IConstants {
 	public static int IMAGE_TYPE_SPACE = 2;
 	public static int IMAGE_TYPE_AD = 3;
 	public static int IMAGE_TYPE_MENU = 4;
+	public static int IMAGE_TYPE_WEBSITE_BANNER = 5;
 	
 	/** 菜单类别  1=单张页面  2=特定链接 3=新闻资讯类*/
 	public static int MENU_TYPE_PAGE = 1; 

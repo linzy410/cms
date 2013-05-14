@@ -40,13 +40,10 @@
 		    	 <%@ include file="/page/admin/include/menu.jsp" %>
 		    </div>
 		    <div class="span12">
-		    	<div class="navbar">
-		    		<div class="navbar-inner">
-							<div class="container">
-							<a href="javascript:void(0);" class="brand">广告管理 >> <s:if test="ad==null || ad.id==0">新增</s:if><s:else>编辑</s:else></a>
-						</div>
-					</div>
-		    	</div>
+		    	<ul class="breadcrumb">
+		    	    <li><a href="/admin/ad_list.action">广告管理</a></li><span class="divider"> /</span>
+		    	    <li class="active"><s:if test="ad==null || ad.id==0">新增</s:if><s:else>编辑</s:else></li>
+		     	</ul>
 		    	<div>
 				    <form class="form-horizontal" method="post" action="/admin/<s:if test="ad.id==0">ad_save.action</s:if><s:else>ad_update.action</s:else>">
 				    	<input type="hidden" name="id" value="${ad.id}"/>

@@ -47,13 +47,10 @@
 		    	 <%@ include file="/page/admin/include/menu.jsp" %>
 		    </div>
 		    <div class="span12">
-		    	<div class="navbar">
-		    		<div class="navbar-inner">
-							<div class="container">
-							<a href="javascript:void(0);" class="brand">菜单管理 >> <s:if test="menu==null || menu.id==0">新增</s:if><s:else>编辑</s:else></a>
-						</div>
-					</div>
-		    	</div>
+				<ul class="breadcrumb">
+				    <li><a href="/admin/menu_list.action">菜单管理</a><span class="divider"> /</span></li>
+				    <li class="active"><s:if test="menu==null || menu.id==0">新增</s:if><s:else>编辑</s:else></li>
+				</ul>
 		    	<div>
 				    <form class="form-horizontal" method="post" action="/admin/<s:if test="menu.id==0">menu_save.action</s:if><s:else>menu_update.action</s:else>">
 				    	<input type="hidden" name="id" value="${menu.id}"/>
@@ -93,8 +90,8 @@
 						    <div class="control-group">
 							    <label class="control-label" for="input01">是否显示</label>
 							    <div class="controls">
-					                <label class="radio"><input name="isShow" value="0" <s:if test="menu.isShow==0">checked=""</s:if> type="radio"/>显示</label>
-					                <label class="radio"><input name="isShow" value="1" <s:if test="menu.isShow==1">checked=""</s:if> type="radio"/>隐藏</label>
+					                <label class="radio inline"><input name="isShow" value="0" <s:if test="menu.isShow==0">checked=""</s:if> type="radio"/>显示</label>
+					                <label class="radio inline"><input name="isShow" value="1" <s:if test="menu.isShow==1">checked=""</s:if> type="radio"/>隐藏</label>
 							    </div>
 						    </div>
 						    <div class="controls" style="padding-top:10px;">

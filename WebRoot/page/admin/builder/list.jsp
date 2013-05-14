@@ -21,13 +21,9 @@
 			    	 <%@ include file="/page/admin/include/menu.jsp" %>
 			    </div>
 			    <div class="span12">
-			    	<div class="navbar">
-			    		<div class="navbar-inner">
-								<div class="container">
-								<a href="javascript:void(0);" class="brand">生成器管理</a>
-							</div>
-						</div>
-			    	</div>
+					<ul class="breadcrumb">
+					    <li class="active">生成器管理</li>
+					</ul>
 					<div class="data-list">
 			    	    <table class="table table-striped table-bordered table-condensed">
 				    	    <tr>

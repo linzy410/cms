@@ -48,13 +48,10 @@
 		    	 <%@ include file="/page/admin/include/menu.jsp" %>
 		    </div>
 		    <div class="span12">
-		    	<div class="navbar">
-		    		<div class="navbar-inner">
-							<div class="container">
-							<a href="javascript:void(0);" class="brand">菜单管理 >> <s:if test="content==null || content.id==0">新增</s:if><s:else>编辑</s:else></a>
-						</div>
-					</div>
-		    	</div>
+				<ul class="breadcrumb">
+				    <li><a href="/admin/menu_list.action">菜单管理</a><span class="divider"> /</span></li>
+				    <li class="active">内容编辑</li>
+				</ul>
 		    	<div>
 				    <form class="form-horizontal" method="post" action="/admin/menu_updateContent.action">
 				    	<input type="hidden" name="content.menuId" value="${content.menuId}"/>

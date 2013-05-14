@@ -21,6 +21,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
 import com.his.cms.service.MenuService;
+import com.his.cms.service.WebSiteService;
 import com.his.cms.util.Global;
 import com.his.cms.util.IConstants;
 
@@ -33,6 +34,7 @@ import com.his.cms.util.IConstants;
 public abstract class HtmlBuilder {
 	
 	private MenuService menuService = (MenuService) Global.getBean("menuService");
+	private WebSiteService webSiteService = (WebSiteService) Global.getBean("webSiteService");
 	protected String relativeFolderPath = "relativeFolderPath";
 	protected String activeMenuId = "activeMenuId";
 	protected String en = "en";
@@ -59,10 +61,12 @@ public abstract class HtmlBuilder {
 		Set<String> keySet = contextMap.keySet();
 		for (String filename : keySet) {
 			VelocityContext context = (VelocityContext) contextMap.get(filename);
+			// -menu-*menuId* 为了区分菜单生成时contextMap都为index.html
 			if (filename.indexOf("-menu-") >= 0) {
 				filename = filename.substring(0, filename.indexOf("-menu-"));
 			}
 			if (context != null) {
+				context.put("webSite", webSiteService.getWebSite());
 				context.put("menus", menuService.getShowMenuList());
 				buildFiles(template, context, filename, lang);
 			}

@@ -41,7 +41,7 @@ public class LoginFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		String uri = request.getRequestURI();
 		
-		if ("/admin".equals(uri)) {
+		if ("/admin".equals(uri) || "/admin/".equals(uri)) {
 			response.sendRedirect("/admin.action");
 			return ;
 		}
