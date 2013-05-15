@@ -18,12 +18,12 @@
 				    <li class="active"><s:if test="user==null || user.id==0">新增</s:if><s:else>编辑</s:else></li>
 				</ul>
 		    	<div>
-    				<div class="alert alert-error" style="width:98%;"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
+    				<div class="alert alert-error action-error"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
 				    <form class="form-horizontal" method="post" action="/admin/<s:if test="user==null || user.id==0">user_save.action</s:if><s:else>user_update.action</s:else>">
 				    	<input type="hidden" name="id" value="${user.id}"/>
 					    <fieldset>
 							<div class="control-group">
-						   		<label class="control-label">用户名</label>
+						   		<label class="control-label"><span class="required-input">*</span>用户名</label>
 							    	<div class="controls">
 							    	<s:if test="user==null || user.id==0">
 									    <input type="text" class="input-xlarge" placeholder="请输入用户名，4-20位长度" name="username" value="${user.username}"/>
@@ -33,20 +33,20 @@
 							    </div>
 						    </div>
 							<div class="control-group">
-						   		<label class="control-label">姓名</label>
+						   		<label class="control-label"><span class="required-input">*</span>姓名</label>
 							    <div class="controls">
 								    <input type="text" class="input-xlarge" placeholder="请输入姓名" name="name" value="${user.name}"/>
 							    </div>
 						    </div>
 							<div class="control-group">
-						   		<label class="control-label">密码</label>
+						   		<label class="control-label"><span class="required-input">*</span>密码</label>
 							    <div class="controls">
 								    <input type="password" class="input-xlarge" placeholder="请输入密码，6位以上长度" name="password"/>
 								    <s:if test="user!=null && user.id>0"><p class="help-block">如需修改密码请输入密码</p></s:if>
 							    </div>
 						    </div>
 							<div class="control-group">
-						   		<label class="control-label">密码确认</label>
+						   		<label class="control-label"><span class="required-input">*</span>密码确认</label>
 							    <div class="controls">
 								    <input type="password" class="input-xlarge" placeholder="请再次输入密码" name="checkPassword"/>
 							    </div>

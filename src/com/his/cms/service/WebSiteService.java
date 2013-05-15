@@ -20,8 +20,8 @@ public class WebSiteService {
 	
 	private WebSiteDao webSiteDao;
 	
-	public WebSite getWebSite() {
-		WebSite webSite = webSiteDao.findWebSite();
+	public WebSite getWebSite(int lang) {
+		WebSite webSite = webSiteDao.findWebSite(lang);
 		if (webSite == null) {
 			webSite = new WebSite();
 			webSite.setTitle(StringUtils.EMPTY);
@@ -29,6 +29,7 @@ public class WebSiteService {
 			webSite.setKeywords(StringUtils.EMPTY);
 			webSite.setTopImg(StringUtils.EMPTY);
 			webSite.setBottomImg(StringUtils.EMPTY);
+			webSite.setLang(lang);
 			webSiteDao.addWebSite(webSite);
 		}
 		return webSite;
@@ -45,7 +46,7 @@ public class WebSiteService {
 		updateMap.addField("keywords", webSite.getKeywords());
 		updateMap.addField("topImg", webSite.getTopImg());
 		updateMap.addField("bottomImg", webSite.getBottomImg());
-		updateMap.addWhere("1", "1");
+		updateMap.addWhere("lang", webSite.getLang());
 		webSiteDao.update(updateMap);
 	}
 

@@ -45,6 +45,7 @@
 		    	    <li class="active"><s:if test="ad==null || ad.id==0">新增</s:if><s:else>编辑</s:else></li>
 		     	</ul>
 		    	<div>
+		    		<div class="alert alert-error action-error"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
 				    <form class="form-horizontal" method="post" action="/admin/<s:if test="ad.id==0">ad_save.action</s:if><s:else>ad_update.action</s:else>">
 				    	<input type="hidden" name="id" value="${ad.id}"/>
 				    	<input type="hidden" name="imgId" id="imgId" value="${ad.imgId}"/>
@@ -56,9 +57,9 @@
 							    </div>
 						    </div>
 							<div class="control-group">
-							    <label class="control-label">图片</label>
+							    <label class="control-label"><span class="required-input">*</span>图片</label>
 							    <div class="controls">
-								    <input type="file" name="uploadify" id="uploadify" />
+								    <input type="file" name="uploadify" id="uploadify" />最佳尺寸：宽=830px 高=427px
 							    	<div class="data-list">
 										<ul class="thumbnails">
 											<li class="span3"></li>

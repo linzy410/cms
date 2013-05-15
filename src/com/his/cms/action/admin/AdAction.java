@@ -36,10 +36,20 @@ public class AdAction extends BasePageAction implements ModelDriven<Ad> {
 	}
 	
 	public String save() throws Exception {
+		validateAd();
+		if (hasActionErrors()) {
+			return INPUT;
+		}
 		ad.setCreateTime(super.getCurrentTime());
 		ad.setCreator(super.getCreator());
 		adService.saveAd(ad);
 		return LISTACTION;
+	}
+	
+	private void validateAd() {
+		if (ad.getImgId() == 0) {
+			super.addActionError("请上传一张图片");
+		}
 	}
 	
 	public String edit() throws Exception{
@@ -48,6 +58,10 @@ public class AdAction extends BasePageAction implements ModelDriven<Ad> {
 	}
 	
 	public String update() throws Exception {
+		validateAd();
+		if (hasActionErrors()) {
+			return INPUT;
+		}
 		adService.updateAd(ad);
 		return LISTACTION;
 	}

@@ -52,23 +52,24 @@
 				    <li class="active"><s:if test="menu==null || menu.id==0">新增</s:if><s:else>编辑</s:else></li>
 				</ul>
 		    	<div>
+		    		<div class="alert alert-error action-error"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
 				    <form class="form-horizontal" method="post" action="/admin/<s:if test="menu.id==0">menu_save.action</s:if><s:else>menu_update.action</s:else>">
 				    	<input type="hidden" name="id" value="${menu.id}"/>
 					    <fieldset>
 							<div class="control-group">
-						   		<label class="control-label">中文名称</label>
+						   		<label class="control-label"><span class="required-input">*</span>中文名称</label>
 							    <div class="controls">
 								    <input type="text" class="input-xlarge" placeholder="请输入中文名称" name="name" value="${menu.name}"/>
 							    </div>
 						    </div>
 							<div class="control-group">
-							    <label class="control-label">英文名称</label>
+							    <label class="control-label"><span class="required-input">*</span>英文名称</label>
 							    <div class="controls">
 								    <input type="text" class="input-xlarge" placeholder="请输入英文名称" name="nameEn" value="${menu.nameEn}"/>
 							    </div>
 						    </div>
 						    <div class="control-group">
-							    <label class="control-label" for="input01">菜单类别</label>
+							    <label class="control-label" for="input01"><span class="required-input">*</span>菜单类别</label>
 							    <div class="controls">
 						            <label class="radio" title="该菜单详细页面仅有一张页面组成"><input name="type" value="1" <s:if test="menu.type==1">checked=""</s:if> type="radio"/>单张页面内容</label>
 						            <label class="radio" title="指向一个特定的链接"><input name="type" value="2" <s:if test="menu.type==2">checked=""</s:if> type="radio"/>指定链接</label>
@@ -79,7 +80,7 @@
 						    	<input type="hidden" name="imgId" id="imgId" value="${menu.imgId}"/>
 							    <label class="control-label">图片</label>
 							    <div class="controls">
-								    <input type="file" name="uploadify" id="uploadify" />
+								    <input type="file" name="uploadify" id="uploadify" />最佳尺寸：宽=157px 高=374px
 							    	<div class="data-list">
 										<ul class="thumbnails">
 											<li class="span3"></li>

@@ -18,7 +18,7 @@ public class WebSiteDao extends BaseDao {
 		super.getSqlMapClientTemplate().insert("webSite.addWebSite", webSite);
 	}
 	
-	public WebSite findWebSite() {
-		return (WebSite) super.getSqlMapClientTemplate().queryForObject("webSite.findWebSite");
+	public WebSite findWebSite(int lang) {
+		return (WebSite) super.getSqlMapClientTemplate().queryForObject("webSite.findWebSite", lang);
 	}
 }

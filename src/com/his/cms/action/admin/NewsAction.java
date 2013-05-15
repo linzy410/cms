@@ -5,6 +5,8 @@ package com.his.cms.action.admin;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.his.cms.action.BasePageAction;
 import com.his.cms.model.Menu;
 import com.his.cms.model.News;
@@ -42,11 +44,23 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	}
 	
 	public String save() throws Exception {
+		validateNews();
+		if (hasActionErrors()) {
+			menus = menuService.getMenuListByType(IConstants.MENU_TYPE_NEWS_LIST);
+			return INPUT;
+		}
 		news.setCreateTime(super.getCurrentTime());
 		news.setCreator(super.getCreator());
 		news.setLang(getLang());
 		newsService.saveNews(news);
 		return LISTACTION;
+	}
+	
+	private void validateNews() {
+		if (StringUtils.isEmpty(news.getTitle()))
+			super.addActionError("标题不能为空");
+		if (StringUtils.isEmpty(news.getContent()))
+			super.addActionError("内容不能为空");
 	}
 	
 	public String uploadImage() throws Exception {
@@ -59,12 +73,18 @@ public class NewsAction extends BasePageAction implements ModelDriven<News> {
 	}
 	
 	public String edit() throws Exception {
+		
 		news = newsService.getNewsById(selectedId);
 		menus = menuService.getMenuListByType(IConstants.MENU_TYPE_NEWS_LIST);
 		return INPUT;
 	}
 	
 	public String update() throws Exception {
+		validateNews();
+		if (hasActionErrors()) {
+			menus = menuService.getMenuListByType(IConstants.MENU_TYPE_NEWS_LIST);
+			return INPUT;
+		}
 		newsService.updateNews(news);
 		return LISTACTION;
 	}

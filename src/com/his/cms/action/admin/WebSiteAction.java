@@ -5,6 +5,8 @@
 
 package com.his.cms.action.admin;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.his.cms.action.BasePageAction;
 import com.his.cms.model.WebSite;
 import com.his.cms.service.WebSiteService;
@@ -22,11 +24,20 @@ public class WebSiteAction extends BasePageAction implements ModelDriven<WebSite
 	private WebSite webSite = new WebSite();
 	
 	public String list() throws Exception {
-		webSite = webSiteService.getWebSite();
-		return SUCCESS;
+		webSite = webSiteService.getWebSite(super.getLang());
+		return INPUT;
 	}
 	
 	public String update() throws Exception {
+		if (StringUtils.isEmpty(webSite.getTitle()))
+			addActionError("网站标题不能为空");
+		if (StringUtils.isEmpty(webSite.getTopImg()))
+			addActionError("网站顶部banner不能为空");
+		if (StringUtils.isEmpty(webSite.getBottomImg()))
+			addActionError("网站底部banner不能为空");
+		if (hasActionErrors())
+			return INPUT;
+		webSite.setLang(super.getLang());
 		webSiteService.updateWebSite(webSite);
 		return LISTACTION;
 	}

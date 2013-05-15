@@ -27,6 +27,13 @@ import com.his.cms.util.IConstants;
 
 
 /**
+ * 
+ * 每一个VelocityContext必须包含以下元素
+ * 		activeMenuId  				当前导航菜单
+ * 		lang		  				语种
+ * 		relativeFolderPath(必要时)	文件生成路径的文件夹
+ * 
+ * 
  * @author linzheyan
  *
  * 2011-12-26
@@ -66,7 +73,11 @@ public abstract class HtmlBuilder {
 				filename = filename.substring(0, filename.indexOf("-menu-"));
 			}
 			if (context != null) {
-				context.put("webSite", webSiteService.getWebSite());
+				if (cn.equals(context.get("lang")))
+					context.put("webSite", webSiteService.getWebSite(IConstants.CN));
+				else
+					context.put("webSite", webSiteService.getWebSite(IConstants.EN));
+					
 				context.put("menus", menuService.getShowMenuList());
 				buildFiles(template, context, filename, lang);
 			}

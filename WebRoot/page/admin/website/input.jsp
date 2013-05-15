@@ -62,10 +62,11 @@
 		    	    <li class="active">网站基本信息</li>
 		     	</ul>
 		    	<div>
+		    		<div class="alert alert-error action-error"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
 				    <form class="form-horizontal" method="post" action="/admin/webSite_update.action">
 					    <fieldset>
 							<div class="control-group">
-						   		<label class="control-label">网站标题</label>
+						   		<label class="control-label"><span class="required-input">*</span>网站标题</label>
 							    <div class="controls">
 								    <input type="text" class="input-xxlarge" placeholder="请输入网站名称" name="title" value="${webSite.title}"/>
 							    </div>
@@ -84,9 +85,9 @@
 						    </div>
 						    <div class="control-group" id="div_top_img">
 						    	<input type="hidden" name="topImg" id="topImg" value="${webSite.topImg}"/>
-							    <label class="control-label">顶部banner背景图</label>
+							    <label class="control-label"><span class="required-input">*</span>顶部banner背景图</label>
 							    <div class="controls">
-								    <input type="file" name="uploadify1" id="uploadify1"/>最佳尺寸：宽=1146 高=152
+								    <input type="file" name="uploadify1" id="uploadify1"/>最佳尺寸：宽=1146px 高=152px
 							    	<div class="data-list">
 										<ul class="thumbnails">
 											<li class="span3" id="topImgShow"></li>
@@ -96,9 +97,9 @@
 						    </div>
 						    <div class="control-group" id="div_bottom_img">
 						    	<input type="hidden" name="bottomImg" id="bottomImg" value="${webSite.bottomImg}"/>
-							    <label class="control-label">底部banner背景图</label>
+							    <label class="control-label"><span class="required-input">*</span>底部banner背景图</label>
 							    <div class="controls">
-								    <input type="file" name="uploadify2" id="uploadify2"/>
+								    <input type="file" name="uploadify2" id="uploadify2"/>最佳尺寸：宽=1146px 高=119px
 							    	<div class="data-list">
 										<ul class="thumbnails">
 											<li class="span3" id="bottomImgShow"></li>

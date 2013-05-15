@@ -3385,7 +3385,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini { *
 	float: none;
 	padding: 10px 10px 11px;
 	line-height: 19px;
-	color: #999999;
+	color: #FFFFFF;
 	text-decoration: none;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -3499,6 +3499,8 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini { *
 	right: 13px;
 }
 
+.span12 .breadcrumb {position: relative;}
+
 .breadcrumb {
 	padding: 7px 14px;
 	margin: 0 0 18px;
@@ -3529,6 +3531,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini { *
 	/* IE7 inline-block hack */ *
 	zoom: 1;
 	text-shadow: 0 1px 0 #ffffff;
+	line-height: 26px;
 }
 
 .breadcrumb .divider {
@@ -4610,8 +4613,8 @@ to {
 }
 
 .hideAd {
-	background-image: url("../img/20130330C.png");
-	background-position: 0 -104px;
+	background-image: url("/img/20130330C.png");
+	background-position: 0 -46px;
 	background-repeat: no-repeat;
 	position: absolute;
 	height: 40px;
@@ -4619,8 +4622,12 @@ to {
 	right: -8px;
 	top: -5px;
 	width: 52px;
-	font-size: 16px;
-	color: #FFFFFF;
+	font-size: 14px;
 	text-align: center;
 	font-family: "microsoft yahei";
+}
+
+.required-input {
+	color: #DD1144;
+	margin-right: 2px;
 }

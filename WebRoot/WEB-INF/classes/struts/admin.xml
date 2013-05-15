@@ -41,7 +41,7 @@
 			<result name="listAction" type="redirect">/admin/builder_list.action?operTag=${operTag}</result>
 		</action>
 		<action name="webSite_*" class="com.his.cms.action.admin.WebSiteAction" method="{1}">
-			<result name="success">/page/admin/website/list.jsp</result>
+			<result name="input">/page/admin/website/input.jsp</result>
 			<result name="listAction" type="redirect">/admin/webSite_list.action?operTag=${operTag}</result>
 		</action>
 	</package>

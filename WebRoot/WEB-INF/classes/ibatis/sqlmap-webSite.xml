@@ -6,10 +6,10 @@
 	<typeAlias alias="webSite" type="com.his.cms.model.WebSite" />
 
 	<insert id="addWebSite" parameterClass="webSite">
-		insert into WebSite (title,description,keywords,topImg,bottomImg) values (#title#,#description#,#keywords#,#topImg#,#bottomImg#)
+		insert into WebSite (title,description,keywords,topImg,bottomImg,lang) values (#title#,#description#,#keywords#,#topImg#,#bottomImg#,#lang#)
 	</insert>
 	
-	<select id="findWebSite" resultClass="webSite">
-		select * from WebSite	
+	<select id="findWebSite" parameterClass="int" resultClass="webSite">
+		select * from WebSite where lang=#lang#
 	</select>
 </sqlMap>

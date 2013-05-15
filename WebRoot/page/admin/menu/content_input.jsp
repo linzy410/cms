@@ -63,13 +63,13 @@
 							    </div>
 						    </div>
 						    <div class="control-group">
-							    <label class="control-label" for="input01">内容</label>
+							    <label class="control-label" for="input01"><span class="required-input">*</span>内容</label>
 							    <div class="controls">
 								    <textarea name="content.content" id="text">${content.content}</textarea>
 							    </div>
 						    </div>
 						    <div class="control-group">
-							    <label class="control-label" for="input01">英文内容</label>
+							    <label class="control-label" for="input01"><span class="required-input">*</span>英文内容</label>
 							    <div class="controls">
 								    <textarea name="content.contentEn" id="textEn">${content.contentEn}</textarea>
 							    </div>

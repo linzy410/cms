@@ -5,6 +5,8 @@ package com.his.cms.action.admin;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.his.cms.action.BasePageAction;
 import com.his.cms.model.Menu;
 import com.his.cms.model.MenuContent;
@@ -36,10 +38,25 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	}
 	
 	public String save() throws Exception {
+		validateMenu();
+		if (hasActionErrors()) {
+			return INPUT;
+		}
 		menu.setCreateTime(super.getCurrentTime());
 		menu.setCreator(super.getCreator());
 		menuService.saveMenu(menu);
 		return LISTACTION;
+	}
+	
+	private void validateMenu() {
+		if (StringUtils.isEmpty(menu.getName())) {
+			super.addActionError("菜单中文名称不能为空");
+		}
+		if (StringUtils.isEmpty(menu.getNameEn())) {
+			super.addActionError("菜单英文名称不能为空");
+		}
+		if (menu.getType() == 0)
+			super.addActionError("请选择一项类别");
 	}
 	
 	public String remove() throws Exception {
@@ -53,6 +70,9 @@ public class MenuAction extends BasePageAction implements ModelDriven<Menu> {
 	}
 	
 	public String update() throws Exception {
+		validateMenu();
+		if (hasActionErrors())
+			return INPUT;
 		menuService.updateMenu(menu);
 		return LISTACTION;
 	}

@@ -52,17 +52,18 @@
 				    <li class="active"><s:if test="news.id==0">新增</s:if><s:else>编辑</s:else></li>
 				</ul>
 		    	<div>
+		    		<div class="alert alert-error action-error"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
 				    <form class="form-horizontal" method="post" action="/admin/<s:if test="news.id==0">news_save.action</s:if><s:else>news_update.action</s:else>">
 				    	<input type="hidden" name="id" value="${news.id}"/>
 					    <fieldset>
 							<div class="control-group">
-							    <label class="control-label" for="input01">标题</label>
+							    <label class="control-label" for="input01"><span class="required-input">*</span>标题</label>
 							    <div class="controls">
 								    <input type="text" style="width:770px;" placeholder="请输入标题" name="title" value="${news.title}"/>
 							    </div>
 						    </div>
 							<div class="control-group">
-								<label for="select01" class="control-label">菜单类别</label>
+								<label for="select01" class="control-label"><span class="required-input">*</span>菜单类别</label>
 								<div class="controls">
 									<select name="type">
 										<option>请选择一个菜单</option>
@@ -73,7 +74,7 @@
 								</div>
 							</div>
 							<div class="control-group">
-							    <label class="control-label" for="input01">内容</label>
+							    <label class="control-label" for="input01"><span class="required-input">*</span>内容</label>
 							    <div class="controls">
 								    <textarea name="content" id="text">${news.content}</textarea>
 							    </div>

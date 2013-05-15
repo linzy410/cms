@@ -21,6 +21,7 @@ public class WebSite implements Serializable {
 	private String keywords;
 	private String topImg;
 	private String bottomImg;
+	private int lang;
 
 	public String getTitle() {
 		return title;
@@ -60,6 +61,14 @@ public class WebSite implements Serializable {
 
 	public void setBottomImg(String bottomImg) {
 		this.bottomImg = bottomImg;
+	}
+
+	public void setLang(int lang) {
+		this.lang = lang;
+	}
+
+	public int getLang() {
+		return lang;
 	}
 
 }
