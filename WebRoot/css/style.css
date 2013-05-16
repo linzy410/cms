@@ -114,8 +114,6 @@ a:focus{outline:none;-moz-outline-style:none}
 .main .main_btn a#gallery:hover{background-position:-160px -70px}
 .main .main_btn a#videos{background-position:0 -140px}
 .main .main_btn a#videos:hover{background-position:-160px -140px}
-.main .center a#news{display:block;width:302px;height:165px;margin-bottom:10px;overflow:hidden;background:url(/img/pc_news.gif) no-repeat;text-indent:-9999px}
-.main .center a#news:hover{background-position:0 -175px}
 .main .left{width:1146px;border:1px solid #DEC197}
 .main .left .partners{position:relative;float:left;display:inline;width:720px;height:360px;overflow:hidden}
 .main .left .partners li{position:absolute;display:none}

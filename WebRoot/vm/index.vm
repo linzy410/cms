@@ -28,6 +28,7 @@
 				#end
 				</div>
 				<div class="main_btn">
+					<a href="/${lang}/news/" style="margin-left:4px;" id="news">新闻</a> 
 					<a href="/${lang}/gallery/" id="gallery">图库</a> 
 				</div>
 			</div>
