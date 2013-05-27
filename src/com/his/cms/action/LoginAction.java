@@ -5,7 +5,6 @@
 
 package com.his.cms.action;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
@@ -17,6 +16,7 @@ import com.his.cms.model.User;
 import com.his.cms.service.UserService;
 import com.his.cms.util.CookieUtil;
 import com.his.cms.util.DES;
+import com.his.cms.util.IConstants;
 import com.his.cms.util.LangUtil;
 import com.his.cms.util.SessionUtil;
 
@@ -37,7 +37,7 @@ public class LoginAction extends BaseAction {
 	
 	public String execute() {
 		HttpServletRequest request = ServletActionContext.getRequest();
-		String code = CookieUtil.getCookieValue(request, "code");
+		String code = CookieUtil.getCookieValue(request, IConstants.KEY_COOKIE_USER_REMEMBER_LOGIN);
 		if (code != null) {
 			try {
 				int id = Integer.valueOf(DES.getInstance().decryptStr(code));
@@ -65,10 +65,8 @@ public class LoginAction extends BaseAction {
 		doSession(user);
 		if (remember == 1) {
 			try {
-			String code = DES.getInstance().encryptStr(String.valueOf(user.getId()));
-			Cookie cookie = new Cookie("code", code);
-			cookie.setMaxAge(60 * 60 * 24 * 365);
-			ServletActionContext.getResponse().addCookie(cookie);
+				String code = DES.getInstance().encryptStr(String.valueOf(user.getId()));
+				CookieUtil.setCookie(ServletActionContext.getResponse(), IConstants.KEY_COOKIE_USER_REMEMBER_LOGIN, code);
 			} catch (Exception e) {
 				log.error("密码记住功能出错", e);
 			}

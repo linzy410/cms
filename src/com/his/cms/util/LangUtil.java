@@ -15,7 +15,7 @@ public class LangUtil {
 	private static String KEY_LANG = "cms.lang";
 
 	public static void setLang(HttpServletRequest request, HttpServletResponse response, int lang) {
-		CookieUtil.setCookie(request, response, KEY_LANG, String.valueOf(lang));
+		CookieUtil.setCookie(response, KEY_LANG, String.valueOf(lang));
 	}
 
 	public static int getLang(HttpServletRequest request) {

@@ -12,7 +12,7 @@
 	<body>
 		<div class="row">
 			<div class="span7"  style="padding-top:180px;margin: 0 auto;float: none;">
-				<div class="alert alert-error" style="width:98%;"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
+				<div class="alert alert-error action-error" style="width:98%;"><a data-dismiss="alert" class="close">×</a><s:actionerror/></div>
 			    <form class="form-horizontal" method="post" action="/login_login.action">
 				    <fieldset>
 						<legend>登录</legend>

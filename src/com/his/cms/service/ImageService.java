@@ -138,6 +138,15 @@ public class ImageService {
 		}
 		imageDao.deleteImageByIds(imageIds);
 	}
+	
+	/**
+	 * 图片空间的图片数量
+	 * @param lang
+	 * @return
+	 */
+	public int getImageSpaceAllCount(int lang) {
+		return imageDao.findCountImage(IConstants.IMAGE_TYPE_SPACE, lang);
+	}
 
 	public void setImageDao(ImageDao imageDao) {
 		this.imageDao = imageDao;

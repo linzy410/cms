@@ -6,6 +6,7 @@
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li><a>欢迎你：${sessionScope.user.name}</a></li>
+					<li><a href="/logout.action">退出</a></li>
 					<li>
 						<div class="btn-group" data-toggle="buttons-radio">
 							<button class="btn btn-primary<s:if test='#session.lang=="0"'> active</s:if>" data-lang="0">中文版</button>

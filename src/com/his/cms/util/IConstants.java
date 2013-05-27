@@ -38,4 +38,6 @@ public interface IConstants {
 	public static String SLASH = "/";
 	
 	public static int AD_TYPE_BANNER = 1;
+	
+	public static String KEY_COOKIE_USER_REMEMBER_LOGIN = "remlogin";
 }

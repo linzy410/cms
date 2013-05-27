@@ -16,7 +16,6 @@ public class CookieUtil {
 	
 	/**
 	 * ¥Ê»ÎCookie
-	 * @param request
 	 * @param response
 	 * @param key   	key
 	 * @param value		÷µ
@@ -24,7 +23,7 @@ public class CookieUtil {
 	 * @param path		¬∑æ∂
 	 * @param domain	
 	 */
-	private static void setCookie(HttpServletRequest request, HttpServletResponse response, String key, String value, int expiry, String path, String domain){
+	private static void setCookie(HttpServletResponse response, String key, String value, int expiry, String path, String domain){
 		Cookie cookie = new Cookie(key, value);
 		cookie.setMaxAge(expiry);
 		if(path != null)
@@ -41,8 +40,8 @@ public class CookieUtil {
 	 * @param key
 	 * @param value
 	 */
-	public static void setCookie(HttpServletRequest request, HttpServletResponse response, String key, String value){
-		setCookie(request, response, key, value, -1, COOKIE_ROOT_PATH, null);
+	public static void setCookie(HttpServletResponse response, String key, String value){
+		setCookie(response, key, value, -1, COOKIE_ROOT_PATH, null);
 	}
 	
 	/**

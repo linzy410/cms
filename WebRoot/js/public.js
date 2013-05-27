@@ -30,7 +30,7 @@ function showSuccMsg() {
 		$(".alert").slideDown();
 		if (operTag == 'succ'){
 			setTimeout("$('.alert').slideUp();",2000);
-		//	setTimeout("$('.alert').remove()",2500);
+			setTimeout("$('.alert').remove()",2500);
 		}
 	}
 }

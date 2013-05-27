@@ -8,11 +8,12 @@
 			<result name="login">/page/base/login.jsp</result>
 			<result name="success" type="redirect">/admin.action</result>
 		</action>
-		<action name="home_*" class="com.his.cms.action.site.HomeAction" method="{1}">
-			<result name="home">/page/home/home.jsp</result>
-		</action>
 		<action name="admin_*" class="com.his.cms.action.AdminAction" method="{1}">
 			<result name="success">/page/admin/index.jsp</result>
+			<result name="lang">/admin.action</result>
+		</action>
+		<action name="logout_*" class="com.his.cms.action.LogoutAction" method="{1}">
+			<result name="success" type="redirect">/login.action</result>
 		</action>
 	</package>
 </struts>

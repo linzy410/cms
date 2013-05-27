@@ -44,6 +44,7 @@ public class NewsService {
 	public List<News> getNewsList(String title, int type, int lang) {
 		return newsDao.findAllNewsList(title, type, lang);
 	}
+	
 	public News getNewsById(int id) {
 		return newsDao.findNews(id);
 	}
@@ -58,6 +59,10 @@ public class NewsService {
 		newsDao.updateNews(news);
 	}
 
+	/**
+	 * 处理列表时所展示图片和摘要
+	 * @param news
+	 */
 	private void dealImgAndSummary(News news) {
 		String content = news.getContent();
 		Document doc = Jsoup.parse(content);
@@ -72,6 +77,10 @@ public class NewsService {
 			news.setSummary(text.substring(0, 180) + "...");
 		else
 			news.setSummary(text);
+	}
+	
+	public int getAllCount(int lang) {
+		return newsDao.findCountNews(null, 0, lang);
 	}
 	
 	public void remove(int id) {
