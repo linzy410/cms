@@ -39,11 +39,11 @@
 					}
 				});
 				
-				<s:if test="webSite.topImg!=null">
+				<s:if test="webSite.topImg!=null&&webSite.topImg!=''">
 				$("#topImgShow").append('<img style="height:150px;" src="/upload/${webSite.topImg}"/>');
 				$("#div_top_img").show();
 				</s:if>
-				<s:if test="webSite.bottomImg!=null">
+				<s:if test="webSite.bottomImg!=null&&webSite.bottomImg!=''">
 				$("#bottomImgShow").append('<img style="height:150px;" src="/upload/${webSite.bottomImg}"/>');
 				$("#div_bottom_img").show();
 				</s:if>

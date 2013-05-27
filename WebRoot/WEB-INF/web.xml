@@ -23,6 +23,9 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<listener>
+		<listener-class>com.his.cms.BootListener</listener-class>
+	</listener>
 	
 	<filter>
 		<filter-name>loginFilter</filter-name>

@@ -85,6 +85,7 @@ public class MenuService {
 			content = new MenuContent();
 			content.setMenuId(menuId);
 			content.setContent(StringUtils.EMPTY);
+			content.setContentEn(StringUtils.EMPTY);
 			menuDao.addMenuContent(content);
 			content = menuDao.findMenuContent(menuId);
 		}
