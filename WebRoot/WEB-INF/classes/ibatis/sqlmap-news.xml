@@ -44,7 +44,7 @@
 		select * from News where id=#id#
 	</select>
 	
-	<select id="findCountNewsByType" parameterClass="int" resultClass="int">
+	<select id="findCountNewsByType" parameterClass="String" resultClass="int">
 		select count(*) from News where type=#type#
 	</select>
 </sqlMap>
