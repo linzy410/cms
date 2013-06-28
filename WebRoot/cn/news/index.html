@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -14,9 +13,20 @@
 </style>
 <script>
 $(function() {
-	$("#li_menu_10").addClass("current");
+	$("#li_menu_1").addClass("current");
 });
-</script>	</head>
+</script>		<script type="text/javascript">
+			// 隔行换色
+			$(function() {
+				$(".cn_newslist li").mouseover(function() {
+					$(this).addClass("hover");
+				}).mouseout(function() {
+					$(this).removeClass("hover");
+				})
+				$(".cn_newslist li:even").addClass("space");
+			})
+		</script>
+	</head>
 	<body>
 		<div class="box head">
 	<img src="/upload/201306/18125400033.jpg" width="1146" height="152"/>
@@ -36,16 +46,31 @@ $(function() {
 		<li><a href="/en/">English</a></li>
 	</ul>
 </div>		<div class="main">
-			<div class="left">
-				<div class="banner"><img src="/upload/201306/18130400019.jpg" width="157" height="374"></div>
-				<div class="cpage">
-				<div class="h20">
-				
-				</div>
-				</div>
-				<div class="clear"></div>
+			<div class="cpage2">
+				<div class="cleft">
+					<h2>News 最新资讯</h2>
+					<ul class="cn_newslist">
+											<li>
+							<a href="/cn/news/content-1.html"><img src="/upload/201306/28105500036.jpg" title='aa' class="pc" /></a>
+							<a href="/cn/news/content-1.html">
+								<h4>aa</h4>
+							</a>
+							<div class="des">a</div>
+							<em>Published：2013-06-28</em> <a href="/cn/news/content-1.html" title="阅读详情" class="more" ></a>
+						</li>
+										</ul>
+					<div class="pages clear">
+<a class="next" href="javascript:void(0);">Previous</a>
+	<a href="javascript:void(0);" class="hover">1</a>
+<a class="next" href="javascript:void(0);">Next</a>
+</div>				</div>
+				<div class="cright">
+	<div class="btn">
+		<a href="/cn/news/" id="news">新闻</a>
+		<a href="/cn/gallery/" id="gallery">图库</a>
+	</div>
+</div>				<div class="clear"></div>
 			</div>
-			<div class="clear"></div>
 		</div>
 		<div class="box clear">
 	<img src="/upload/201306/18125400039.jpg" width="1146" height="119"/>

@@ -78,9 +78,18 @@
 		    </div>
 		    <div class="span12">
 				<ul class="breadcrumb">
+					<s:if test="type==1">
+				    <li>新闻资讯图片管理</li>
+				    </s:if><s:else>
 				    <li>图片空间</li>
+				    </s:else>
 				    <li><input type="button" class="btn btn-primary" onclick="deleteImage();" value="批量删除"/></li>
 					<li><input type="button" class="btn btn-primary" onclick="showUpload();" value="图片上传"/></li>
+					<s:if test="type==1">
+					<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/image_list.action')" value="图片空间管理"/></li>
+					</s:if><s:else>
+					<li><input type="button" class="btn btn-primary" onclick="goAction('/admin/image_list.action?type=<%=IConstants.IMAGE_TYPE_NEWS%>')" value="新闻资讯图片管理"/></li>
+					</s:else>
 				</ul>
 		    	<div class="data-list">
 					<ul class="thumbnails">

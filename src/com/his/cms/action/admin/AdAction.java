@@ -72,7 +72,7 @@ public class AdAction extends BasePageAction implements ModelDriven<Ad> {
 	}
 
 	@Override
-	protected String getMenuTag() {
+	public String getMenuTag() {
 		return "ad";
 	}
 

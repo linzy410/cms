@@ -70,7 +70,7 @@ public class UserAction extends BasePageAction implements ModelDriven<User> {
 	
 
 	@Override
-	protected String getMenuTag() {
+	public String getMenuTag() {
 		return "user";
 	}
 
