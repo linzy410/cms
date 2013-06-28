@@ -46,7 +46,8 @@ public class WebSiteAction extends BasePageAction implements ModelDriven<WebSite
 	/* (non-Javadoc)
 	 * @see com.his.cms.action.BasePageAction#getMenuTag()
 	 */
-	public String getMenuTag() {
+	@Override
+	protected String getMenuTag() {
 		return "website";
 	}
 

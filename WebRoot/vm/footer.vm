@@ -1,7 +1,3 @@
 <div class="box clear">
 	<img src="/upload/${webSite.bottomImg}" width="1146" height="119"/>
 </div>
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F226a5da7947640b26c8a4eb0a672d533' type='text/javascript'%3E%3C/script%3E"));
-</script>

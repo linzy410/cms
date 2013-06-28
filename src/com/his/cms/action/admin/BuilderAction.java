@@ -81,7 +81,7 @@ public class BuilderAction extends BasePageAction {
 	 * @see com.his.cms.action.BasePageAction#getMenuTag()
 	 */
 	@Override
-	public String getMenuTag() {
+	protected String getMenuTag() {
 		return "builder";
 	}
 

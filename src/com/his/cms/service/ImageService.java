@@ -36,9 +36,9 @@ public class ImageService {
 	 * @param pageSize
 	 * @return
 	 */
-	public Page getPage(int type, int lang, int pageNo, int pageSize) {
-		List<Image> images = imageDao.findImageList(type, lang, pageNo, pageSize);
-		int total = imageDao.findCountImage(type, lang);
+	public Page getPage(int lang, int pageNo, int pageSize) {
+		List<Image> images = imageDao.findImageList(IConstants.IMAGE_TYPE_SPACE, lang, pageNo, pageSize);
+		int total = imageDao.findCountImage(IConstants.IMAGE_TYPE_SPACE, lang);
 		Page page = new Page(images, total, pageSize);
 		page.setUrl("/admin/image_list.action");
 		return page;
