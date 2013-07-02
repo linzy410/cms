@@ -54,7 +54,7 @@ public class ImageService {
 	}
 	
 	/**
-	 * 保存上传的文件
+	 * 保存批量上传的文件
 	 * @param files
 	 * @throws IOException 
 	 */
@@ -67,24 +67,23 @@ public class ImageService {
 		}
 		List<Image> images = new ArrayList<Image>();
 		for (int i = 0; i < files.size(); i++) {
-//			String extension = fileNames.get(i).substring(fileNames.get(i).lastIndexOf("."));
-//			String targetFilename = new SimpleDateFormat("HHmmsssssss").format(new Date());
-//			targetFilename = checkFilenameUnique(uploadFolder.getAbsolutePath(), targetFilename, extension);
-//			File target = new File(uploadFolder.getAbsolutePath() + IConstants.SLASH + targetFilename);
-//			FileUtils.copyFile(files.get(i), target);
-//			Image image = new Image();
-//			image.setSaveFile(datePath + IConstants.SLASH + targetFilename);
-//			image.setType(imageType);
-//			image.setLang(lang);
-//			image.setName(fileNames.get(i));
-//			image.setCreator(creator);
-//			image.setCreateTime(createTime);
 			Image image = saveImage(files.get(i), fileNames.get(i), imageType, lang, creator, createTime, datePath, uploadFolder);
 			images.add(image);
 		}
 		imageDao.batchAdd(images);
 	}
 	
+	/**
+	 * 保存单个文件
+	 * @param file
+	 * @param fileName
+	 * @param imageType
+	 * @param lang
+	 * @param creator
+	 * @param createTime
+	 * @return
+	 * @throws IOException
+	 */
 	public Image saveImage(File file, String fileName, int imageType, int lang, String creator, String createTime) throws IOException {
 		String datePath = new SimpleDateFormat("yyyyMM").format(new Date());
 		File uploadFolder = new File(IConstants.FILE_UPLOAD_SAVE_PATH + IConstants.SLASH + datePath); 

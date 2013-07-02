@@ -29,7 +29,7 @@ public class NewsDao extends BaseDao {
 	}
 	
 	public int findCountNewsByType(int type) {
-		return (Integer) super.getSqlMapClientTemplate().queryForObject("news.countNews", type);
+		return (Integer) super.getSqlMapClientTemplate().queryForObject("news.findCountNewsByType", type);
 	}
 	
 	@SuppressWarnings("unchecked")

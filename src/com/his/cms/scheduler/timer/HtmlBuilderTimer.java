@@ -5,9 +5,6 @@
 
 package com.his.cms.scheduler.timer;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -33,8 +30,6 @@ public class HtmlBuilderTimer {
 		scheduler.schedule(new SchedulerTask() {
 			@Override
 			public void run() {
-				SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				System.out.println(dateformat.format(new Date()));
 				try {
 					new AllBuilder().builder();
 				} catch (Exception e) {

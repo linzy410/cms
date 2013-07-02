@@ -5,11 +5,7 @@
 		#parse("/header.vm")
 	</head>
 	<body>
-		<div class="box head">
-			<h2><a href="cn/index.html">TOP MARQUES 上海奢侈品展:::博锐会展
-			BORRISON:::2013年10月25日-27日 上海展览中心</a></h2>
-			<h3 class="cn">2013年10月25日-27日 上海展览中心</h3>
-		</div>
+		#parse("/top_banner.vm")
 		#parse("/menu.vm")
 		<div class="main">
 			<div class="left">

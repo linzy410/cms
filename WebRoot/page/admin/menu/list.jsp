@@ -6,7 +6,7 @@
 		<%@ include file="/page/admin/include/header.jsp" %>
 		
 		<script type="text/javascript">
-			function remove(id){
+			function removeMenu(id){
 				if(confirm("确定删除吗？")){
 					goAction("/admin/menu_remove.action?selectedId="+id);
 				}
@@ -43,7 +43,7 @@
 			    	    		<td>${nameEn}</td>
 			    	    		<td><s:if test="type==1">页面内容</s:if><s:elseif test="type==2">指定链接</s:elseif><s:else>新闻资讯类</s:else></td>
 			    	    		<td>
-			    	    			<a href="/admin/menu_edit.action?selectedId=${id}">编辑</a> | <a href="javascript:void(0);" onclick="remove(${id});">删除</a> | 
+			    	    			<a href="/admin/menu_edit.action?selectedId=${id}">编辑</a> | <a href="javascript:void(0);" onclick="removeMenu(${id});">删除</a> | 
 			    	    			<s:if test="type==1"><a href="/admin/menu_content.action?selectedId=${id}">内容编辑</a></s:if>
 			    	    		</td>
 			    	    	</tr>
